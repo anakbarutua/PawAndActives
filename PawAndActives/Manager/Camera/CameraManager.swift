@@ -15,8 +15,14 @@ class CameraManager: NSObject, CameraService {
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var sessionQueue = DispatchQueue(label: "session queue")
     
+    var visionService: VisionService
+    var onTrackingPointsDetected: (([CGPoint]) -> Void)?
+    var onTrackingPointsNotDetected: (() -> Void)?
+    
+    var workoutType: WorkoutType = .grabTheCircles
 
-    override init() {
+    init(visionService: VisionService = VisionManager()) {
+        self.visionService = visionService
         super.init()
         setupSession()
     }
@@ -58,7 +64,8 @@ class CameraManager: NSObject, CameraService {
         }
     }
     
-    func startSession() {
+    func startSession(workoutType: WorkoutType) {
+        self.workoutType = workoutType
         sessionQueue.async {
             self.captureSession?.startRunning()
         }
@@ -81,6 +88,35 @@ class CameraManager: NSObject, CameraService {
 
 extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
+        switch workoutType {
+        case .avoidTheBlocks:
+            visionService.performFaceTracking(on: pixelBuffer) { [weak self] points in
+                guard let previewLayer = self?.getPreviewLayer() else { return }
+                if !points.isEmpty {
+                    let newPoints = points.map { point in
+                        previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
+                    }
+                    self?.onTrackingPointsDetected?(newPoints)
+
+                } else {
+                    self?.onTrackingPointsNotDetected?()
+                }
+            }
+        case .grabTheCircles:
+            visionService.performHandTracking(on: pixelBuffer) { [weak self] points in
+                guard let previewLayer = self?.getPreviewLayer() else { return }
+                if !points.isEmpty {
+                    let newPoints = points.map { point in
+                        previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
+                    }
+                    self?.onTrackingPointsDetected?(newPoints)
+
+                } else {
+                    self?.onTrackingPointsNotDetected?()
+                }
+            }
+        }
     }
 }

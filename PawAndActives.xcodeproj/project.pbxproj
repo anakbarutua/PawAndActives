@@ -21,6 +21,7 @@
 		620F962C2C6B415C00821C6F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962B2C6B415C00821C6F /* Color.swift */; };
 		620F962E2C6B416400821C6F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962D2C6B416400821C6F /* Image.swift */; };
 		620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96312C6BF0D700821C6F /* CameraPreview.swift */; };
+		620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96332C6BFD7600821C6F /* CGPoint.swift */; };
 		622BFCBC2C6A72BC001BF7C3 /* PawAndActivesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */; };
 		622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */; };
 		622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		620F962B2C6B415C00821C6F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		620F962D2C6B416400821C6F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		620F96312C6BF0D700821C6F /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		620F96332C6BFD7600821C6F /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawAndActives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawAndActivesApp.swift; sourceTree = "<group>"; };
 		622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				620F962B2C6B415C00821C6F /* Color.swift */,
 				620F962D2C6B416400821C6F /* Image.swift */,
+				620F96332C6BFD7600821C6F /* CGPoint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
+				620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */,
 				622BFCEA2C6A8CBC001BF7C3 /* WorkoutType.swift in Sources */,
 				620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */,
 				622BFD022C6A905B001BF7C3 /* CameraManager.swift in Sources */,
