@@ -13,7 +13,7 @@ class Router{
     func view(for destination: Destination) -> some View {
         switch destination {
         case .dashboardView:
-            DashboardView()
+            DashboardView(sz: SizeCount())
         case .challengeView:
             ChallengeView()
         case .workoutDetailView:
