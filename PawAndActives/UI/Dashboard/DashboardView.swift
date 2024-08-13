@@ -12,9 +12,13 @@ struct DashboardView: View {
     
     var body: some View {
         VStack {
+            
+            Image.ABTImage.GTCIcon
+            
             Button("Go to Challenge Screen") {
                 navigationManager.navigate(to: .challengeView)
             }
+            .foregroundStyle(Color.ABTColor.PrussianBlue)
         }
         .navigationTitle("Dashboard")
     }
