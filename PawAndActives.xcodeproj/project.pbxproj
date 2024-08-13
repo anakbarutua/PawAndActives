@@ -17,6 +17,9 @@
 		620F96212C6A9D6900821C6F /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96202C6A9D6900821C6F /* WorkoutViewModel.swift */; };
 		620F96242C6AA44C00821C6F /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96232C6AA44C00821C6F /* NavigationManager.swift */; };
 		620F96262C6AA4C600821C6F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96252C6AA4C600821C6F /* Router.swift */; };
+		620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96292C6B411C00821C6F /* UIHelper.swift */; };
+		620F962C2C6B415C00821C6F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962B2C6B415C00821C6F /* Color.swift */; };
+		620F962E2C6B416400821C6F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962D2C6B416400821C6F /* Image.swift */; };
 		622BFCBC2C6A72BC001BF7C3 /* PawAndActivesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */; };
 		622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */; };
 		622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */; };
@@ -61,6 +64,9 @@
 		620F96202C6A9D6900821C6F /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		620F96232C6AA44C00821C6F /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		620F96252C6AA4C600821C6F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		620F96292C6B411C00821C6F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		620F962B2C6B415C00821C6F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		620F962D2C6B416400821C6F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawAndActives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawAndActivesApp.swift; sourceTree = "<group>"; };
 		622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +119,24 @@
 				620F96252C6AA4C600821C6F /* Router.swift */,
 			);
 			path = Route;
+			sourceTree = "<group>";
+		};
+		620F96272C6B40FC00821C6F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				622BFCF12C6A8D69001BF7C3 /* VisionHelper.swift */,
+				620F96292C6B411C00821C6F /* UIHelper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		620F96282C6B410500821C6F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				620F962B2C6B415C00821C6F /* Color.swift */,
+				620F962D2C6B416400821C6F /* Image.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		622BFCAF2C6A72BC001BF7C3 = {
@@ -200,7 +224,8 @@
 		622BFCD02C6A871A001BF7C3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				622BFCF12C6A8D69001BF7C3 /* VisionHelper.swift */,
+				620F96282C6B410500821C6F /* Extension */,
+				620F96272C6B40FC00821C6F /* Util */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -384,11 +409,14 @@
 				622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */,
 				622BFCF22C6A8D69001BF7C3 /* VisionHelper.swift in Sources */,
 				620F96262C6AA4C600821C6F /* Router.swift in Sources */,
+				620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */,
 				622BFCE02C6A8C31001BF7C3 /* Session.swift in Sources */,
 				622BFCE62C6A8C98001BF7C3 /* Score.swift in Sources */,
 				622BFCF02C6A8D55001BF7C3 /* Workout.swift in Sources */,
 				622BFCF82C6A9009001BF7C3 /* WorkoutRepositoryService.swift in Sources */,
+				620F962E2C6B416400821C6F /* Image.swift in Sources */,
 				620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */,
+				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,

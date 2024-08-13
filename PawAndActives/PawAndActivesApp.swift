@@ -22,7 +22,7 @@ struct PawAndActivesApp: App {
                         router.view(for: destination)
                     }
             }
-            
+            .environmentObject(navigationManager)
         }
     }
 }
