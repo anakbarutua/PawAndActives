@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Vision
+
+protocol VisionService {
+    func performFaceTracking(on pixelBuffer: CVPixelBuffer, completion: @escaping ([CGPoint]) -> Void)
+}

@@ -9,7 +9,12 @@ import Foundation
 import AVFoundation
 
 protocol CameraService {
-    func startSession()
+    
+    var onTrackingPointsDetected: (([CGPoint]) -> Void)? { get set }
+    var onTrackingPointsNotDetected: (() -> Void)? { get set }
+    var workoutType: WorkoutType { get set }
+    
+    func startSession(workoutType: WorkoutType)
     func stopSession()
     func getPreviewLayer() -> AVCaptureVideoPreviewLayer?
 }
