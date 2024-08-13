@@ -15,6 +15,15 @@ extension Image {
             return Image(.gtcIcon)
         }
         
+        public static var Shop: Image{
+            return Image(.shopfix)
+        }
+        
+        public static var ATBIcon: Image{
+            return Image(.atb)
+        }
+        
         
     }
+
 }
