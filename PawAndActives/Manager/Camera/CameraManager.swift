@@ -95,11 +95,9 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
             visionService.performFaceTracking(on: pixelBuffer) { [weak self] points in
                 guard let previewLayer = self?.getPreviewLayer() else { return }
                 if !points.isEmpty {
-                    print("Old Point : \(points[0])")
                     let newPoints = points.map { point in
                         previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
                     }
-                    print("Converted Point : \(newPoints[0])")
                     self?.onTrackingPointsDetected?(newPoints)
 
                 } else {
@@ -107,7 +105,18 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
                 }
             }
         case .grabTheCircles:
-            break
+            visionService.performHandTracking(on: pixelBuffer) { [weak self] points in
+                guard let previewLayer = self?.getPreviewLayer() else { return }
+                if !points.isEmpty {
+                    let newPoints = points.map { point in
+                        previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
+                    }
+                    self?.onTrackingPointsDetected?(newPoints)
+
+                } else {
+                    self?.onTrackingPointsNotDetected?()
+                }
+            }
         }
     }
 }

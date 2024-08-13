@@ -12,7 +12,7 @@ struct GameView: View {
     
     @StateObject private var viewModel = GameViewModel()
     
-    var workoutType: WorkoutType = .avoidTheBlocks
+    var workoutType: WorkoutType = .grabTheCircles
     
     var body: some View {
         GeometryReader { geometry in
