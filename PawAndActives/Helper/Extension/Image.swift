@@ -16,11 +16,11 @@ extension Image {
         }
         
         public static var Shop: Image{
-            return Image(.shopfix)
+            return Image(.shopIcon)
         }
         
         public static var ATBIcon: Image{
-            return Image(.atb)
+            return Image(.atbIcon)
         }
         
         
