@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import AVFoundation
+
+protocol CameraService {
+    func startSession()
+    func stopSession()
+    func getPreviewLayer() -> AVCaptureVideoPreviewLayer?
+}

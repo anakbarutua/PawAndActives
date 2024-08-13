@@ -10,8 +10,26 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
+    @StateObject private var viewModel = GameViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            ZStack {
+                if viewModel.isSessionRunning {
+                    CameraPreview(viewModel: viewModel)
+                } else {
+                    Text("Camera not running")
+                }
+                
+            }
+            .edgesIgnoringSafeArea(.all)
+        }
+        .onAppear {
+            viewModel.startCamera()
+        }
+        .onDisappear {
+            viewModel.stopCamera()
+        }
     }
 }
 
