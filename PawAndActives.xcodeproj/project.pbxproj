@@ -50,9 +50,9 @@
 		622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD052C6A9071001BF7C3 /* GameManager.swift */; };
 		622BFD082C6A9082001BF7C3 /* VisionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD072C6A9082001BF7C3 /* VisionService.swift */; };
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
-		622BFD0D2C6A91B2001BF7C3 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = 622BFD0C2C6A91B2001BF7C3 /* jokes.json */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
+		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,9 +100,9 @@
 		622BFD052C6A9071001BF7C3 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		622BFD072C6A9082001BF7C3 /* VisionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionService.swift; sourceTree = "<group>"; };
 		622BFD092C6A908D001BF7C3 /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
-		622BFD0C2C6A91B2001BF7C3 /* jokes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jokes.json; path = ../../../../pawandactive/PawAndActive/Manager/JokesGatcha/jokes.json; sourceTree = "<group>"; };
 		622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaService.swift; sourceTree = "<group>"; };
 		622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaManager.swift; sourceTree = "<group>"; };
+		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,9 +330,9 @@
 		622BFD0B2C6A909B001BF7C3 /* JokesGatcha */ = {
 			isa = PBXGroup;
 			children = (
-				622BFD0C2C6A91B2001BF7C3 /* jokes.json */,
 				622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */,
 				622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */,
+				BA2A405B2C6C93D7003365C5 /* jokes.json */,
 			);
 			path = JokesGatcha;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				622BFD0D2C6A91B2001BF7C3 /* jokes.json in Resources */,
+				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
 			);
@@ -584,7 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to detect and track your hand movements.";
@@ -613,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to detect and track your hand movements.";
