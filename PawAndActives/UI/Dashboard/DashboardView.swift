@@ -41,6 +41,7 @@ struct DashboardView: View {
                             Text("Workouts")
                                 .font(.title)
                                 .fontWeight(.bold)
+                                .foregroundColor(Color.ABTColor.CharlestonGreen)
                                 .padding(.trailing, 0.61 * geo.size.width)
                                 .padding(.top, 0.03 * geo.size.height)
 //                            Spacer()
@@ -54,32 +55,32 @@ struct DashboardView: View {
                                         .resizable()
                                         .frame(width: 44, height: 35)
                                         Text("Draw")
-                                        .foregroundColor(Color.ABTColor.PrussianBlue)
+                                        .foregroundColor(Color.ABTColor.Linen)
                                         .font(.title)
                                         .fontWeight(.bold)
                                                         }
                             }).scaledToFit()
                             .padding(8)
                             //                            .frame(width: sz.sRectangleWidthS * sz.width)
-                            .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                            .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
                             HStack{
                                     Text("G")
                                     .font(.title)
-                                    .foregroundColor(Color.ABTColor.PastelOrange)
+                                    .foregroundColor(Color.ABTColor.SteelBlue)
                                     .scaledToFit()
                                     .frame(width: 0.06 * geo.size.width)
-                                    .background(Circle().fill(Color.ABTColor.PrussianBlue))
+                                    .background(Circle().fill(Color.ABTColor.MikadoYellow))
                                     Text("0")
                                     .font(.system(size: 32))
                                                             /*.scaledToFit()*/
                             //                                .frame(height: 40)
-                                    .foregroundColor(Color.ABTColor.PrussianBlue)
+                                    .foregroundColor(Color.ABTColor.Linen)
 //                                    .padding(.trailing, 0.0 * geo.size.width)
                                     }.scaledToFit()
                                     .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
                                     .padding(.trailing, 0.03 * geo.size.width)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
                         }
                         HStack{
@@ -95,7 +96,8 @@ struct DashboardView: View {
                                     
                                     Text("Grab The Circle")
                                         .font(.title)
-                                        .foregroundColor(Color.ABTColor.Black)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.ABTColor.CharlestonGreen)
 //                                        .padding(.top, 60)
 //                                        .scaledToFit()
                                 }
@@ -103,7 +105,7 @@ struct DashboardView: View {
                                     
                             }.scaledToFit()
                                 .frame(height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.BananaMania))
+                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
 //                                .padding(.leading, 0.0 * geo.size.width)
                             
                             Button(action: {
@@ -118,7 +120,8 @@ struct DashboardView: View {
 //                                        .padding(.leading,5)
                                     Text("Avoid The Blocks")
                                         .font(.title)
-                                        .foregroundColor(Color.ABTColor.Black)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.ABTColor.CharlestonGreen)
 //                                        .padding(.top, 20)
 //                                        .scaledToFit()
                                 }
@@ -127,7 +130,7 @@ struct DashboardView: View {
                             .scaledToFit()
                             .frame(height: 0.4 * geo.size.height)
                             //.frame(width: sz.squareWidth * sz.width, height: sz.squareHeight * sz.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.BananaMania))
+                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
                             
                             HStack{
                                 VStack(alignment: .leading, spacing: 5){
@@ -135,6 +138,7 @@ struct DashboardView: View {
                                         Text("Challenges")
                                             .font(.largeTitle)
                                             .fontWeight(.bold)
+                                            .foregroundColor(Color.ABTColor.Linen)
                                             
                                         Spacer()
                                     }
@@ -144,9 +148,11 @@ struct DashboardView: View {
                                     HStack{
                                         Text("Finish challenges to gain more gold")
                                             .font(.title2)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(Color.ABTColor.Linen)
                                         Spacer()
                                     }
-                                    .frame(width:  0.26 * geo.size.width)
+                                    .frame(width:  0.3 * geo.size.width)
                                     .padding(.leading, 0.01 * geo.size.width)
                                     // .foregroundStyle(.white)
                                     Button {
@@ -154,7 +160,8 @@ struct DashboardView: View {
                                     } label: {
                                         Text("Start your Challenge")
                                             .font(.title2)
-                                            .foregroundStyle(.black)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                     }/*.navigationTitle("Dashboard")*/
                                         .frame(width: 0.3 * geo.size.width
                                                , height: 0.045 * geo.size.height)
@@ -164,16 +171,17 @@ struct DashboardView: View {
                                     
                                 }
 //                                .frame(width: 0.35 * geo.size.width, height: 0.4 * geo.size.height)
-                                .padding(.trailing, 0.16 * geo.size.width)
+                                .padding(.trailing, 0.1 * geo.size.width)
                             }
                             .scaledToFit()
                             .frame(height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.BananaMania))
+                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue))
                                 .padding(.leading, 0.01 * geo.size.width)
                         }
                         HStack{
                             Text("Your Collection")
                                 .font(.title)
+                                .foregroundColor(Color.ABTColor.CharlestonGreen)
                                 .fontWeight(.bold)
                                 .padding(.leading, 0.023 * geo.size.width)
                                 
@@ -185,7 +193,9 @@ struct DashboardView: View {
                                 
                             }, label: {
                                 Text("See More")
-                                    .foregroundColor(Color.black)
+//                                    .foregroundColor(Color.black)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.ABTColor.CharlestonGreen)
                                     .padding(.trailing, 0.025 * geo.size.width)
 //                                    .fontWeight(.bold)
                             })

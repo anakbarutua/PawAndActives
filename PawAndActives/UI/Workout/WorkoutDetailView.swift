@@ -23,25 +23,26 @@ struct WorkoutDetailView: View {
                     Text(workoutData.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .foregroundColor(Color.ABTColor.CharlestonGreen)
                         .padding(.trailing, geo.size.width * 0.58)
                     HStack{
                             HStack{
                                     Text("G")
                                     .font(.title)
-                                    .foregroundColor(Color.ABTColor.PastelOrange)
+                                    .foregroundColor(Color.ABTColor.SteelBlue)
                                     .scaledToFit()
                                     .frame(width: 0.06 * geo.size.width)
-                                    .background(Circle().fill(Color.ABTColor.PrussianBlue))
+                                    .background(Circle().fill(Color.ABTColor.MikadoYellow))
                                     Text("0")
                                     .font(.system(size: 32))
                                                             /*.scaledToFit()*/
                             //                                .frame(height: 40)
-                                    .foregroundColor(Color.ABTColor.PrussianBlue)
+                                    .foregroundColor(Color.ABTColor.Linen)
     //                                    .padding(.trailing, 0.0 * geo.size.width)
                                     }.scaledToFit()
                                     .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
                                     .padding(.trailing, 0.03 * geo.size.width)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                     }.padding(.leading, geo.size.width * 0.02)
                     Spacer()
                     
@@ -49,6 +50,7 @@ struct WorkoutDetailView: View {
                 VStack{
                     Text(workoutData.desc)
                         .font(.system(size: 25))
+                        .foregroundColor(Color.ABTColor.CharlestonGreen)
                         .padding(.top, 0.01 * geo.size.height)
                         .padding(.horizontal, geo.size.width * 0.1)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -59,6 +61,7 @@ struct WorkoutDetailView: View {
                     HStack{
                         Text("Difficulty")
                             .foregroundColor(Color.ABTColor.Black)
+                            .fontWeight(.bold)
                         
                         Spacer()
                         
@@ -67,17 +70,18 @@ struct WorkoutDetailView: View {
                             Text("Medium").tag(1)
                             Text("Hard").tag(2)
                         }
-                        .accentColor(Color.ABTColor.PrussianBlue)
+                        .accentColor(Color.ABTColor.CharlestonGreen)
+                        .fontWeight(.bold)
                     }
                     .padding(.horizontal, 18)
                     .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.05)
-                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.BananaMania))
+                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.DarkSkyBlue))
                     .padding(.top, geo.size.height * 0.015)
                         
                     ButtonView(label: "Start Workout"){
                     // Custom action
                     }.frame(width: geo.size.width * 0.8, height: geo.size.height * 0.07)
-                        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.BananaMania))
+                        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.MikadoYellow))
                         .padding(.top, geo.size.height * 0.006)
 
                 }

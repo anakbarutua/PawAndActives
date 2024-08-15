@@ -38,5 +38,21 @@ extension Color {
         public static var White: Color {
             return .white
         }
+        
+        public static var DarkSkyBlue: Color {
+            return .darkSkyBlue
+        }
+        
+        public static var CharlestonGreen: Color {
+            return .charlestonGreen
+        }
+        
+        public static var SteelBlue: Color {
+            return .steelBlue
+        }
+        
+        public static var MikadoYellow: Color {
+            return .mikadoYellow
+        }
     }
 }

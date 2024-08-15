@@ -19,26 +19,27 @@ struct ChallengeView: View {
                     HStack{
                         Text("Challenges")
                             .font(.largeTitle)
+                            .foregroundColor(Color.ABTColor.CharlestonGreen)
                             .fontWeight(.bold)
                             .padding(.trailing, 0.66 * geo.size.width)
 //                            .padding(.top, 0.03 * geo.size.height)
                         HStack{
                                 Text("G")
                                 .font(.title)
-                                .foregroundColor(Color.ABTColor.PastelOrange)
+                                .foregroundColor(Color.ABTColor.SteelBlue)
                                 .scaledToFit()
                                 .frame(width: 0.06 * geo.size.width)
-                                .background(Circle().fill(Color.ABTColor.PrussianBlue))
+                                .background(Circle().fill(Color.ABTColor.MikadoYellow))
                                 Text("0")
                                 .font(.system(size: 32))
                                                         /*.scaledToFit()*/
                         //                                .frame(height: 40)
-                                .foregroundColor(Color.ABTColor.PrussianBlue)
+                                .foregroundColor(Color.ABTColor.Linen)
 //                                    .padding(.trailing, 0.0 * geo.size.width)
                                 }.scaledToFit()
                                 .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
                                 .padding(.trailing, 0.03 * geo.size.width)
-                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                     }
                     //                HStack{
                     //                    Spacer()
@@ -73,29 +74,34 @@ struct ChallengeView: View {
                                 Text("Newcomer Challenge")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
+                                    .foregroundColor(Color.ABTColor.Linen)
                                     
                                 HStack{
                                     Text("G")
                                         .font(.largeTitle)
-                                        .foregroundColor(Color.ABTColor.PastelOrange)
+                                        .foregroundColor(Color.ABTColor.DarkSkyBlue)
                                     //                    .background(.blue)
                                         .frame(width: geo.size.width * 0.04, height: geo.size.height * 0.04)
-                                        .background(Circle().fill(Color.ABTColor.PrussianBlue))
+                                        .background(Circle().fill(Color.ABTColor.MikadoYellow))
                                     
                                     Text("100")
                                         .font(.system(size: 32))
-                                        .foregroundColor(Color.ABTColor.PrussianBlue)
+                                        .foregroundColor(Color.ABTColor.Linen)
+                                        .fontWeight(.bold)
                                     //.padding(.leading, geo.size.width * 0.02)
-                                }.frame(width: geo.size.width * 0.1, height: geo.size.height * 0.0534)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                }.frame(width: geo.size.width * 0.107, height: geo.size.height * 0.0534)
+                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.DarkSkyBlue))
                                     .padding(.leading, geo.size.width * 0.53)
                             }
                             Text("Complete these onboarding challenge and you’ll earn 100 Gold once you’re done")
                                 .font(.system(size: 17))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.ABTColor.Linen)
                             HStack{
                                 VStack{
                                     ProgressView(value: 0.0, label: { Text("Your Progress")
-                                            .foregroundColor(Color.ABTColor.PrussianBlue)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color.ABTColor.MikadoYellow)
                                     })
                                     .padding(.top, geo.size.height * 0.036)
                                     .padding(.trailing, geo.size.width * 0.01)
@@ -105,7 +111,7 @@ struct ChallengeView: View {
                                     Text("0/3")
                                         .font(.largeTitle)
                                         .fontWeight(.bold)
-                                        .foregroundColor(Color.ABTColor.PrussianBlue)
+                                        .foregroundColor(Color.ABTColor.MikadoYellow)
                                         .padding(.top,20)
                                         .padding(.trailing,20)
                                 }
@@ -115,7 +121,7 @@ struct ChallengeView: View {
                     }.frame(width: geo.size.width
                             * 0.94, height: geo.size.height
                             * 0.25)
-                    .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.BananaMania))
+                    .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue))
                     //.padding(.leading, geo.size.width * 0.0)
 //                    .padding(.top, geo.size.height * 0.01)
                     
@@ -130,32 +136,34 @@ struct ChallengeView: View {
                                     VStack{
                                         HStack{
                                             Text("Complete Grab The Circle")
-                                                .foregroundStyle(Color.black)
+                                                .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                 .fontWeight(.bold)
                                                 .font(.title)
                                             Spacer()
+                                            Spacer()
+//                                            Spacer()
                                         }
                                         HStack{
                                             Text("Finish Grab the Circles workout in any level for the first time")
-                                                .foregroundStyle(Color.black)
+                                                .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                 .font(.title3)
                                             Spacer()
-                                        }
+                                        }/*.padding(.top, 0.00000001 * geo.size.height)*/
                       }/*.navigationTitle("Challenges")*/
                                     
                                     Spacer()
                                     Image(systemName: "chevron.right")
-                                        .foregroundStyle(Color.black)
+                                        .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                         .background(
                                             Circle()
                                                 .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.05)
-                                        ).foregroundStyle(Color.ABTColor.PastelOrange)
+                                        ).foregroundStyle(Color.ABTColor.MikadoYellow)
                                     
                                 }
                                 .padding(.horizontal,geo.size.width * 0.05)
                                 .frame(maxWidth:geo.size.width * 0.94, maxHeight: geo.size.height * 0.13)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.Linen)
+                                    RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.DarkSkyBlue)
                                 )
                                 .padding(.top, geo.size.height * 0.01)
                                 //.padding(.leading, geo.size.width * 0.0)
@@ -170,14 +178,14 @@ struct ChallengeView: View {
                                     VStack{
                                         HStack{
                                             Text("Complete Avoid The Blocks")
-                                                .foregroundStyle(Color.black)
+                                                .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                 .fontWeight(.bold)
                                                 .font(.title)
                                             Spacer()
                                         }
                                         HStack{
                                             Text("Finish Avoid The Blocks workout in any level for the first time")
-                                                .foregroundStyle(Color.black)
+                                                .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                 .font(.title3)
                                             Spacer()
                                         }
@@ -185,17 +193,17 @@ struct ChallengeView: View {
                                     
                                     Spacer()
                                     Image(systemName: "chevron.right")
-                                        .foregroundStyle(Color.black)
+                                        .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                         .background(
                                             Circle()
                                                 .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.05)
-                                        ).foregroundStyle(Color.ABTColor.PastelOrange)
+                                        ).foregroundStyle(Color.ABTColor.MikadoYellow)
                                     
                                 }
                                 .padding(.horizontal,geo.size.width * 0.05)
                                 .frame(maxWidth:geo.size.width * 0.94, maxHeight: geo.size.height * 0.13)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.Linen)
+                                    RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.DarkSkyBlue)
                                 )
                                 // .padding(.leading, geo.size.width * 0.0)
                             }
@@ -210,14 +218,14 @@ struct ChallengeView: View {
                                             VStack{
                                                 HStack{
                                                     Text("Turn On Notification")
-                                                        .foregroundStyle(Color.black)
+                                                        .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                         .fontWeight(.bold)
                                                         .font(.title)
                                                     Spacer()
                                                 }
                                                 HStack{
                                                     Text("Let us remind you to do your daily challenges")
-                                                        .foregroundStyle(Color.black)
+                                                        .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                         .font(.title3)
                                                     Spacer()
                                                 }
@@ -225,17 +233,17 @@ struct ChallengeView: View {
                                             
                                             Spacer()
                                             Image(systemName: "chevron.right")
-                                                .foregroundStyle(Color.black)
+                                                .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                                 .background(
                                                     Circle()
                                                         .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.05)
-                                                ).foregroundStyle(Color.ABTColor.PastelOrange)
+                                                ).foregroundStyle(Color.ABTColor.MikadoYellow)
                                             
                                         }
                                         .padding(.horizontal,geo.size.width * 0.05)
                                         .frame(maxWidth:geo.size.width * 0.94, maxHeight: geo.size.height * 0.13)
                                         .background(
-                                            RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.Linen)
+                                            RoundedRectangle(cornerRadius: 12).fill(Color.ABTColor.DarkSkyBlue)
                                         )
                                         // .padding(.leading, geo.size.width * 0.0)
                                     }
