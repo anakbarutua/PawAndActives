@@ -24,6 +24,8 @@
 		620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96292C6B411C00821C6F /* UIHelper.swift */; };
 		620F962C2C6B415C00821C6F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962B2C6B415C00821C6F /* Color.swift */; };
 		620F962E2C6B416400821C6F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962D2C6B416400821C6F /* Image.swift */; };
+		620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96312C6BF0D700821C6F /* CameraPreview.swift */; };
+		620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96332C6BFD7600821C6F /* CGPoint.swift */; };
 		622BFCBC2C6A72BC001BF7C3 /* PawAndActivesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */; };
 		622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */; };
 		622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */; };
@@ -52,9 +54,9 @@
 		622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD052C6A9071001BF7C3 /* GameManager.swift */; };
 		622BFD082C6A9082001BF7C3 /* VisionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD072C6A9082001BF7C3 /* VisionService.swift */; };
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
-		622BFD0D2C6A91B2001BF7C3 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = 622BFD0C2C6A91B2001BF7C3 /* jokes.json */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
+		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		620F96292C6B411C00821C6F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		620F962B2C6B415C00821C6F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		620F962D2C6B416400821C6F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		620F96312C6BF0D700821C6F /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		620F96332C6BFD7600821C6F /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawAndActives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawAndActivesApp.swift; sourceTree = "<group>"; };
 		622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,9 +109,9 @@
 		622BFD052C6A9071001BF7C3 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		622BFD072C6A9082001BF7C3 /* VisionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionService.swift; sourceTree = "<group>"; };
 		622BFD092C6A908D001BF7C3 /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
-		622BFD0C2C6A91B2001BF7C3 /* jokes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jokes.json; path = ../../../../pawandactive/PawAndActive/Manager/JokesGatcha/jokes.json; sourceTree = "<group>"; };
 		622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaService.swift; sourceTree = "<group>"; };
 		622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaManager.swift; sourceTree = "<group>"; };
+		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 			children = (
 				620F962B2C6B415C00821C6F /* Color.swift */,
 				620F962D2C6B416400821C6F /* Image.swift */,
+				620F96332C6BFD7600821C6F /* CGPoint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				620F96182C6A9D0D00821C6F /* GameView.swift */,
 				620F961A2C6A9D1B00821C6F /* SummaryView.swift */,
 				620F961C2C6A9D3000821C6F /* GameViewModel.swift */,
+				620F96312C6BF0D700821C6F /* CameraPreview.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -354,9 +360,9 @@
 		622BFD0B2C6A909B001BF7C3 /* JokesGatcha */ = {
 			isa = PBXGroup;
 			children = (
-				622BFD0C2C6A91B2001BF7C3 /* jokes.json */,
 				622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */,
 				622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */,
+				BA2A405B2C6C93D7003365C5 /* jokes.json */,
 			);
 			path = JokesGatcha;
 			sourceTree = "<group>";
@@ -419,7 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				622BFD0D2C6A91B2001BF7C3 /* jokes.json in Resources */,
+				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
 			);
@@ -435,6 +441,7 @@
 				620F96242C6AA44C00821C6F /* NavigationManager.swift in Sources */,
 				622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulty.swift in Sources */,
 				620F961F2C6A9D5600821C6F /* WorkoutDetailView.swift in Sources */,
+				620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */,
 				622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */,
 				622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */,
 				622BFCF22C6A8D69001BF7C3 /* VisionHelper.swift in Sources */,
@@ -451,6 +458,7 @@
 				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
+				620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */,
 				622BFCEA2C6A8CBC001BF7C3 /* WorkoutType.swift in Sources */,
 				620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */,
 				622BFD022C6A905B001BF7C3 /* CameraManager.swift in Sources */,
@@ -610,7 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = F7UK99A97Y;
+				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
@@ -640,7 +648,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = F7UK99A97Y;
+				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
