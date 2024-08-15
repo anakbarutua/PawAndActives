@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BarProgressStyle: ProgressViewStyle {
 
-    var color: Color = Color.ABTColor.PrussianBlue
+    var color: Color = Color.ABTColor.MikadoYellow
     var height: Double = 20.0
     var labelFontStyle: Font = .body
 
@@ -27,7 +27,7 @@ struct BarProgressStyle: ProgressViewStyle {
                     .foregroundColor(Color.ABTColor.Black)
 
                 RoundedRectangle(cornerRadius: 10.0)
-                    .fill(Color.ABTColor.PastelOrange)
+                    .fill(Color.ABTColor.Linen)
                     .frame(height: height)
                     .frame(width: geometry.size.width)
                     .overlay(alignment: .leading) {

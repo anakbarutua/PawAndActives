@@ -31,7 +31,8 @@ struct ButtonView: View {
             }
             Text(label)
                 .font(.system(size: 20))
-                .foregroundColor(Color.black)
+                .foregroundColor(Color.ABTColor.CharlestonGreen)
+                .fontWeight(.bold)
         }
     }
 
