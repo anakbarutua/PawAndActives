@@ -37,7 +37,7 @@ class NavigationManager: ObservableObject {
 enum Destination: Hashable {
     case dashboardView
     case challengeView
-    case workoutDetailView
+    case workoutDetailView(WorkoutType)
     case gameView
     case summaryView
 }

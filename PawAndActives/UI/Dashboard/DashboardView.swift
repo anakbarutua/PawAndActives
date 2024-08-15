@@ -84,7 +84,7 @@ struct DashboardView: View {
                         }
                         HStack{
                             Button {
-                                
+                                navigationManager.navigate(to: .workoutDetailView(.grabTheCircles))
                             } label: {
                                 VStack{
                                     Image.ABTImage.GTCIcon
@@ -107,7 +107,7 @@ struct DashboardView: View {
 //                                .padding(.leading, 0.0 * geo.size.width)
                             
                             Button(action: {
-                                
+                                navigationManager.navigate(to: .workoutDetailView(.avoidTheBlocks))
                             }
                                    , label: {
                                 VStack{

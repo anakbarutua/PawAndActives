@@ -124,7 +124,7 @@ struct ChallengeView: View {
                             
                             // Button Complete Circle
                             Button(action: {
-                                navigationManager.navigate(to: .workoutDetailView)
+                                navigationManager.navigate(to: .workoutDetailView(.grabTheCircles))
                             }) {
                                 HStack{
                                     VStack{
@@ -164,7 +164,7 @@ struct ChallengeView: View {
                             // Button Avoid Blocks
                             
                             Button(action: {
-                                navigationManager.navigate(to: .workoutDetailView)
+                                navigationManager.navigate(to: .workoutDetailView(.avoidTheBlocks))
                             }) {
                                 HStack{
                                     VStack{
