@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JokesGatchaView: View {
     @EnvironmentObject var navigationManager: NavigationManager
+    @State var drawedJoke: String?;
     
     var body: some View {
         ZStack {
@@ -21,14 +22,34 @@ struct JokesGatchaView: View {
                 //            }
                 //            .foregroundStyle(Color.ABTColor.PrussianBlue)
                 
-                DrawJokeButton()
+//                DrawJokeButton()
+                Button(action: handleDrawJokeButtonPressed, label: {
+                    Text("Draw 50")
+                        .foregroundColor(.black)
+                        .font(.title)
+                        .fontWeight(.bold)
+                })
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 14
+                    )
+                    .fill(
+                        Color.ABTColor.PastelOrange
+                    )
+                    .frame(width: 517, height: 69)
+                )
             }
+            DrawJokeOverlay(drawedJoke: $drawedJoke)
+                .opacity(drawedJoke == nil ? 0 : 1)
         }
         .navigationTitle("Jokes Bank")
     }
     
-    func drawJoke() -> String {
-        let joke = JokesGatchaManager.shared.getRandomOne()
+    func handleDrawJokeButtonPressed() {
+        // TODO: Handle JokeError
+        let joke = try! JokesGatchaManager.shared.getRandomOne()
+        
+        drawedJoke = joke
     }
 }
 
@@ -40,49 +61,48 @@ struct JokesGatchaView: View {
 }
 
 struct DrawJokeOverlay: View {
+    @Binding var drawedJoke: String?
     
     var body: some View {
         ZStack() {
-          Text("You got a new card !")
-            .font(Font.custom("SF Pro", size: 48).weight(.bold))
-            .tracking(0.40)
-            .lineSpacing(41)
-            .foregroundColor(Color(red: 1, green: 0.70, blue: 0.26))
-            .offset(x: 0, y: -310.50)
-          ZStack() {
-            Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 517, height: 515)
-              .background(Color(red: 0.99, green: 0.87, blue: 0.53))
-              .cornerRadius(14)
-              .offset(x: 0, y: 0)
-            Text("Kentang, kentang apa yang lucu?\n\nkentang kintung kentang kintung")
-              .font(Font.custom("SF Pro", size: 54).weight(.bold))
-              .tracking(0.40)
-              .lineSpacing(63)
-              .foregroundColor(.black)
-              .offset(x: 5.50, y: 14)
-          }
-          .frame(width: 517, height: 515)
-          .offset(x: 0.50, y: -5.50)
-          ZStack() {
-            Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 517, height: 69)
-              .background(Color(red: 1, green: 0.70, blue: 0.26))
-              .cornerRadius(14)
-              .offset(x: 0, y: 0)
-            Text("Continue")
-              .font(Font.custom("SF Pro", size: 34).weight(.bold))
-              .tracking(0.40)
-              .lineSpacing(41)
-              .foregroundColor(.black)
-              .offset(x: 0, y: 0)
-          }
-          .frame(width: 517, height: 69)
-          .offset(x: 0.50, y: 306.50)
+            VStack(spacing: 40) {
+                Text("You got a new card !")
+                  .font(Font.custom("SF Pro", size: 48).weight(.bold))
+                  .tracking(0.40)
+                  .foregroundColor(Color(red: 1, green: 0.70, blue: 0.26))
+                ZStack() {
+                  Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 517, height: 515)
+                    .background(Color(red: 0.99, green: 0.87, blue: 0.53))
+                    .cornerRadius(14)
+                    Text("\(drawedJoke ?? "")")
+                    .font(Font.custom("SF Pro", size: 54).weight(.bold))
+                    .foregroundColor(.black)
+                    .padding()
+                }
+                .frame(width: 517, height: 515)
+                Button(action: {
+                    drawedJoke = nil
+                }, label: {
+                    Text("Continue")
+                        .foregroundColor(.black)
+                        .font(.title)
+                        .fontWeight(.bold)
+                })
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 14
+                    )
+                    .fill(
+                        Color.ABTColor.PastelOrange
+                    )
+                    .frame(width: 517, height: 69)
+                )
+            }
         }
-        .frame(width: 1210, height: 834)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea()
         .background(Color(red: 0, green: 0, blue: 0).opacity(0.50));
       }
 }
