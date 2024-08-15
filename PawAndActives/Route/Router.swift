@@ -22,6 +22,8 @@ class Router{
             GameView()
         case .summaryView:
             SummaryView()
+        case .jokesGatchaView:
+            JokesGatchaView()
         }
     }
 }
