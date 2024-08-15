@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */; };
+		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
+		0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */; };
+		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
 		620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96122C6A9CA600821C6F /* DashboardView.swift */; };
 		620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96142C6A9CB500821C6F /* ChallengeView.swift */; };
 		620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96162C6A9CCA00821C6F /* DashboardViewModel.swift */; };
@@ -56,6 +60,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProgressStyle.swift; sourceTree = "<group>"; };
+		0DB9A1DE2C6D0B1900EF743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		0DB9A21B2C6DFC4E00EF743C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		620F96122C6A9CA600821C6F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		620F96142C6A9CB500821C6F /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		620F96162C6A9CCA00821C6F /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -116,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB9A1DB2C6C058B00EF743C /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */,
+				0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		0DB9A2162C6D1A5F00EF743C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		620F96222C6AA40200821C6F /* Route */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +156,7 @@
 			children = (
 				622BFCF12C6A8D69001BF7C3 /* VisionHelper.swift */,
 				620F96292C6B411C00821C6F /* UIHelper.swift */,
+				0DB9A21B2C6DFC4E00EF743C /* Constant.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -163,6 +190,7 @@
 		622BFCBA2C6A72BC001BF7C3 /* PawAndActives */ = {
 			isa = PBXGroup;
 			children = (
+				0DB9A1DE2C6D0B1900EF743C /* Info.plist */,
 				622BFCCC2C6A863C001BF7C3 /* Data */,
 				622BFCD02C6A871A001BF7C3 /* Helper */,
 				622BFCD12C6A8725001BF7C3 /* Manager */,
@@ -238,6 +266,7 @@
 		622BFCD12C6A8725001BF7C3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0DB9A2162C6D1A5F00EF743C /* Notification */,
 				622BFCD52C6A884C001BF7C3 /* Repository */,
 				622BFCD42C6A8845001BF7C3 /* Camera */,
 				622BFCD32C6A87CC001BF7C3 /* Game */,
@@ -290,6 +319,7 @@
 		622BFCD62C6A8859001BF7C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0DB9A1DB2C6C058B00EF743C /* Reusable */,
 				622BFCDA2C6A88B0001BF7C3 /* Dashboard */,
 				622BFCD92C6A88A7001BF7C3 /* Game */,
 				622BFCD82C6A8895001BF7C3 /* Workout */,
@@ -425,6 +455,7 @@
 				620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */,
 				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
+				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
 				620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */,
@@ -435,10 +466,13 @@
 				622BFD042C6A9067001BF7C3 /* GameService.swift in Sources */,
 				622BFD082C6A9082001BF7C3 /* VisionService.swift in Sources */,
 				622BFCEC2C6A8D14001BF7C3 /* JokeDto.swift in Sources */,
+				0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */,
 				622BFCFE2C6A902F001BF7C3 /* DashboardRepositoryManager.swift in Sources */,
 				622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */,
 				622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */,
 				622BFCEE2C6A8D3F001BF7C3 /* ScoreDetail.swift in Sources */,
+				0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */,
+				0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
 				622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */,
@@ -587,6 +621,7 @@
 				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PawAndActives/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,6 +651,7 @@
 				DEVELOPMENT_TEAM = 58TG5WTTSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PawAndActives/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to the camera to detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
