@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RiveRuntime
 
 struct JokesGatchaView: View {
     @EnvironmentObject var navigationManager: NavigationManager
@@ -14,6 +15,8 @@ struct JokesGatchaView: View {
     var body: some View {
         ZStack {
             VStack {
+                RiveViewModel(fileName: "machine").view()
+                    .frame(maxHeight: 500)
                 Button(action: handleDrawJokeButtonPressed, label: {
                     HStack {
                         Text("Draw")
