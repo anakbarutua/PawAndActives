@@ -55,6 +55,9 @@
 		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
 		BA7A84B32C6DE574007628A3 /* JokesGatchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */; };
 		BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */; };
+		BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */; };
+		BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */; };
+		BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +110,9 @@
 		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 		BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaView.swift; sourceTree = "<group>"; };
 		BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBorderedModifier.swift; sourceTree = "<group>"; };
+		BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionPrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawJokeOverlay.swift; sourceTree = "<group>"; };
+		BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +300,8 @@
 		622BFCD62C6A8859001BF7C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				BA7A84BF2C6E5DAD007628A3 /* Reusable */,
+				BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */,
 				BA7A84B72C6E04F2007628A3 /* Modifier */,
 				BA7A84B12C6DE4CC007628A3 /* JokesGatcha */,
 				622BFCDA2C6A88B0001BF7C3 /* Dashboard */,
@@ -347,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */,
+				BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */,
 			);
 			path = JokesGatcha;
 			sourceTree = "<group>";
@@ -357,6 +366,22 @@
 				BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */,
+			);
+			path = ButtonStyle;
+			sourceTree = "<group>";
+		};
+		BA7A84BF2C6E5DAD007628A3 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,11 +458,13 @@
 				620F96242C6AA44C00821C6F /* NavigationManager.swift in Sources */,
 				622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulty.swift in Sources */,
 				620F961F2C6A9D5600821C6F /* WorkoutDetailView.swift in Sources */,
+				BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */,
 				620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */,
 				622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */,
 				622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */,
 				622BFCF22C6A8D69001BF7C3 /* VisionHelper.swift in Sources */,
 				620F96262C6AA4C600821C6F /* Router.swift in Sources */,
+				BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */,
 				620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */,
 				622BFCE02C6A8C31001BF7C3 /* Session.swift in Sources */,
 				622BFCE62C6A8C98001BF7C3 /* Score.swift in Sources */,
@@ -463,6 +490,7 @@
 				622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */,
 				622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */,
 				622BFCEE2C6A8D3F001BF7C3 /* ScoreDetail.swift in Sources */,
+				BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
 				622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */,
