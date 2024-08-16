@@ -9,8 +9,8 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @State private var difficulty = 1
     @StateObject private var workoutViewModel = WorkoutViewModel()
+    @State private var difficulty: Level = .easy
     
     var workoutType: WorkoutType = .grabTheCircles
     
@@ -64,9 +64,9 @@ struct WorkoutDetailView: View {
                         Spacer()
                         
                         Picker("Difficulty", selection: $difficulty){
-                            Text("Easy").tag(0)
-                            Text("Medium").tag(1)
-                            Text("Hard").tag(2)
+                            ForEach(Level.allCases, id: \.self) { level in
+                                Text(level.rawValue)
+                            }
                         }
                         .accentColor(Color.ABTColor.CharlestonGreen)
                         
@@ -77,7 +77,7 @@ struct WorkoutDetailView: View {
                     .padding(.top, geo.size.height * 0.015)
                         
                     ButtonView(label: "Start Workout"){
-                        workoutViewModel.requestCameraPermission()
+                        navigationManager.navigate(to: .gameView(workoutType, difficulty))
                     }
                     .alert(isPresented: $workoutViewModel.showPermissionAlert){
                         Alert(
@@ -97,7 +97,6 @@ struct WorkoutDetailView: View {
             workoutData = workouts.filter { workout in
                 workout.type == workoutType
             }.first!
-            
             
         }
     }

@@ -18,8 +18,8 @@ class Router{
             ChallengeView()
         case .workoutDetailView(let workoutType):
             WorkoutDetailView(workoutType: workoutType)
-        case .gameView:
-            GameView()
+        case .gameView(let workoutType, let level):
+            GameView(workoutType: workoutType, userDifficulty: level)
         case .summaryView:
             SummaryView()
         }
