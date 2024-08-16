@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @State private var difficulty = 1
+    @State private var difficulty: Level = .easy
     
     var workoutType: WorkoutType = .grabTheCircles
     
@@ -66,9 +66,9 @@ struct WorkoutDetailView: View {
                         Spacer()
                         
                         Picker("Difficulty", selection: $difficulty){
-                            Text("Easy").tag(0)
-                            Text("Medium").tag(1)
-                            Text("Hard").tag(2)
+                            ForEach(Level.allCases, id: \.self) { level in
+                                Text(level.rawValue)
+                            }
                         }
                         .accentColor(Color.ABTColor.CharlestonGreen)
                         .fontWeight(.bold)
@@ -79,7 +79,7 @@ struct WorkoutDetailView: View {
                     .padding(.top, geo.size.height * 0.015)
                         
                     ButtonView(label: "Start Workout"){
-                    // Custom action
+                        navigationManager.navigate(to: .gameView(workoutType, difficulty))
                     }.frame(width: geo.size.width * 0.8, height: geo.size.height * 0.07)
                         .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.MikadoYellow))
                         .padding(.top, geo.size.height * 0.006)
@@ -91,7 +91,6 @@ struct WorkoutDetailView: View {
             workoutData = workouts.filter { workout in
                 workout.type == workoutType
             }.first!
-            
             
         }
     }

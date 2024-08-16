@@ -7,6 +7,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 protocol CameraService {
     
@@ -17,4 +18,5 @@ protocol CameraService {
     func startSession(workoutType: WorkoutType)
     func stopSession()
     func getPreviewLayer() -> AVCaptureVideoPreviewLayer?
+    func captureCurrentFrame() -> UIImage?
 }

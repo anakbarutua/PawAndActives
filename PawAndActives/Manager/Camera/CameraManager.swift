@@ -8,12 +8,14 @@
 import Foundation
 import AVFoundation
 import Vision
+import UIKit
 
 class CameraManager: NSObject, CameraService {
     
     private var captureSession: AVCaptureSession?
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var sessionQueue = DispatchQueue(label: "session queue")
+    private var capturedFrame: UIImage?
     
     var visionService: VisionService
     var onTrackingPointsDetected: (([CGPoint]) -> Void)?
@@ -25,6 +27,7 @@ class CameraManager: NSObject, CameraService {
         self.visionService = visionService
         super.init()
         setupSession()
+        
     }
     
     private func setupSession() {
@@ -73,7 +76,15 @@ class CameraManager: NSObject, CameraService {
     
     func stopSession() {
         sessionQueue.async {
-            self.captureSession?.stopRunning()
+            guard let session = self.captureSession else { return }
+            if session.isRunning {
+                session.stopRunning()
+            }
+            
+            // Remove the preview layer if needed
+            self.previewLayer?.removeFromSuperlayer()
+            self.previewLayer = nil
+            self.captureSession = nil
         }
     }
     
@@ -84,11 +95,17 @@ class CameraManager: NSObject, CameraService {
         }
         return previewLayer
     }
+    
+    func captureCurrentFrame() -> UIImage? {
+        return capturedFrame
+    }
 }
 
 extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        capturedFrame = pixelBufferToUIImage(pixelBuffer)
         
         switch workoutType {
         case .avoidTheBlocks:
@@ -118,5 +135,23 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
                 }
             }
         }
+    }
+    
+    private func pixelBufferToUIImage(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+//        
+//        let width = CGFloat(CVPixelBufferGetWidth(pixelBuffer))
+//        let height = CGFloat(CVPixelBufferGetHeight(pixelBuffer))
+        
+        let context = CIContext(options: nil)
+        
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+            return nil
+        }
+        
+        // Assuming the camera is oriented with the default landscape orientation
+        let orientation = UIImage.Orientation.downMirrored // or `.left` depending on your camera orientation
+        
+        return UIImage(cgImage: cgImage, scale: 1.0, orientation: orientation)
     }
 }
