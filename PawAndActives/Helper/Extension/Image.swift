@@ -23,7 +23,17 @@ extension Image {
             return Image(.atbIcon)
         }
         
+        public static var PersonIcon: Image{
+            return Image(.personIcon)
+        }
         
+        public static var KotakTopIcon: Image{
+            return Image(.kotakTopIcon)
+        }
+        
+        public static var KotakIcon: Image{
+            return Image(.kotakIcon)
+        }
     }
 
 }

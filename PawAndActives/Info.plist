@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>“Dad Jokes” Would Like to Send You Notification</string>
+	<string>Notification may include alerts, sounds, and icon badges. These can be configured in Settings</string>
 </dict>
 </plist>
