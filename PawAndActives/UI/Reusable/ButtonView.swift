@@ -22,17 +22,22 @@ struct ButtonView: View {
         self.action = action
     }
     var body: some View {
-        Button {
-            action()
-        } label: {
-            if let icon {
-                Image(systemName: icon)
-                    .foregroundColor(.black)
+        GeometryReader { geo in
+            Button {
+                action()
+            } label: {
+                if let icon {
+                    Image(systemName: icon)
+                        .foregroundColor(.black)
+                }
+                Text(label)
+                    .font(.system(size: 20))
+                    .foregroundColor(Color.ABTColor.CharlestonGreen)
+                    .fontWeight(.bold)
+                    .frame(width: geo.size.width * 0.89, height: geo.size.height * 0.4)
+                        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.MikadoYellow))
+                        .padding(.top, geo.size.height * 0.006)
             }
-            Text(label)
-                .font(.system(size: 20))
-                .foregroundColor(Color.ABTColor.CharlestonGreen)
-                .fontWeight(.bold)
         }
     }
 
