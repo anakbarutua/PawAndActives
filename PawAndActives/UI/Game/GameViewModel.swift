@@ -13,6 +13,12 @@ import Combine
 class GameViewModel: ObservableObject {
     
     @Published var handPoints: [CGPoint] = []
+    @Published var leftHand: [CGPoint] = []
+    @Published var rightHand: [CGPoint] = []
+    @Published var head: [CGPoint] = []
+    
+    @Published var isTrackingOk = false
+    
     var cameraManager: CameraManager
     
     @Published var isSessionRunning = false
@@ -25,12 +31,13 @@ class GameViewModel: ObservableObject {
     @Published var userState: UserState = .waitingToStart
     
     @Published var countdownText: String = "Ready"
-    private var countdown: Int = 4
+    @Published var countdown: Int = 4
     
     private var currentNonRedIndex: Int = 0
     
     private var cancellables = Set<AnyCancellable>()
     private var timerCancellable: AnyCancellable?
+    @Published var startCountdownCancellable: AnyCancellable?
         
     var objectAppearInterval: TimeInterval = 0.75
     var circleLifetime: TimeInterval = 1.0
@@ -45,8 +52,6 @@ class GameViewModel: ObservableObject {
     init() {
         cameraManager = CameraManager()
         setupBindings()
-//        totalColumn = Int(self.blockColumn * self.blockRow)
-//        sections = Array(repeating: true, count: 25)
     }
     
     private func setUpLevel() {
@@ -86,7 +91,9 @@ class GameViewModel: ObservableObject {
     
     private func setupBindings() {
         cameraManager.onTrackingPointsDetected = { [weak self] points in
-            if self?.userState == .started {
+            if self?.userState == .waitingToStart {
+                self?.handleDistance(points)
+            } else if self?.userState == .started {
                 self?.handleHandPoints(points)
             }
         }
@@ -112,22 +119,82 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func handleHandPoints(_ points: [CGPoint]) {
+    func handleDistance(_ points: TrackingPoint) {
         DispatchQueue.main.async { [self] in
-            self.handPoints = points
+            if workoutType == .grabTheCircles {
+                guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
+                blockColumn = 4
+                blockRow = 4
+                
+                let isLeftInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 12, points: leftHandPoint)
+                let isRightInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 3, points: rightHandPoint)
+                
+                self.isTrackingOk = isLeftInPosition && isRightInPosition
+                
+            } else {
+                guard let headPoint = points.head else { return }
+                blockColumn = 5
+                blockRow = 5
+                
+                let isHeadInPosition = checkPointInSpecificSection(row: 5, column: 5, choosenIndex: 7, points: headPoint)
+                
+                self.isTrackingOk = isHeadInPosition
+            }
+        }
+    }
+    
+    func checkPointInSpecificSection(row: CGFloat, column: CGFloat, choosenIndex: Int, points: [CGPoint]) -> Bool {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        let sectionWidth = screenWidth / column
+        let sectionHeight = screenHeight / row
+        
+        let row = choosenIndex / Int(row)
+        let col = choosenIndex % Int(column)
+        
+        let sectionX = CGFloat(col) * sectionWidth
+        let sectionY = CGFloat(row) * sectionHeight
+        
+        let sectionRect = CGRect(x: sectionX, y: sectionY, width: sectionWidth, height: sectionHeight)
+        
+        // Check if all points are within the non-red section
+        if !points.isEmpty {
+            let allPointsInSection = points.allSatisfy { point in
+                sectionRect.contains(point)
+            }
+            return allPointsInSection
+        } else {
+            return false
+        }
+        
+    }
+    
+    func handleHandPoints(_ points: TrackingPoint) {
+        DispatchQueue.main.async { [self] in
             
             if workoutType == .grabTheCircles {
-                for point in points {
-                    if let index = self.circles.firstIndex(where: { $0.contains(point) }) {
-                        self.circles.remove(at: index)
-                        self.score += 1
-                        print("Score: \(self.score)")
-                    }
-                }
+                guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
+                self.handPoints = []
+                self.handPoints = leftHandPoint
+                self.handPoints.append(contentsOf: rightHandPoint)
+                checkPointInRing(points: handPoints)
+                
             } else {
-                checkPointInNonRedSection(points: points)
+                guard let headPoint = points.head else { return }
+                self.handPoints = []
+                self.handPoints = headPoint
+                checkPointInNonRedSection(points: handPoints)
             }
-
+        }
+    }
+    
+    func checkPointInRing(points: [CGPoint]) {
+        for point in points {
+            if let index = self.circles.firstIndex(where: { $0.contains(point) }) {
+                self.circles.remove(at: index)
+                self.score += 1
+                print("Score: \(self.score)")
+            }
         }
     }
     
@@ -147,19 +214,24 @@ class GameViewModel: ObservableObject {
         self.workoutType = workoutType
         self.userDifficulty = userDifficulty
         
-        self.setUpLevel()
-        self.randomizeNonRedSection()
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.countdown -= 1
-            
-            if self.countdown > 0 {
-                self.countdownText = "\(self.countdown)"
-            } else {
-                self.userState = .started
-                timer.invalidate()
+        startCountdownCancellable = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                print("Countdown: \(self.countdown)")
+                if self.countdown > 1 {
+                    self.countdown -= 1
+                    self.countdownText = "\(self.countdown)"
+                } else if self.countdown == 1 {
+                    self.setUpLevel()
+                    self.randomizeNonRedSection()
+                    self.userState = .started
+                    print("OA: \(self.objectAppearInterval)")
+                    self.countdown -= 1
+                } else {
+                    startCountdownCancellable?.cancel()
+                }
             }
-        }
     }
     
     private func timerCountDown() {

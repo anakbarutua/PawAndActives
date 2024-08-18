@@ -13,7 +13,7 @@ struct GameView: View {
     @StateObject private var viewModel = GameViewModel()
     
     var workoutType: WorkoutType = .avoidTheBlocks
-    var userDifficulty : Level = .easy
+    var userDifficulty : Level = .medium
     
     var body: some View {
         GeometryReader { geometry in
@@ -35,22 +35,37 @@ struct GameView: View {
                 
                 switch viewModel.userState {
                 case .waitingToStart:
-                    VStack {
-                        Text("Heheh")
-                    }
-                case .countdown:
-                    VStack {
+                    if viewModel.isTrackingOk {
+                        if viewModel.countdownText != "Ready" {
+                            CircleView(width: 175, thickness: 15, color: Color.ABTColor.White)
+                        }
+                        
                         Text(viewModel.countdownText)
-                            .font(.largeTitle)
+                            .font(.system(size: 128))
                             .fontWeight(.bold)
+                            .foregroundStyle(.white)
                     }
+                    switch workoutType {
+                    case .grabTheCircles:
+                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
+                            .padding([.trailing, .top], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        
+                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
+                            .padding([.leading, .bottom], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                        
+                    case .avoidTheBlocks:
+                        CircleView(width: 175, thickness: 15, color: Color.ABTColor.MikadoYellow)
+                            .padding([.top], UIScreen.main.bounds.height - (16 * UIScreen.main.bounds.height / 20))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    }
+                    
                 case .started:
                     if workoutType == .grabTheCircles {
                         ForEach(viewModel.circles) { circle in
-                            Circle()
-                                .frame(width: circle.size, height: circle.size)
+                            CircleView(width: circle.size * 2, thickness: 15, color: Color.ABTColor.MikadoYellow)
                                 .position(circle.position)
-                                .foregroundColor(.red)
                         }
                     } else {
                         ForEach(0..<viewModel.totalColumn) { index in
@@ -66,7 +81,6 @@ struct GameView: View {
                         Text("Score : \(viewModel.score)")
                             .font(.largeTitle)
                             .foregroundColor(.white)
-                        
                             .padding()
                         
                         Button("Back to Dashboard") {
@@ -84,12 +98,11 @@ struct GameView: View {
                     VStack {
                         Text("Score: \(viewModel.score)")
                             .font(.largeTitle)
+                            .foregroundColor(.white)
                         
                         Text("\(updateTimeFormat(remainingTime: viewModel.remainingTime))")
                             .font(.headline)
-                            .onTapGesture {
-                                viewModel.userState = .countdown
-                            }
+                            .foregroundColor(.white)
                     }
                     .padding()
                     .background(Color.black.opacity(0.7))
@@ -108,17 +121,27 @@ struct GameView: View {
             switch newState {
             case .waitingToStart:
                 break
-            case .countdown:
-                viewModel.startCountdown(
-                    workoutType: workoutType,
-                    userDifficulty: userDifficulty
-                )
             case .started:
                 viewModel.startGame()
             case .gameOver:
                 viewModel.endGame()
                 break
             }
+        }
+        .onChange(of: viewModel.isTrackingOk) { prevState, newState in
+            if prevState != newState && viewModel.userState == .waitingToStart {
+                if newState {
+                    viewModel.startCountdown(
+                        workoutType: workoutType,
+                        userDifficulty: userDifficulty
+                    )
+                } else {
+                    viewModel.countdownText = "Ready"
+                    viewModel.countdown = 4
+                    viewModel.startCountdownCancellable?.cancel()
+                }
+            }
+            
         }
         .onDisappear {
             viewModel.endGame()
@@ -138,6 +161,19 @@ struct GameView: View {
         let y = (CGFloat(row) + 0.5) * sectionHeight
         
         return CGPoint(x: x, y: y)
+    }
+}
+
+struct CircleView: View {
+    var width: CGFloat
+    var thickness: CGFloat
+    var color: Color
+    
+    var body: some View {
+        Circle()
+            .stroke(lineWidth: thickness)
+            .frame(width: width, height: width)
+            .foregroundColor(color)
     }
 }
 
