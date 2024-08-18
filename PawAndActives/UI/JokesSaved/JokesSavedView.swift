@@ -1,32 +1,17 @@
 //
-//  JokesGatchaView.swift
+//  JokesSaved.swift
 //  PawAndActives
 //
-//  Created by Kelvin Ananda on 15/08/24.
+//  Created by Kelvin Ananda on 19/08/24.
 //
 
 import SwiftUI
 
-struct JokesCollectionView: View {
+struct JokesSavedView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     @State var selectedJoke: Joke? = nil
     
-    let data = JokesCollectionManager.shared.fetchJokes()
-//    let data = [
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.1",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.2",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.3",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.4",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.5",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.6",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.7",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.8",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.9",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.10",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.11",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.12",
-//        "I'm tired of following my dreams. I'm just going to ask them where they are going and meet up with them later.13",
-//    ].map { Joke(joke: JokeDto(Joke: $0), isFavorite: false) }
+    let data = JokesCollectionManager.shared.fetchJokes().filter { return $0.isFavorite }
     
     var columns: [GridItem] = [
         GridItem(.fixed(270)),
@@ -39,17 +24,10 @@ struct JokesCollectionView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Your collection")
+                    Text("Saved")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
-                    Button {
-                        navigationManager.navigate(to: .jokesSavedView)
-                    } label: {
-                        Image(systemName: "bookmark")
-                            .font(.largeTitle)
-                            .foregroundStyle(.black)
-                    }
                 }
                 .padding(.horizontal)
                 .padding(.horizontal)
@@ -92,7 +70,7 @@ struct JokesCollectionView: View {
 
 #Preview {
     NavigationStack {
-        JokesCollectionView()
+        JokesSavedView()
             .environmentObject(NavigationManager())
     }
 }

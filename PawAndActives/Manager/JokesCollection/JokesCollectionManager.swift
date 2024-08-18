@@ -20,14 +20,23 @@ final class JokesCollectionManager {
         self.modelContainer = try! ModelContainer(for: Joke.self)
         self.modelContext = modelContainer.mainContext
     }
-
-    func appendJoke(joke: Joke) {
-        modelContext.insert(joke)
+    
+    internal func save() {
         do {
             try modelContext.save()
         } catch {
             fatalError(error.localizedDescription)
         }
+    }
+    
+    func toggleJokeIsFavorite(joke: Joke) {
+        joke.isFavorite = !joke.isFavorite;
+        save()
+    }
+
+    func appendJoke(joke: Joke) {
+        modelContext.insert(joke)
+        save()
     }
 
     func fetchJokes() -> [Joke] {

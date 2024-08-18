@@ -8,34 +8,51 @@
 import SwiftUI
 
 struct JokeDetailOverlay: View {
-    @Binding var selectedJoke: String?
+    @Binding var selectedJoke: Joke?
     
     var body: some View {
         ZStack() {
             VStack(spacing: 40) {
                 ZStack() {
-                  Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 517, height: 515)
-                    .background(Color(red: 0.99, green: 0.87, blue: 0.53))
-                    .cornerRadius(14)
-                    Text("\(selectedJoke ?? "")")
-                    .font(Font.custom("SF Pro", size: 54).weight(.bold))
-                    .foregroundColor(.black)
-                    .padding()
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 517, height: 515)
+                        .background(Color(red: 0.99, green: 0.87, blue: 0.53))
+                        .cornerRadius(14)
+                    ScrollView {
+                        Text("\(selectedJoke?.joke.Joke ?? "")")
+                            .font(Font.custom("SF Pro", size: 54).weight(.bold))
+                            .foregroundColor(.black)
+                            .padding()
+                    }
                 }
                 .frame(width: 517, height: 515)
                 
-                Button(action: {
-                    selectedJoke = nil
-                }, label: {
-                    Text("Dismiss")
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: 500)
-                })
-               .buttonStyle(CallToActionPrimaryButtonStyle())
+                HStack {
+                    Button(action: {
+                        selectedJoke = nil
+                    }, label: {
+                        Text("Dismiss")
+                            .foregroundColor(.black)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                    })
+                   .buttonStyle(CallToActionPrimaryButtonStyle())
+                    Button(action: {
+                        if (selectedJoke == nil){
+                            return
+                        }
+                        JokesCollectionManager.shared.toggleJokeIsFavorite(joke: selectedJoke!)
+                        
+                    }, label: {
+                        Image(systemName: (selectedJoke?.isFavorite ?? false) ? "bookmark.fill" : "bookmark")
+                            .font(.title)
+                            .foregroundStyle(.black)
+                    })
+                   .buttonStyle(CallToActionPrimaryButtonStyle())
+                }
+                .frame(maxWidth: 517)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
