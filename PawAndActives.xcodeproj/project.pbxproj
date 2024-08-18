@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */; };
 		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
-		0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */; };
 		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
 		620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96122C6A9CA600821C6F /* DashboardView.swift */; };
 		620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96142C6A9CB500821C6F /* ChallengeView.swift */; };
@@ -70,10 +68,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProgressStyle.swift; sourceTree = "<group>"; };
 		0DB9A1DE2C6D0B1900EF743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		0DB9A21B2C6DFC4E00EF743C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		620F96122C6A9CA600821C6F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		620F96142C6A9CB500821C6F /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
@@ -187,7 +183,6 @@
 			children = (
 				622BFCBA2C6A72BC001BF7C3 /* PawAndActives */,
 				622BFCB92C6A72BC001BF7C3 /* Products */,
-				BA64DFBC2C7275AC0034724E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -391,15 +386,6 @@
 			path = JokesCollection;
 			sourceTree = "<group>";
 		};
-		BA64DFBC2C7275AC0034724E /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */,
-				0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		BA7A84B12C6DE4CC007628A3 /* JokesGatcha */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,7 +521,6 @@
 				BA7A84B32C6DE574007628A3 /* JokesGatchaView.swift in Sources */,
 				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
-				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
@@ -554,7 +539,6 @@
 				622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */,
 				622BFCEE2C6A8D3F001BF7C3 /* ScoreDetail.swift in Sources */,
 				BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */,
-				0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */,
 				0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
