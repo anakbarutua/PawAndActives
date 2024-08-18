@@ -41,6 +41,7 @@ struct JokesGatchaView: View {
         let joke = try! JokesGatchaManager.shared.getRandomOne()
         
         drawedJoke = joke
+        JokesCollectionManager.shared.appendJoke(joke: Joke(joke: JokeDto(Joke: joke), isFavorite: false))
     }
 }
 

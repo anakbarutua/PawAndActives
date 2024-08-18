@@ -190,7 +190,7 @@ struct DashboardView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                navigationManager.navigate(to: .jokesCollectionView)
                             }, label: {
                                 Text("See More")
 //                                    .foregroundColor(Color.black)

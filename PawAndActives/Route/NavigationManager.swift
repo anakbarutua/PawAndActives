@@ -41,5 +41,6 @@ enum Destination: Hashable {
     case gameView
     case summaryView
     case jokesGatchaView
+    case jokesCollectionView
 }
 
