@@ -46,7 +46,7 @@ struct DashboardView: View {
                                 .padding(.top, 0.03 * geo.size.height)
 //                            Spacer()
                             Button(action: {
-                                
+                                navigationManager.navigate(to: .jokesGatchaView)
                             }, label: {
                                                         
                                 HStack{
