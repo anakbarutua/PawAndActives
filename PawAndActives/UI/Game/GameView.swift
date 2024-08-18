@@ -77,8 +77,14 @@ struct GameView: View {
                         
                     }
                 case .gameOver:
+                    var userScore = viewModel.scoring()
                     VStack {
-                        Text("Score : \(viewModel.score)")
+                        Text("Score : \(userScore.percentage)%")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding()
+                        
+                        Text("Rank : \(userScore.letter.rawValue)")
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .padding()

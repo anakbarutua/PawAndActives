@@ -49,9 +49,12 @@ class GameViewModel: ObservableObject {
     var userDifficulty : Level = .easy
     var workoutType: WorkoutType = .grabTheCircles
     
+    @Published var maxObstacle = 0
+    
     init() {
         cameraManager = CameraManager()
         setupBindings()
+        maxObstacle = 0
     }
     
     private func setUpLevel() {
@@ -76,7 +79,7 @@ class GameViewModel: ObservableObject {
             }
         case .hard:
             if workoutType == .grabTheCircles {
-                self.objectAppearInterval = 1
+                self.objectAppearInterval = 0.75
                 self.circleLifetime = 1.5
             } else {
                 self.blockRow = 5
@@ -205,6 +208,7 @@ class GameViewModel: ObservableObject {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
             } else {
+                self.randomizeNonRedSection()
                 startGeneratingBlocks()
             }
         }
@@ -224,9 +228,7 @@ class GameViewModel: ObservableObject {
                     self.countdownText = "\(self.countdown)"
                 } else if self.countdown == 1 {
                     self.setUpLevel()
-                    self.randomizeNonRedSection()
                     self.userState = .started
-                    print("OA: \(self.objectAppearInterval)")
                     self.countdown -= 1
                 } else {
                     startCountdownCancellable?.cancel()
@@ -277,7 +279,7 @@ class GameViewModel: ObservableObject {
     
     private func generateCircle() {
         let numberOfCircles = Int.random(in: 1...2)
-        
+        maxObstacle += numberOfCircles
         var newCircles: [Circles] = []
         for _ in 0..<numberOfCircles {
             var newCircle: Circles
@@ -286,6 +288,7 @@ class GameViewModel: ObservableObject {
             } while circles.contains(where: { $0.overlaps(with: newCircle) }) || newCircles.contains(where: { $0.overlaps(with: newCircle) })
             
             newCircles.append(newCircle)
+            
         }
         
         circles.append(contentsOf: newCircles)
@@ -302,10 +305,17 @@ class GameViewModel: ObservableObject {
         sections = Array(repeating: true, count: totalColumn)
         
         // Randomize one section to be non-red
-        let random = Int.random(in: 0..<totalColumn)
+        var random: Int
+        repeat {
+            random = Int.random(in: 0..<totalColumn)
+        } while currentNonRedIndex == random
+        
         print("Random: \(random)")
         currentNonRedIndex = random
         sections[currentNonRedIndex] = false
+        maxObstacle += 1
+        print("MaxObstacle: \(maxObstacle)")
+        
     }
     
     func checkPointInNonRedSection(points: [CGPoint]) {
@@ -345,5 +355,21 @@ class GameViewModel: ObservableObject {
         self.userState = .gameOver
         self.circles.removeAll()
         timerCancellable?.cancel()
+    }
+    
+    func scoring() -> (percentage: Int, letter: Score) {
+        let scorePercentage = Double(score) / Double(maxObstacle)
+        
+        if scorePercentage == 1.0 {
+            return (percentage: Int(scorePercentage * 100), letter: .ss)
+        } else if scorePercentage > 0.8 {
+            return (percentage: Int(scorePercentage * 100), letter: .s)
+        } else if scorePercentage >= 0.65 {
+            return (percentage: Int(scorePercentage * 100), letter: .a)
+        } else if scorePercentage >= 0.25 {
+            return (percentage: Int(scorePercentage * 100), letter: .b)
+        } else {
+            return (percentage: Int(scorePercentage * 100), letter: .c)
+        }
     }
 }
