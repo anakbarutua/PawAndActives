@@ -18,7 +18,7 @@ class CameraManager: NSObject, CameraService {
     private var capturedFrame: UIImage?
     
     var visionService: VisionService
-    var onTrackingPointsDetected: (([CGPoint]) -> Void)?
+    var onTrackingPointsDetected: ((TrackingPoint) -> Void)?
     var onTrackingPointsNotDetected: (() -> Void)?
     
     var workoutType: WorkoutType = .grabTheCircles
@@ -109,26 +109,39 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         switch workoutType {
         case .avoidTheBlocks:
-            visionService.performFaceTracking(on: pixelBuffer) { [weak self] points in
+            visionService.performFaceTracking(on: pixelBuffer) { [weak self] trackedPoints in
                 guard let previewLayer = self?.getPreviewLayer() else { return }
-                if !points.isEmpty {
-                    let newPoints = points.map { point in
+                guard let headPoint = trackedPoints.head else { return }
+                if !headPoint.isEmpty {
+                    let newPoints = headPoint.map { point in
                         previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
                     }
-                    self?.onTrackingPointsDetected?(newPoints)
+                    
+                    var fixPoint = trackedPoints
+                    fixPoint.head = newPoints
+                    self?.onTrackingPointsDetected?(fixPoint)
 
                 } else {
                     self?.onTrackingPointsNotDetected?()
                 }
             }
         case .grabTheCircles:
-            visionService.performHandTracking(on: pixelBuffer) { [weak self] points in
+            visionService.performHandTracking(on: pixelBuffer) { [weak self] trackedPoints in
                 guard let previewLayer = self?.getPreviewLayer() else { return }
-                if !points.isEmpty {
-                    let newPoints = points.map { point in
+                guard let leftHandPoint = trackedPoints.leftHand, let rightHandPoint = trackedPoints.rightHand else { return }
+                if !leftHandPoint.isEmpty || !rightHandPoint.isEmpty {
+                    let newLeftPoints = leftHandPoint.map { point in
                         previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
                     }
-                    self?.onTrackingPointsDetected?(newPoints)
+                    
+                    let newRightPoints = rightHandPoint.map { point in
+                        previewLayer.layerPointConverted(fromCaptureDevicePoint: point)
+                    }
+                    
+                    var fixPoint = trackedPoints
+                    fixPoint.leftHand = newLeftPoints
+                    fixPoint.rightHand = newRightPoints
+                    self?.onTrackingPointsDetected?(fixPoint)
 
                 } else {
                     self?.onTrackingPointsNotDetected?()
@@ -139,18 +152,13 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     private func pixelBufferToUIImage(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-//        
-//        let width = CGFloat(CVPixelBufferGetWidth(pixelBuffer))
-//        let height = CGFloat(CVPixelBufferGetHeight(pixelBuffer))
-        
         let context = CIContext(options: nil)
         
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
             return nil
         }
         
-        // Assuming the camera is oriented with the default landscape orientation
-        let orientation = UIImage.Orientation.downMirrored // or `.left` depending on your camera orientation
+        let orientation = UIImage.Orientation.downMirrored
         
         return UIImage(cgImage: cgImage, scale: 1.0, orientation: orientation)
     }
