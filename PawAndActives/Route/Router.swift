@@ -16,8 +16,8 @@ class Router{
             DashboardView()
         case .challengeView:
             ChallengeView()
-        case .workoutDetailView:
-            WorkoutDetailView()
+        case .workoutDetailView(let workoutType):
+            WorkoutDetailView(workoutType: workoutType)
         case .gameView:
             GameView()
         case .summaryView:
