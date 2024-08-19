@@ -18,8 +18,10 @@ struct GameView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if let capturedFrame = viewModel.capturedFrame, viewModel.userState == .gameOver {
-                    Image(uiImage: capturedFrame)
+                
+                if viewModel.capturedFrame != nil && (viewModel.userState == .gameOver || viewModel.isPause) {
+                    
+                    Image(uiImage: viewModel.capturedFrame!)
                         .resizable()
                         .scaledToFill()
                         .offset(CGSize(width: -140.0, height: 0.0))
@@ -137,10 +139,11 @@ struct GameView: View {
                                 .frame(width: UIScreen.main.bounds.width / viewModel.blockColumn, height: UIScreen.main.bounds.height / viewModel.blockRow)
                                 .position(positionForSection(index: index))
                         }
-                        
                     }
+                    
+                    
                 case .gameOver:
-                    var userScore = viewModel.scoring()
+                    let userScore = viewModel.scoring()
                     VStack {
                         Text("Score : \(userScore.percentage)%")
                             .font(.largeTitle)

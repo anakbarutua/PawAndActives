@@ -13,9 +13,6 @@ import Combine
 class GameViewModel: ObservableObject {
     
     @Published var handPoints: [CGPoint] = []
-    @Published var leftHand: [CGPoint] = []
-    @Published var rightHand: [CGPoint] = []
-    @Published var head: [CGPoint] = []
     
     @Published var isTrackingOk = false
     
@@ -34,6 +31,8 @@ class GameViewModel: ObservableObject {
     @Published var countdown: Int = 4
     
     private var currentNonRedIndex: Int = 0
+    
+    private var pausedCircle: [Circles] = []
     
     private var cancellables = Set<AnyCancellable>()
     private var timerCancellable: AnyCancellable?
@@ -177,18 +176,20 @@ class GameViewModel: ObservableObject {
     func handleHandPoints(_ points: TrackingPoint) {
         DispatchQueue.main.async { [self] in
             
-            if workoutType == .grabTheCircles {
-                guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
-                self.handPoints = []
-                self.handPoints = leftHandPoint
-                self.handPoints.append(contentsOf: rightHandPoint)
-                checkPointInRing(points: handPoints)
-                
-            } else {
-                guard let headPoint = points.head else { return }
-                self.handPoints = []
-                self.handPoints = headPoint
-                checkPointInNonRedSection(points: handPoints)
+            if !isPause {
+                if workoutType == .grabTheCircles {
+                    guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
+                    self.handPoints = []
+                    self.handPoints = leftHandPoint
+                    self.handPoints.append(contentsOf: rightHandPoint)
+                    checkPointInRing(points: handPoints)
+                    
+                } else {
+                    guard let headPoint = points.head else { return }
+                    self.handPoints = []
+                    self.handPoints = headPoint
+                    checkPointInNonRedSection(points: handPoints)
+                }
             }
         }
     }
@@ -242,7 +243,7 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self else { return }
+                guard let self = self, !isPause else { return }
                 if self.remainingTime > 0 {
                     self.remainingTime -= 1
                 } else {
@@ -260,17 +261,20 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started else { return }
+                guard let self = self, self.userState == .started, !isPause else { return }
                 self.generateCircle()
             }
             .store(in: &cancellables)
+        
+        
     }
     
     private func startGeneratingBlocks() {
         timerCancellable = Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                self?.randomizeNonRedSection()
+                guard let self = self, self.userState == .started, !isPause else { return }
+                self.randomizeNonRedSection()
             }
     }
     
@@ -296,8 +300,12 @@ class GameViewModel: ObservableObject {
         circles.append(contentsOf: newCircles)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + circleLifetime) {
-            self.circles.removeAll { circle in
-                newCircles.contains { $0.id == circle.id }
+            if self.isPause {
+                self.pausedCircle = newCircles
+            } else {
+                self.circles.removeAll { circle in
+                    newCircles.contains { $0.id == circle.id }
+                }
             }
         }
     }
@@ -357,6 +365,25 @@ class GameViewModel: ObservableObject {
         self.userState = .gameOver
         self.circles.removeAll()
         timerCancellable?.cancel()
+    }
+    
+    func pauseGame() {
+        guard !isPause else { return }
+        if let lastFrame = cameraManager.captureCurrentFrame() {
+            self.capturedFrame = lastFrame
+        }
+        isPause = true
+    }
+
+    func resumeGame() {
+        guard isPause else { return }
+        isPause = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + circleLifetime) {
+            self.circles.removeAll { circle in
+                self.pausedCircle.contains { $0.id == circle.id }
+            }
+        }
     }
     
     func scoring() -> (percentage: Int, letter: Score) {
