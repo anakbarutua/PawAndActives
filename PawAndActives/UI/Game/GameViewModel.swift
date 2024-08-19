@@ -51,6 +51,8 @@ class GameViewModel: ObservableObject {
     
     @Published var maxObstacle = 0
     
+    @Published var isPause = false
+    
     init() {
         cameraManager = CameraManager()
         setupBindings()
