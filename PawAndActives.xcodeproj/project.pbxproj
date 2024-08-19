@@ -26,6 +26,8 @@
 		620F962E2C6B416400821C6F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F962D2C6B416400821C6F /* Image.swift */; };
 		620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96312C6BF0D700821C6F /* CameraPreview.swift */; };
 		620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96332C6BFD7600821C6F /* CGPoint.swift */; };
+		620F96362C6C0B3D00821C6F /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96352C6C0B3D00821C6F /* Circles.swift */; };
+		620F96382C6E69D600821C6F /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96372C6E69D600821C6F /* UserState.swift */; };
 		622BFCBC2C6A72BC001BF7C3 /* PawAndActivesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */; };
 		622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */; };
 		622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */; };
@@ -56,6 +58,7 @@
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
+		62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D93B972C71475C00AA6A38 /* TrackingPoint.swift */; };
 		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +83,8 @@
 		620F962D2C6B416400821C6F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		620F96312C6BF0D700821C6F /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		620F96332C6BFD7600821C6F /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		620F96352C6C0B3D00821C6F /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
+		620F96372C6E69D600821C6F /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawAndActives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		622BFCBB2C6A72BC001BF7C3 /* PawAndActivesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawAndActivesApp.swift; sourceTree = "<group>"; };
 		622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 		622BFD092C6A908D001BF7C3 /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
 		622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaService.swift; sourceTree = "<group>"; };
 		622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaManager.swift; sourceTree = "<group>"; };
+		62D93B972C71475C00AA6A38 /* TrackingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPoint.swift; sourceTree = "<group>"; };
 		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,6 +246,7 @@
 				622BFCE52C6A8C98001BF7C3 /* Score.swift */,
 				622BFCE72C6A8CA9001BF7C3 /* Level.swift */,
 				622BFCE92C6A8CBC001BF7C3 /* WorkoutType.swift */,
+				620F96372C6E69D600821C6F /* UserState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -250,6 +257,8 @@
 				622BFCEB2C6A8D14001BF7C3 /* JokeDto.swift */,
 				622BFCED2C6A8D3F001BF7C3 /* ScoreDetail.swift */,
 				622BFCEF2C6A8D55001BF7C3 /* Workout.swift */,
+				620F96352C6C0B3D00821C6F /* Circles.swift */,
+				62D93B972C71475C00AA6A38 /* TrackingPoint.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 				620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */,
 				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
+				620F96362C6C0B3D00821C6F /* Circles.swift in Sources */,
 				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
@@ -476,7 +486,9 @@
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
 				622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */,
+				62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */,
 				622BFCE42C6A8C81001BF7C3 /* JokeError.swift in Sources */,
+				620F96382C6E69D600821C6F /* UserState.swift in Sources */,
 				620F96212C6A9D6900821C6F /* WorkoutViewModel.swift in Sources */,
 				622BFCDE2C6A8BF6001BF7C3 /* Joke.swift in Sources */,
 				620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */,
@@ -618,14 +630,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = F7UK99A97Y;
+				DEVELOPMENT_TEAM = WTU6YK528U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -634,9 +648,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = anakbarutua.PawAndActives;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -648,14 +666,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = F7UK99A97Y;
+				DEVELOPMENT_TEAM = WTU6YK528U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -664,9 +684,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = anakbarutua.PawAndActives;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

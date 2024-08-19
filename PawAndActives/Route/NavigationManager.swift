@@ -38,7 +38,7 @@ enum Destination: Hashable {
     case dashboardView
     case challengeView
     case workoutDetailView(WorkoutType)
-    case gameView
+    case gameView(WorkoutType, Level)
     case summaryView
 }
 
