@@ -13,9 +13,6 @@ import Combine
 class GameViewModel: ObservableObject {
     
     @Published var handPoints: [CGPoint] = []
-    @Published var leftHand: [CGPoint] = []
-    @Published var rightHand: [CGPoint] = []
-    @Published var head: [CGPoint] = []
     
     @Published var isTrackingOk = false
     
@@ -35,6 +32,8 @@ class GameViewModel: ObservableObject {
     
     private var currentNonRedIndex: Int = 0
     
+    private var pausedCircle: [Circles] = []
+    
     private var cancellables = Set<AnyCancellable>()
     private var timerCancellable: AnyCancellable?
     @Published var startCountdownCancellable: AnyCancellable?
@@ -49,9 +48,14 @@ class GameViewModel: ObservableObject {
     var userDifficulty : Level = .easy
     var workoutType: WorkoutType = .grabTheCircles
     
+    @Published var maxObstacle = 0
+    
+    @Published var isPause = false
+    
     init() {
         cameraManager = CameraManager()
         setupBindings()
+        maxObstacle = 0
     }
     
     private func setUpLevel() {
@@ -76,7 +80,7 @@ class GameViewModel: ObservableObject {
             }
         case .hard:
             if workoutType == .grabTheCircles {
-                self.objectAppearInterval = 1
+                self.objectAppearInterval = 0.75
                 self.circleLifetime = 1.5
             } else {
                 self.blockRow = 5
@@ -172,18 +176,20 @@ class GameViewModel: ObservableObject {
     func handleHandPoints(_ points: TrackingPoint) {
         DispatchQueue.main.async { [self] in
             
-            if workoutType == .grabTheCircles {
-                guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
-                self.handPoints = []
-                self.handPoints = leftHandPoint
-                self.handPoints.append(contentsOf: rightHandPoint)
-                checkPointInRing(points: handPoints)
-                
-            } else {
-                guard let headPoint = points.head else { return }
-                self.handPoints = []
-                self.handPoints = headPoint
-                checkPointInNonRedSection(points: handPoints)
+            if !isPause {
+                if workoutType == .grabTheCircles {
+                    guard let leftHandPoint = points.leftHand, let rightHandPoint = points.rightHand else { return }
+                    self.handPoints = []
+                    self.handPoints = leftHandPoint
+                    self.handPoints.append(contentsOf: rightHandPoint)
+                    checkPointInRing(points: handPoints)
+                    
+                } else {
+                    guard let headPoint = points.head else { return }
+                    self.handPoints = []
+                    self.handPoints = headPoint
+                    checkPointInNonRedSection(points: handPoints)
+                }
             }
         }
     }
@@ -205,6 +211,7 @@ class GameViewModel: ObservableObject {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
             } else {
+                self.randomizeNonRedSection()
                 startGeneratingBlocks()
             }
         }
@@ -224,9 +231,7 @@ class GameViewModel: ObservableObject {
                     self.countdownText = "\(self.countdown)"
                 } else if self.countdown == 1 {
                     self.setUpLevel()
-                    self.randomizeNonRedSection()
                     self.userState = .started
-                    print("OA: \(self.objectAppearInterval)")
                     self.countdown -= 1
                 } else {
                     startCountdownCancellable?.cancel()
@@ -238,7 +243,7 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self else { return }
+                guard let self = self, !isPause else { return }
                 if self.remainingTime > 0 {
                     self.remainingTime -= 1
                 } else {
@@ -256,17 +261,20 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started else { return }
+                guard let self = self, self.userState == .started, !isPause else { return }
                 self.generateCircle()
             }
             .store(in: &cancellables)
+        
+        
     }
     
     private func startGeneratingBlocks() {
         timerCancellable = Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                self?.randomizeNonRedSection()
+                guard let self = self, self.userState == .started, !isPause else { return }
+                self.randomizeNonRedSection()
             }
     }
     
@@ -277,7 +285,7 @@ class GameViewModel: ObservableObject {
     
     private func generateCircle() {
         let numberOfCircles = Int.random(in: 1...2)
-        
+        maxObstacle += numberOfCircles
         var newCircles: [Circles] = []
         for _ in 0..<numberOfCircles {
             var newCircle: Circles
@@ -286,13 +294,18 @@ class GameViewModel: ObservableObject {
             } while circles.contains(where: { $0.overlaps(with: newCircle) }) || newCircles.contains(where: { $0.overlaps(with: newCircle) })
             
             newCircles.append(newCircle)
+            
         }
         
         circles.append(contentsOf: newCircles)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + circleLifetime) {
-            self.circles.removeAll { circle in
-                newCircles.contains { $0.id == circle.id }
+            if self.isPause {
+                self.pausedCircle = newCircles
+            } else {
+                self.circles.removeAll { circle in
+                    newCircles.contains { $0.id == circle.id }
+                }
             }
         }
     }
@@ -302,10 +315,17 @@ class GameViewModel: ObservableObject {
         sections = Array(repeating: true, count: totalColumn)
         
         // Randomize one section to be non-red
-        let random = Int.random(in: 0..<totalColumn)
+        var random: Int
+        repeat {
+            random = Int.random(in: 0..<totalColumn)
+        } while currentNonRedIndex == random
+        
         print("Random: \(random)")
         currentNonRedIndex = random
         sections[currentNonRedIndex] = false
+        maxObstacle += 1
+        print("MaxObstacle: \(maxObstacle)")
+        
     }
     
     func checkPointInNonRedSection(points: [CGPoint]) {
@@ -345,5 +365,40 @@ class GameViewModel: ObservableObject {
         self.userState = .gameOver
         self.circles.removeAll()
         timerCancellable?.cancel()
+    }
+    
+    func pauseGame() {
+        guard !isPause else { return }
+        if let lastFrame = cameraManager.captureCurrentFrame() {
+            self.capturedFrame = lastFrame
+        }
+        isPause = true
+    }
+
+    func resumeGame() {
+        guard isPause else { return }
+        isPause = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + circleLifetime) {
+            self.circles.removeAll { circle in
+                self.pausedCircle.contains { $0.id == circle.id }
+            }
+        }
+    }
+    
+    func scoring() -> (percentage: Int, letter: Score) {
+        let scorePercentage = Double(score) / Double(maxObstacle)
+        
+        if scorePercentage == 1.0 {
+            return (percentage: Int(scorePercentage * 100), letter: .ss)
+        } else if scorePercentage > 0.8 {
+            return (percentage: Int(scorePercentage * 100), letter: .s)
+        } else if scorePercentage >= 0.65 {
+            return (percentage: Int(scorePercentage * 100), letter: .a)
+        } else if scorePercentage >= 0.25 {
+            return (percentage: Int(scorePercentage * 100), letter: .b)
+        } else {
+            return (percentage: Int(scorePercentage * 100), letter: .c)
+        }
     }
 }

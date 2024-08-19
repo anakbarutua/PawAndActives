@@ -18,8 +18,10 @@ struct GameView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if let capturedFrame = viewModel.capturedFrame, viewModel.userState == .gameOver {
-                    Image(uiImage: capturedFrame)
+                
+                if viewModel.capturedFrame != nil && (viewModel.userState == .gameOver || viewModel.isPause) {
+                    
+                    Image(uiImage: viewModel.capturedFrame!)
                         .resizable()
                         .scaledToFill()
                         .offset(CGSize(width: -140.0, height: 0.0))
@@ -44,6 +46,24 @@ struct GameView: View {
                             .font(.system(size: 128))
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
+                        
+                        VStack{
+                            Text("Move your hands towards the circles in sequence")
+                                .fontWeight(.heavy)
+                                .font(.system(size: 24))
+                                .frame(width: 290)
+                                .padding(12)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                .background(
+                                    RoundedRectangle(
+                                        cornerRadius: 34)
+                                    .fill(Color.ABTColor.SteelBlue)
+                                )
+                               
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                        .padding([.trailing,.bottom], 40)
+                        
                     }
                     switch workoutType {
                     case .grabTheCircles:
@@ -61,6 +81,51 @@ struct GameView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
                     
+                    VStack{
+                        HStack{
+                            Image(systemName: "figure.arms.open")
+                                .resizable()
+                                .frame(width: 70, height: 100)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                .padding(.leading, 45)
+                                
+                            Text("POSITION YOUR HAND IN THE ORANGE CIRCLE TO START WORKOUT")
+                                .font(.system(size: 23))
+                                .fontWeight(.heavy)
+                                .frame(width: 400, height: 140)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                
+                        }.background(
+                            RoundedRectangle(
+                                cornerRadius: 34)
+                            .fill(Color.ABTColor.SteelBlue)
+                        )
+                        .padding([.trailing,.bottom],20)
+                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
+                        
+                    }
+                    
+                    VStack{
+                        HStack{
+                            Image(systemName: "ipad.landscape")
+                                .resizable()
+                                .frame(width: 142, height:90)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                .padding(.leading, 20)
+                            Text("SET YOUR DEVICE ON A TABLE OR CHAIR")
+                                .font(.system(size: 23))
+                                .fontWeight(.heavy)
+                                .frame(width: 240, height: 120)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                        }.background(
+                            RoundedRectangle(
+                                cornerRadius: 34)
+                            .fill(Color.ABTColor.SteelBlue)
+                        )
+                        .padding([.top,.leading],20)
+                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
+                    }
+                    
                 case .started:
                     if workoutType == .grabTheCircles {
                         ForEach(viewModel.circles) { circle in
@@ -74,11 +139,18 @@ struct GameView: View {
                                 .frame(width: UIScreen.main.bounds.width / viewModel.blockColumn, height: UIScreen.main.bounds.height / viewModel.blockRow)
                                 .position(positionForSection(index: index))
                         }
-                        
                     }
+                    
+                    
                 case .gameOver:
+                    let userScore = viewModel.scoring()
                     VStack {
-                        Text("Score : \(viewModel.score)")
+                        Text("Score : \(userScore.percentage)%")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding()
+                        
+                        Text("Rank : \(userScore.letter.rawValue)")
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .padding()
@@ -93,24 +165,91 @@ struct GameView: View {
                     .background(Color.black.opacity(0.75))
                 }
                 
-                // Score display
                 VStack {
                     VStack {
                         Text("Score: \(viewModel.score)")
                             .font(.largeTitle)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.ABTColor.AntiFlashWhite)
                         
                         Text("\(updateTimeFormat(remainingTime: viewModel.remainingTime))")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.ABTColor.AntiFlashWhite)
                     }
                     .padding()
-                    .background(Color.black.opacity(0.7))
-                    .cornerRadius(10)
+                    .background(RoundedRectangle(cornerRadius: 17).fill(Color.ABTColor.SteelBlue))
                     .padding()
                 }
-                .position(x: UIScreen.main.bounds.width / 2, y: 50)
+                .position(x: UIScreen.main.bounds.width / 2, y: 68)
                 
+                VStack{
+                    Button(action: {
+                        if viewModel.userState == .waitingToStart {
+                            navigationManager.goBackToRoot()
+                        } else {
+                            viewModel.pauseGame()
+                        }
+                    }, label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color.ABTColor.SteelBlue)
+                            .font(.system(size: 50))
+                    })
+                    
+                }.padding([.top,.trailing],20)
+                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topTrailing)
+                
+                if viewModel.isPause {
+                    VStack {
+                        VStack{
+                            Text("Paused")
+                                .font(.system(size: 64))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                .padding(.bottom, 48)
+                            HStack{
+                                Button {
+                                    viewModel.endGame()
+                                    navigationManager.goBackToRoot()
+                                } label: {
+                                    Text("Exit")
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color.ABTColor.Black)
+                                }
+                                .frame(width: 200)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.ABTColor.DarkSkyBlue)
+                                )
+                                
+                                Button {
+                                    viewModel.resumeGame()
+                                } label: {
+                                    Text("Continue")
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color.ABTColor.Black)
+                                }
+                                .frame(width: 200)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.ABTColor.MikadoYellow)
+                                )
+                            }
+                        }
+                        .padding(86)
+                        .background(
+                            RoundedRectangle(cornerRadius: 24)
+                                .fill(Color.ABTColor.SteelBlue)
+                        )
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .offset(CGSize(width: -140.0, height: 0.0))
+                    .background(Color.black.opacity(0.75))
+                    .onTapGesture {
+                        viewModel.resumeGame()
+                    }
+                }
+                    
             }
             .edgesIgnoringSafeArea(.all)
         }
@@ -146,6 +285,7 @@ struct GameView: View {
         .onDisappear {
             viewModel.endGame()
         }
+        .navigationBarBackButtonHidden()
     }
     
     private func positionForSection(index: Int) -> CGPoint {
