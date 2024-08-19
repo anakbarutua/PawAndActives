@@ -288,7 +288,6 @@
 		622BFCD12C6A8725001BF7C3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				BA64DFB42C72569D0034724E /* JokesCollection */,
 				0DB9A2162C6D1A5F00EF743C /* Notification */,
 				622BFCD52C6A884C001BF7C3 /* Repository */,
 				622BFCD42C6A8845001BF7C3 /* Camera */,
@@ -331,6 +330,7 @@
 			children = (
 				622BFCF32C6A8FDA001BF7C3 /* GameRepositoryService.swift */,
 				622BFCF52C6A8FF8001BF7C3 /* GameRepositoryManager.swift */,
+				BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */,
 				622BFCF72C6A9009001BF7C3 /* WorkoutRepositoryService.swift */,
 				622BFCF92C6A9014001BF7C3 /* WorkoutRepositoryManager.swift */,
 				622BFCFB2C6A9022001BF7C3 /* DashboardRepositoryService.swift */,
@@ -393,14 +393,6 @@
 				BA2A405B2C6C93D7003365C5 /* jokes.json */,
 			);
 			path = JokesGatcha;
-			sourceTree = "<group>";
-		};
-		BA64DFB42C72569D0034724E /* JokesCollection */ = {
-			isa = PBXGroup;
-			children = (
-				BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */,
-			);
-			path = JokesCollection;
 			sourceTree = "<group>";
 		};
 		BA7A84B12C6DE4CC007628A3 /* JokesGatcha */ = {
@@ -558,7 +550,6 @@
 				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
 				620F96362C6C0B3D00821C6F /* Circles.swift in Sources */,
-				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
