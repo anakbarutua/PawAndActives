@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */; };
 		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
-		0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */; };
 		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
 		620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96122C6A9CA600821C6F /* DashboardView.swift */; };
 		620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96142C6A9CB500821C6F /* ChallengeView.swift */; };
@@ -60,13 +58,24 @@
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
 		62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D93B972C71475C00AA6A38 /* TrackingPoint.swift */; };
 		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
+		BA64DFB62C7256DF0034724E /* JokesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */; };
+		BA64DFB92C7270310034724E /* machine_white.riv in Resources */ = {isa = PBXBuildFile; fileRef = BA806E312C6F5863007D1A8E /* machine_white.riv */; };
+		BA64DFBF2C7275D20034724E /* BarProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64DFBD2C7275D20034724E /* BarProgressStyle.swift */; };
+		BA64DFC02C7275D20034724E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64DFBE2C7275D20034724E /* ButtonView.swift */; };
+		BA7A84B32C6DE574007628A3 /* JokesGatchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */; };
+		BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */; };
+		BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */; };
+		BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */; };
+		BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */; };
+		BA7A84C42C6E6199007628A3 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = BA7A84C32C6E6199007628A3 /* RiveRuntime */; };
+		BA8E83932C728E9800DEDFBD /* JokesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */; };
+		BA8E83952C72974D00DEDFBD /* JokeDetailOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */; };
+		BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProgressStyle.swift; sourceTree = "<group>"; };
 		0DB9A1DE2C6D0B1900EF743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		0DB9A21B2C6DFC4E00EF743C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		620F96122C6A9CA600821C6F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		620F96142C6A9CB500821C6F /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
@@ -118,6 +127,18 @@
 		622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaManager.swift; sourceTree = "<group>"; };
 		62D93B972C71475C00AA6A38 /* TrackingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPoint.swift; sourceTree = "<group>"; };
 		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
+		BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCollectionManager.swift; sourceTree = "<group>"; };
+		BA64DFBD2C7275D20034724E /* BarProgressStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarProgressStyle.swift; sourceTree = "<group>"; };
+		BA64DFBE2C7275D20034724E /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaView.swift; sourceTree = "<group>"; };
+		BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBorderedModifier.swift; sourceTree = "<group>"; };
+		BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionPrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawJokeOverlay.swift; sourceTree = "<group>"; };
+		BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogo.swift; sourceTree = "<group>"; };
+		BA806E312C6F5863007D1A8E /* machine_white.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = machine_white.riv; sourceTree = "<group>"; };
+		BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCollectionView.swift; sourceTree = "<group>"; };
+		BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDetailOverlay.swift; sourceTree = "<group>"; };
+		BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSavedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,21 +146,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7A84C42C6E6199007628A3 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DB9A1DB2C6C058B00EF743C /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				0DB9A1DC2C6C062100EF743C /* BarProgressStyle.swift */,
-				0DB9A2192C6D3D8F00EF743C /* ButtonView.swift */,
-			);
-			path = Reusable;
-			sourceTree = "<group>";
-		};
 		0DB9A2162C6D1A5F00EF743C /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +330,7 @@
 			children = (
 				622BFCF32C6A8FDA001BF7C3 /* GameRepositoryService.swift */,
 				622BFCF52C6A8FF8001BF7C3 /* GameRepositoryManager.swift */,
+				BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */,
 				622BFCF72C6A9009001BF7C3 /* WorkoutRepositoryService.swift */,
 				622BFCF92C6A9014001BF7C3 /* WorkoutRepositoryManager.swift */,
 				622BFCFB2C6A9022001BF7C3 /* DashboardRepositoryService.swift */,
@@ -328,7 +342,12 @@
 		622BFCD62C6A8859001BF7C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0DB9A1DB2C6C058B00EF743C /* Reusable */,
+				BA8E83962C729DDA00DEDFBD /* JokesSaved */,
+				BA8E83912C728E8800DEDFBD /* JokesCollection */,
+				BA7A84BF2C6E5DAD007628A3 /* Reusable */,
+				BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */,
+				BA7A84B72C6E04F2007628A3 /* Modifier */,
+				BA7A84B12C6DE4CC007628A3 /* JokesGatcha */,
 				622BFCDA2C6A88B0001BF7C3 /* Dashboard */,
 				622BFCD92C6A88A7001BF7C3 /* Game */,
 				622BFCD82C6A8895001BF7C3 /* Workout */,
@@ -376,6 +395,59 @@
 			path = JokesGatcha;
 			sourceTree = "<group>";
 		};
+		BA7A84B12C6DE4CC007628A3 /* JokesGatcha */ = {
+			isa = PBXGroup;
+			children = (
+				BA806E312C6F5863007D1A8E /* machine_white.riv */,
+				BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */,
+				BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */,
+			);
+			path = JokesGatcha;
+			sourceTree = "<group>";
+		};
+		BA7A84B72C6E04F2007628A3 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				BA7A84B82C6E050A007628A3 /* PreviewBorderedModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */,
+			);
+			path = ButtonStyle;
+			sourceTree = "<group>";
+		};
+		BA7A84BF2C6E5DAD007628A3 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				BA64DFBD2C7275D20034724E /* BarProgressStyle.swift */,
+				BA64DFBE2C7275D20034724E /* ButtonView.swift */,
+				BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		BA8E83912C728E8800DEDFBD /* JokesCollection */ = {
+			isa = PBXGroup;
+			children = (
+				BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */,
+				BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */,
+			);
+			path = JokesCollection;
+			sourceTree = "<group>";
+		};
+		BA8E83962C729DDA00DEDFBD /* JokesSaved */ = {
+			isa = PBXGroup;
+			children = (
+				BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */,
+			);
+			path = JokesSaved;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +464,9 @@
 			dependencies = (
 			);
 			name = PawAndActives;
+			packageProductDependencies = (
+				BA7A84C32C6E6199007628A3 /* RiveRuntime */,
+			);
 			productName = PawAndActives;
 			productReference = 622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */;
 			productType = "com.apple.product-type.application";
@@ -420,6 +495,9 @@
 				Base,
 			);
 			mainGroup = 622BFCAF2C6A72BC001BF7C3;
+			packageReferences = (
+				BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */,
+			);
 			productRefGroup = 622BFCB92C6A72BC001BF7C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -434,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA64DFB92C7270310034724E /* machine_white.riv in Resources */,
 				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
@@ -449,12 +528,15 @@
 			files = (
 				620F96242C6AA44C00821C6F /* NavigationManager.swift in Sources */,
 				622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulty.swift in Sources */,
+				BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */,
 				620F961F2C6A9D5600821C6F /* WorkoutDetailView.swift in Sources */,
+				BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */,
 				620F96322C6BF0D700821C6F /* CameraPreview.swift in Sources */,
 				622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */,
 				622BFD062C6A9071001BF7C3 /* GameManager.swift in Sources */,
 				622BFCF22C6A8D69001BF7C3 /* VisionHelper.swift in Sources */,
 				620F96262C6AA4C600821C6F /* Router.swift in Sources */,
+				BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */,
 				620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */,
 				622BFCE02C6A8C31001BF7C3 /* Session.swift in Sources */,
 				622BFCE62C6A8C98001BF7C3 /* Score.swift in Sources */,
@@ -462,30 +544,36 @@
 				622BFCF82C6A9009001BF7C3 /* WorkoutRepositoryService.swift in Sources */,
 				620F962E2C6B416400821C6F /* Image.swift in Sources */,
 				620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */,
+				BA64DFC02C7275D20034724E /* ButtonView.swift in Sources */,
+				BA7A84B32C6DE574007628A3 /* JokesGatchaView.swift in Sources */,
+				BA8E83932C728E9800DEDFBD /* JokesCollectionView.swift in Sources */,
 				620F962C2C6B415C00821C6F /* Color.swift in Sources */,
 				622BFCFC2C6A9022001BF7C3 /* DashboardRepositoryService.swift in Sources */,
 				620F96362C6C0B3D00821C6F /* Circles.swift in Sources */,
-				0DB9A21A2C6D3D8F00EF743C /* ButtonView.swift in Sources */,
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
+				BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
 				620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */,
 				622BFCEA2C6A8CBC001BF7C3 /* WorkoutType.swift in Sources */,
 				620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */,
 				622BFD022C6A905B001BF7C3 /* CameraManager.swift in Sources */,
+				BA64DFB62C7256DF0034724E /* JokesCollectionManager.swift in Sources */,
 				622BFCE82C6A8CA9001BF7C3 /* Level.swift in Sources */,
 				622BFD042C6A9067001BF7C3 /* GameService.swift in Sources */,
 				622BFD082C6A9082001BF7C3 /* VisionService.swift in Sources */,
+				BA8E83952C72974D00DEDFBD /* JokeDetailOverlay.swift in Sources */,
 				622BFCEC2C6A8D14001BF7C3 /* JokeDto.swift in Sources */,
 				0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */,
 				622BFCFE2C6A902F001BF7C3 /* DashboardRepositoryManager.swift in Sources */,
 				622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */,
 				622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */,
 				622BFCEE2C6A8D3F001BF7C3 /* ScoreDetail.swift in Sources */,
-				0DB9A1DD2C6C062100EF743C /* BarProgressStyle.swift in Sources */,
+				BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */,
 				0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
 				622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */,
+				BA64DFBF2C7275D20034724E /* BarProgressStyle.swift in Sources */,
 				62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */,
 				622BFCE42C6A8C81001BF7C3 /* JokeError.swift in Sources */,
 				620F96382C6E69D600821C6F /* UserState.swift in Sources */,
@@ -716,6 +804,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA7A84C32C6E6199007628A3 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 622BFCB02C6A72BC001BF7C3 /* Project object */;
 }

@@ -22,6 +22,12 @@ class Router{
             GameView(workoutType: workoutType, userDifficulty: level)
         case .summaryView:
             SummaryView()
+        case .jokesGatchaView:
+            JokesGatchaView()
+        case .jokesCollectionView:
+            JokesCollectionView()
+        case .jokesSavedView:
+            JokesSavedView()
         }
     }
 }

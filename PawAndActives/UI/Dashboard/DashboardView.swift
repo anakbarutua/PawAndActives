@@ -23,7 +23,7 @@ struct DashboardView: View {
                                 .padding(.trailing, 0.61 * geo.size.width)
                                 .padding(.top, 0.03 * geo.size.height)
                             Button(action: {
-                                
+                                navigationManager.navigate(to: .jokesGatchaView)
                             }, label: {
                                                         
                                 HStack{
@@ -159,7 +159,7 @@ struct DashboardView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                navigationManager.navigate(to: .jokesCollectionView)
                             }, label: {
                                 Text("See More")
                                     .fontWeight(.bold)
