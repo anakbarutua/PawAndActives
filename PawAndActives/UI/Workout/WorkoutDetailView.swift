@@ -9,7 +9,8 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @State private var difficulty = 1
+    @StateObject private var workoutViewModel = WorkoutViewModel()
+    @State private var difficulty: Level = .easy
     
     var workoutType: WorkoutType = .grabTheCircles
     
@@ -35,10 +36,7 @@ struct WorkoutDetailView: View {
                                     .background(Circle().fill(Color.ABTColor.MikadoYellow))
                                     Text("0")
                                     .font(.system(size: 32))
-                                                            /*.scaledToFit()*/
-                            //                                .frame(height: 40)
                                     .foregroundColor(Color.ABTColor.Linen)
-    //                                    .padding(.trailing, 0.0 * geo.size.width)
                                     }.scaledToFit()
                                     .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
                                     .padding(.trailing, 0.03 * geo.size.width)
@@ -60,18 +58,18 @@ struct WorkoutDetailView: View {
                         .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.Linen))
                     HStack{
                         Text("Difficulty")
-                            .foregroundColor(Color.ABTColor.Black)
+                            .foregroundColor(Color.ABTColor.CharlestonGreen)
                             .fontWeight(.bold)
                         
                         Spacer()
                         
                         Picker("Difficulty", selection: $difficulty){
-                            Text("Easy").tag(0)
-                            Text("Medium").tag(1)
-                            Text("Hard").tag(2)
+                            ForEach(Level.allCases, id: \.self) { level in
+                                Text(level.rawValue)
+                            }
                         }
                         .accentColor(Color.ABTColor.CharlestonGreen)
-                        .fontWeight(.bold)
+                        
                     }
                     .padding(.horizontal, 18)
                     .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.05)
@@ -79,10 +77,18 @@ struct WorkoutDetailView: View {
                     .padding(.top, geo.size.height * 0.015)
                         
                     ButtonView(label: "Start Workout"){
-                    // Custom action
-                    }.frame(width: geo.size.width * 0.8, height: geo.size.height * 0.07)
-                        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.MikadoYellow))
-                        .padding(.top, geo.size.height * 0.006)
+                        navigationManager.navigate(to: .gameView(workoutType, difficulty))
+                    }
+                    .alert(isPresented: $workoutViewModel.showPermissionAlert){
+                        Alert(
+                            title: Text("Permission Required"),
+                            message: Text("Camera access is required for this feature. Please enable it in settings."),
+                            dismissButton: .default(Text("Open Settings")){
+                                workoutViewModel.openSetting()
+                            }
+                        )
+                    }
+                    .padding(.leading, 0.1 * geo.size.width)
 
                 }
             }
@@ -91,7 +97,6 @@ struct WorkoutDetailView: View {
             workoutData = workouts.filter { workout in
                 workout.type == workoutType
             }.first!
-            
             
         }
     }

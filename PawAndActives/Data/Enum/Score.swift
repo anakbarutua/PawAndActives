@@ -12,5 +12,5 @@ enum Score: String, Codable {
     case b = "B"
     case a = "A"
     case s = "S"
-    case SS = "SS"
+    case ss = "SS"
 }

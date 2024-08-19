@@ -10,7 +10,6 @@ import UserNotifications
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        // Request notification permission when the app first launches
         NotificationManager.shared.requestNotificationPermission()
         return true
     }
@@ -39,20 +38,5 @@ class NotificationManager {
         }
     }
     
-//    func requestNotificationPermission() {
-//        NotificationManager.shared.requestNotificationPermission { granted in
-//            DispatchQueue.main.async {
-//                isNotificationEnabled = granted
-//            }
-//        }
-//    }
-//    
-//    func checkNotificationStatus() {
-//        NotificationManager.shared.checkNotificationStatus { isEnabled in
-//            DispatchQueue.main.async {
-//                isNotificationEnabled = isEnabled
-//            }
-//        }
-//    }
 }
 
