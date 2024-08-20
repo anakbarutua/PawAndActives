@@ -18,13 +18,12 @@ struct GameView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                
                 if viewModel.capturedFrame != nil && (viewModel.userState == .gameOver || viewModel.isPause) {
                     
                     Image(uiImage: viewModel.capturedFrame!)
                         .resizable()
                         .scaledToFill()
-                        .offset(CGSize(width: -140.0, height: 0.0))
+                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
                         .clipped()
                         .edgesIgnoringSafeArea(.all)
                     
@@ -89,7 +88,7 @@ struct GameView: View {
                                 .foregroundColor(Color.ABTColor.AntiFlashWhite)
                                 .padding(.leading, 45)
                                 
-                            Text("POSITION YOUR HAND IN THE ORANGE CIRCLE TO START WORKOUT")
+                            Text("POSITION YOUR \(workoutType == .avoidTheBlocks ? "HEAD" : "HAND") IN THE ORANGE CIRCLE TO START WORKOUT")
                                 .font(.system(size: 23))
                                 .fontWeight(.heavy)
                                 .frame(width: 400, height: 140)
@@ -112,7 +111,7 @@ struct GameView: View {
                                 .frame(width: 142, height:90)
                                 .foregroundColor(Color.ABTColor.AntiFlashWhite)
                                 .padding(.leading, 20)
-                            Text("SET YOUR DEVICE ON A TABLE OR CHAIR")
+                            Text("SET YOUR DEVICE UPRIGHT ON A TABLE OR CHAIR")
                                 .font(.system(size: 23))
                                 .fontWeight(.heavy)
                                 .frame(width: 240, height: 120)
@@ -141,61 +140,90 @@ struct GameView: View {
                         }
                     }
                     
+                    VStack {
+                        VStack {
+                            Text("Score: \(viewModel.score)")
+                                .font(.largeTitle)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                            
+                            Text("\(updateTimeFormat(remainingTime: viewModel.remainingTime))")
+                                .font(.title2)
+                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 17).fill(Color.ABTColor.SteelBlue))
+                        .padding()
+                    }
+                    .position(x: UIScreen.main.bounds.width / 2, y: 68)
+                    
                     
                 case .gameOver:
                     let userScore = viewModel.scoring()
-                    VStack {
-                        Text("Score : \(userScore.percentage)%")
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                        Text("Rank : \(userScore.letter.rawValue)")
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                        Button("Back to Dashboard") {
-                            navigationManager.goBackToRoot()
+                    
+                    ZStack {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .trailing, spacing: 40) {
+                                Text("SCORE")
+                                    .font(.system(size: 80))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                
+                                Text("Rank")
+                                    .font(.system(size: 80))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.trailing, 86)
+                            
+                            VStack(alignment: .leading, spacing: 40) {
+                                Text("\(userScore.percentage)")
+                                    .font(.system(size: 80))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                
+                                Text("\(userScore.letter.rawValue)")
+                                    .font(.system(size: 96))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.trailing, 12)
+                            
+
                         }
-                        .buttonStyle(.borderedProminent)
+                        .position(x: (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height / 2)
+                        
+                        VStack {
+                            Text("NEW HIGH \nSCORE!")
+                                .font(.system(size: 34))
+                                .foregroundColor(.yellow)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .offset(x: -115, y: -75)
+                        
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .offset(CGSize(width: -140.0, height: 0.0))
                     .background(Color.black.opacity(0.75))
                 }
                 
-                VStack {
-                    VStack {
-                        Text("Score: \(viewModel.score)")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                if viewModel.userState != .gameOver {
+                    VStack{
+                        Button(action: {
+                            if viewModel.userState == .waitingToStart {
+                                navigationManager.goBack()
+                            } else {
+                                viewModel.pauseGame()
+                            }
+                        }, label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(Color.ABTColor.SteelBlue)
+                                .font(.system(size: 50))
+                        })
                         
-                        Text("\(updateTimeFormat(remainingTime: viewModel.remainingTime))")
-                            .font(.headline)
-                            .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                    }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 17).fill(Color.ABTColor.SteelBlue))
-                    .padding()
+                    }.padding([.top,.trailing],20)
+                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topTrailing)
                 }
-                .position(x: UIScreen.main.bounds.width / 2, y: 68)
-                
-                VStack{
-                    Button(action: {
-                        if viewModel.userState == .waitingToStart {
-                            navigationManager.goBackToRoot()
-                        } else {
-                            viewModel.pauseGame()
-                        }
-                    }, label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(Color.ABTColor.SteelBlue)
-                            .font(.system(size: 50))
-                    })
-                    
-                }.padding([.top,.trailing],20)
-                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topTrailing)
                 
                 if viewModel.isPause {
                     VStack {
@@ -243,13 +271,12 @@ struct GameView: View {
                         )
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .offset(CGSize(width: -140.0, height: 0.0))
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
                     .background(Color.black.opacity(0.75))
                     .onTapGesture {
                         viewModel.resumeGame()
                     }
                 }
-                    
             }
             .edgesIgnoringSafeArea(.all)
         }
@@ -286,6 +313,23 @@ struct GameView: View {
             viewModel.endGame()
         }
         .navigationBarBackButtonHidden()
+        .safeAreaInset(edge: .bottom) {
+            if viewModel.userState == .gameOver {
+                Button {
+                    navigationManager.goBackToRoot()
+                } label: {
+                    Text("Continue")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.ABTColor.Black)
+                        .frame(maxWidth: 3 * UIScreen.main.bounds.width / 4, maxHeight: 52)
+                        
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.ABTColor.MikadoYellow)
+                .padding(.bottom, 32)
+            }
+        }
     }
     
     private func positionForSection(index: Int) -> CGPoint {
