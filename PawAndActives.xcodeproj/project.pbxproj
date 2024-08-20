@@ -56,10 +56,11 @@
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
+		628947C82C74838900E99D64 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 628947C72C74838900E99D64 /* RiveRuntime */; };
+		628947CB2C74870A00E99D64 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947C92C74870A00E99D64 /* success.mp3 */; };
+		628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947CA2C74870A00E99D64 /* bgm.mp3 */; };
 		628C9B7E2C73B6CC00574504 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628C9B7D2C73B6CB00574504 /* SoundService.swift */; };
 		628C9B802C73B6D900574504 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628C9B7F2C73B6D900574504 /* SoundManager.swift */; };
-		628C9B842C73B8F100574504 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628C9B822C73B8F100574504 /* bgm.mp3 */; };
-		628C9B852C73B8F100574504 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628C9B832C73B8F100574504 /* success.mp3 */; };
 		62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D93B972C71475C00AA6A38 /* TrackingPoint.swift */; };
 		BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A405B2C6C93D7003365C5 /* jokes.json */; };
 		BA64DFB62C7256DF0034724E /* JokesCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */; };
@@ -71,7 +72,6 @@
 		BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */; };
 		BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */; };
 		BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */; };
-		BA7A84C42C6E6199007628A3 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = BA7A84C32C6E6199007628A3 /* RiveRuntime */; };
 		BA8E83932C728E9800DEDFBD /* JokesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */; };
 		BA8E83952C72974D00DEDFBD /* JokeDetailOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */; };
 		BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */; };
@@ -129,10 +129,10 @@
 		622BFD092C6A908D001BF7C3 /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
 		622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaService.swift; sourceTree = "<group>"; };
 		622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesGatchaManager.swift; sourceTree = "<group>"; };
+		628947C92C74870A00E99D64 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
+		628947CA2C74870A00E99D64 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
 		628C9B7D2C73B6CB00574504 /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		628C9B7F2C73B6D900574504 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		628C9B822C73B8F100574504 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgm.mp3; path = ../../../../../Downloads/bgm.mp3; sourceTree = "<group>"; };
-		628C9B832C73B8F100574504 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = success.mp3; path = ../../../../../Downloads/success.mp3; sourceTree = "<group>"; };
 		62D93B972C71475C00AA6A38 /* TrackingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPoint.swift; sourceTree = "<group>"; };
 		BA2A405B2C6C93D7003365C5 /* jokes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 		BA64DFB52C7256DF0034724E /* JokesCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCollectionManager.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7A84C42C6E6199007628A3 /* RiveRuntime in Frameworks */,
+				628947C82C74838900E99D64 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +417,8 @@
 		628C9B812C73B70F00574504 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				628C9B822C73B8F100574504 /* bgm.mp3 */,
-				628C9B832C73B8F100574504 /* success.mp3 */,
+				628947CA2C74870A00E99D64 /* bgm.mp3 */,
+				628947C92C74870A00E99D64 /* success.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 			);
 			name = PawAndActives;
 			packageProductDependencies = (
-				BA7A84C32C6E6199007628A3 /* RiveRuntime */,
+				628947C72C74838900E99D64 /* RiveRuntime */,
 			);
 			productName = PawAndActives;
 			productReference = 622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */;
@@ -542,10 +542,10 @@
 			files = (
 				BA64DFB92C7270310034724E /* machine_white.riv in Resources */,
 				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
+				628947CB2C74870A00E99D64 /* success.mp3 in Resources */,
+				628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
-				628C9B852C73B8F100574504 /* success.mp3 in Resources */,
-				628C9B842C73B8F100574504 /* bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,7 +849,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BA7A84C32C6E6199007628A3 /* RiveRuntime */ = {
+		628947C72C74838900E99D64 /* RiveRuntime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */;
 			productName = RiveRuntime;

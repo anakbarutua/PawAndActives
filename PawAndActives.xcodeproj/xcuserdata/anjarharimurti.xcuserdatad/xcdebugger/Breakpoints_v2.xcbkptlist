@@ -30,8 +30,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "handleDistance(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "startCountdown(workoutType:userDifficulty:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "startGeneratingCircle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "startGeneratingCircle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "handleHandPoints(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,10 +110,26 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "startGeneratingCircle()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50086F0B-1599-44B0-96A7-203A221604C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PawAndActives/UI/Game/GameView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +142,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "startCountdown(workoutType:userDifficulty:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +158,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "timerCountDown()"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +174,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "GameViewModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -174,8 +190,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "startCountdown(workoutType:userDifficulty:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +206,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "setUpLevel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +222,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +238,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +254,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "setUpLevel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +270,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "setUpLevel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +286,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "endGame()"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +302,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "endGame()"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +318,8 @@
             filePath = "PawAndActives/UI/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "startGeneratingBlocks()"
             landmarkType = "7">
          </BreakpointContent>
