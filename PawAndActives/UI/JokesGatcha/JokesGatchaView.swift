@@ -15,7 +15,7 @@ struct JokesGatchaView: View {
     var body: some View {
         ZStack {
             VStack {
-                RiveViewModel(fileName: "machine_white").view()
+                RiveViewModel(fileName: "machine_loop").view()
                     .frame(maxHeight: 500)
                     .padding(.bottom)
                 Button(action: handleDrawJokeButtonPressed, label: {
