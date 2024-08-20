@@ -17,6 +17,7 @@ class GameViewModel: ObservableObject {
     @Published var isTrackingOk = false
     
     var cameraManager: CameraManager
+    private let soundService: SoundService
     
     @Published var isSessionRunning = false
     @Published var remainingTime: TimeInterval = 60.0
@@ -54,6 +55,7 @@ class GameViewModel: ObservableObject {
     
     init() {
         cameraManager = CameraManager()
+        soundService = SoundManager()
         setupBindings()
         maxObstacle = 0
     }
@@ -197,6 +199,7 @@ class GameViewModel: ObservableObject {
     func checkPointInRing(points: [CGPoint]) {
         for point in points {
             if let index = self.circles.firstIndex(where: { $0.contains(point) }) {
+                self.playSound(named: "success")
                 self.circles.remove(at: index)
                 self.score += 1
                 print("Score: \(self.score)")
@@ -206,7 +209,8 @@ class GameViewModel: ObservableObject {
     
     func startGame() {
         self.timerCountDown()
-        
+        self.playSound(named: "bgm")
+        self.setVolume(named: "bgm", volume: 0.1)
         if remainingTime != 0 {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
@@ -348,6 +352,7 @@ class GameViewModel: ObservableObject {
         }
         
         if allPointsInSection {
+            self.playSound(named: "success")
             score += 1
             self.randomizeNonRedSection()
             self.resetSectionTimer()
@@ -373,12 +378,13 @@ class GameViewModel: ObservableObject {
             self.capturedFrame = lastFrame
         }
         isPause = true
+        pauseSound(named: "bgm")
     }
 
     func resumeGame() {
         guard isPause else { return }
         isPause = false
-        
+        resumeSound(named: "bgm")
         DispatchQueue.main.asyncAfter(deadline: .now() + circleLifetime) {
             self.circles.removeAll { circle in
                 self.pausedCircle.contains { $0.id == circle.id }
@@ -387,18 +393,39 @@ class GameViewModel: ObservableObject {
     }
     
     func scoring() -> (percentage: Int, letter: Score) {
-        let scorePercentage = Double(score) / Double(maxObstacle)
+        let scoreNumber = (Double(score) / Double(maxObstacle)) * 100
+        let finalScore = Int((scoreNumber * 10).rounded(.toNearestOrAwayFromZero))
         
-        if scorePercentage == 1.0 {
-            return (percentage: Int(scorePercentage * 100), letter: .ss)
-        } else if scorePercentage > 0.8 {
-            return (percentage: Int(scorePercentage * 100), letter: .s)
-        } else if scorePercentage >= 0.65 {
-            return (percentage: Int(scorePercentage * 100), letter: .a)
-        } else if scorePercentage >= 0.25 {
-            return (percentage: Int(scorePercentage * 100), letter: .b)
+        if scoreNumber == 1.0 {
+            return (percentage: finalScore, letter: .ss)
+        } else if scoreNumber > 0.8 {
+            return (percentage: finalScore, letter: .s)
+        } else if scoreNumber >= 0.65 {
+            return (percentage: finalScore, letter: .a)
+        } else if scoreNumber >= 0.25 {
+            return (percentage: finalScore, letter: .b)
         } else {
-            return (percentage: Int(scorePercentage * 100), letter: .c)
+            return (percentage: finalScore, letter: .c)
         }
+    }
+    
+    func playSound(named soundName: String) {
+        soundService.playSound(named: soundName)
+    }
+
+    func stopSound(named soundName: String) {
+        soundService.stopSound(named: soundName)
+    }
+
+    func pauseSound(named soundName: String) {
+        soundService.pauseSound(named: soundName)
+    }
+
+    func resumeSound(named soundName: String) {
+        soundService.resumeSound(named: soundName)
+    }
+    
+    func setVolume(named soundName: String, volume: Float) {
+        soundService.setVolume(named: soundName, volume: volume)
     }
 }
