@@ -151,7 +151,7 @@ struct DashboardView: View {
                                 .padding(.leading, 0.01 * geo.size.width)
                         }
                         HStack{
-                            Text("Your Collection")
+                            Text("Jokes Collected")
                                 .font(.title)
                                 .foregroundColor(Color.ABTColor.CharlestonGreen)
                                 .fontWeight(.bold)

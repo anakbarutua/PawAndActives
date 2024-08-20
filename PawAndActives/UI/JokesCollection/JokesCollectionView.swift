@@ -39,7 +39,7 @@ struct JokesCollectionView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Your collection")
+                    Text("Jokes Collected")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
