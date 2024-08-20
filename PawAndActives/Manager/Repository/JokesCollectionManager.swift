@@ -38,13 +38,19 @@ final class JokesCollectionManager {
         modelContext.insert(joke)
         save()
     }
-
-    func fetchJokes() -> [Joke] {
+    
+    func fetchJokesNotReversed() -> [Joke] {
         do {
             return try modelContext.fetch(FetchDescriptor<Joke>())
         } catch {
             fatalError(error.localizedDescription)
         }
+    }
+
+    func fetchJokes() -> [Joke] {
+        let jokes = fetchJokesNotReversed()
+        
+        return jokes.reversed()
     }
 
     func removeItem(_ item: Joke) {
