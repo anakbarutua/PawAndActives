@@ -75,7 +75,7 @@ struct JokesCollectionView: View {
                                         .font(.title)
                                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                         .padding()
-                                        .frame(height: 300)
+                                        .frame(width: 225, height: 300)
                                         .background(
                                             ZStack {
                                                 LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)

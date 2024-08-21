@@ -10,6 +10,17 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
+    
+    let data = Array(JokesCollectionManager.shared.fetchJokes().prefix(5))
+    
+    var columns: [GridItem] = [
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+    ]
+    
     var body: some View {
         GeometryReader { geo in
         ScrollView {
@@ -168,16 +179,43 @@ struct DashboardView: View {
                             })
                         }
                         .padding(.top, 0.02 * geo.size.height)
-                        VStack{
-                            Text("You don’t have any cards")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.gray)
-                            Text("Finish workout or challenges to get golds to draw a card!")
-                                .font(.title)
-                                .foregroundStyle(.gray)
-                        }.padding(.top, 0.06 * geo.size.height)
-                        
+                        if (data.isEmpty) {
+                            VStack{
+                                Text("You don’t have any cards")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.gray)
+                                Text("Finish workout or challenges to get golds to draw a card!")
+                                    .font(.title)
+                                    .foregroundStyle(.gray)
+                            }.padding(.top, 0.06 * geo.size.height)
+                        } else {
+                            ScrollView {
+                                LazyVGrid(columns: self.columns) {
+                                    ForEach(data, id: \.self) { joke in
+                                        Button {
+                                        } label: {
+                                            Text("\(joke.joke.Joke)")
+                                                .font(.title)
+                                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                .padding()
+                                                .frame(width: 225, height: 300)
+                                                .background(
+                                                    ZStack {
+                                                        LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
+                                                        Image("card-bg")
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                    }
+                                                )
+                                                .foregroundColor(Color.white)
+                                                .cornerRadius(25)
+                                        }
+                                    }
+                                }
+                                .padding()
+                            }
+                        }
                     }
                 }
             
