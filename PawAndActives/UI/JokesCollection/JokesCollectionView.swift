@@ -60,8 +60,10 @@ struct JokesCollectionView: View {
                         Text("You don’t have any cards")
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                            .foregroundStyle(.gray)
                         Text("Finish workout or challenges to get golds to draw a card!")
                             .font(.largeTitle)
+                            .foregroundStyle(.gray)
                         Spacer()
                     }
                 } else {
