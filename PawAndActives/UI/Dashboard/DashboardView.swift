@@ -12,69 +12,73 @@ struct DashboardView: View {
     
     var body: some View {
         GeometryReader { geo in
-        ScrollView {
-            VStack {
+            ScrollView {
+                VStack {
                     VStack{
                         HStack{
                             Text("GiggleFit")
-                                .font(.title)
+                                .scaledToFit()
+                                .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.ABTColor.CharlestonGreen)
-                                .padding(.trailing, 0.61 * geo.size.width)
-                                .padding(.top, 0.03 * geo.size.height)
+                                .padding(.top, 30)
+                                .padding(.leading,25)
+                            Spacer()
+                               
                             Button(action: {
                                 navigationManager.navigate(to: .jokesGatchaView)
                             }, label: {
-                                                        
+                                
                                 HStack{
-                                                            
+                                    
                                     Image.ABTImage.Shop
                                         .resizable()
                                         .frame(width: 44, height: 35)
-                                        Text("Draw")
+                                    Text("Draw")
                                         .foregroundColor(Color.ABTColor.Linen)
                                         .font(.title)
                                         .fontWeight(.bold)
-                                                        }
+                                }
                             }).scaledToFit()
-                            .padding(8)
-                            .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                                .padding(8)
+                                .frame(width: 150,height: 66)
+                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
                             HStack{
-                                    Text("G")
+                                Text("G")
                                     .font(.title)
                                     .foregroundColor(Color.ABTColor.SteelBlue)
                                     .scaledToFit()
-                                    .frame(width: 0.06 * geo.size.width)
+                                    .frame(width: 90)
                                     .background(Circle().fill(Color.ABTColor.MikadoYellow))
-                                    Text("0")
+                                Text("0")
                                     .font(.system(size: 32))
                                     .foregroundColor(Color.ABTColor.Linen)
-                                    }.scaledToFit()
-                                    .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
-                                    .padding(.trailing, 0.03 * geo.size.width)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                            }.scaledToFit()
+                                .frame(width: 120, height: 65)
+                                .padding(.trailing, 30)
+                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
-                        }
-                        HStack{
+                        }.padding(.trailing)
+                        HStack(spacing:8){
                             Button {
                                 navigationManager.navigate(to: .workoutDetailView(.grabTheCircles))
                             } label: {
                                 VStack{
                                     Image.ABTImage.GTCIcon
                                         .resizable()
-                                        .frame(width: 0.2 * geo.size.width ,height: 0.25 * geo.size.height)
-                                        .padding(.bottom, 0.01 * geo.size.height)
+                                        .frame(width: 330 ,height: 300)
+                                        .padding(.bottom, 10)
                                     Text("Grab The Circle")
                                         .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.ABTColor.CharlestonGreen)
-                                }
+                                } .frame(width: 330,height: 430)
+                                    .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
                                 
-                                    
                             }.scaledToFit()
-                                .frame(height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
+                                .padding(.leading, UIScreen.main.bounds.width/180)
+                                .frame(maxWidth: UIScreen.main.bounds.width/4.2, maxHeight: UIScreen.main.bounds.width/4, alignment: .leading)
                             Button(action: {
                                 navigationManager.navigate(to: .workoutDetailView(.avoidTheBlocks))
                             }
@@ -83,30 +87,32 @@ struct DashboardView: View {
                                     ZStack{
                                         Image.ABTImage.PersonIcon
                                             .resizable()
-                                            .frame(width: 0.13 * geo.size.width ,height: 0.285 * geo.size.height)
-                                            .padding(.leading, 0.065 * geo.size.width)
-                                            .padding(.top, 0.02 * geo.size.height)
+                                            .frame(width: 250 ,height: 350)
+                                            .padding(.leading, 90)
                                         VStack(spacing: 0){
                                             Image.ABTImage.KotakTopIcon
                                                 .resizable()
-                                                .frame(width: 0.099 * geo.size.width, height: 0.154 * geo.size.height)
-                                                .padding(.trailing, 0.1 * geo.size.width)
+                                                .frame(width: 140, height: 140)
+                                                .padding(.trailing, 190)
                                             Image.ABTImage.KotakIcon
                                                 .resizable()
-                                                .frame(width: 0.2 * geo.size.width, height: 0.15 * geo.size.height)
-                                        }
-                                    }.padding(.bottom, 0.001 * geo.size.height)
+                                                .frame(width: 330, height: 190)
+                                        }.padding(.top)
+                                    }
                                     Text("Avoid The Blocks")
                                         .font(.title)
                                         .fontWeight(.bold)
+                                        .padding(.top, 12)
                                         .foregroundColor(Color.ABTColor.CharlestonGreen)
-                                        .padding(.bottom, 0.01 * geo.size.height)
-                                }.padding(.bottom, 0.029 * geo.size.height)
-                                   
+                                        .padding(.bottom, 10)
+                                }.frame(width: 330,height: 390)
+                                    .padding(.bottom, 39)
+                                    .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
+                                
                             })
                             .scaledToFit()
-                            .frame(width: 0.199 * geo.size.width,height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
+                            .padding(.leading,UIScreen.main.bounds.width/150)
+                            .frame(maxWidth: UIScreen.main.bounds.width/4,maxHeight: UIScreen.main.bounds.width/4, alignment: .leading)
                             
                             HStack{
                                 VStack(alignment: .leading, spacing: 5){
@@ -115,10 +121,10 @@ struct DashboardView: View {
                                             .font(.largeTitle)
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.ABTColor.Linen)
-                                            
+                                        
                                         Spacer()
                                     }
-                                    .padding(.leading, 0.01 * geo.size.width)
+                                    .padding(.leading, 20)
                                     HStack{
                                         Text("Finish challenges to gain more gold")
                                             .font(.title2)
@@ -126,8 +132,8 @@ struct DashboardView: View {
                                             .foregroundColor(Color.ABTColor.Linen)
                                         Spacer()
                                     }
-                                    .frame(width:  0.3 * geo.size.width)
-                                    .padding(.leading, 0.01 * geo.size.width)
+                                    .frame(width:  400)
+                                    .padding(.leading, 20)
                                     Button {
                                         navigationManager.navigate(to: .challengeView)
                                     } label: {
@@ -136,20 +142,22 @@ struct DashboardView: View {
                                             .fontWeight(.bold)
                                             .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                     }
-                                        .frame(width: 0.3 * geo.size.width
-                                               , height: 0.045 * geo.size.height)
-                                        .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
-                                        .padding(.top, 0.17 * geo.size.height)
-                                        .padding(.leading, 0.01 * geo.size.width)
+                                    .frame(width: 450,height: 50)
+                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                    .padding(.top, 220)
+                                    .padding(.leading, 20)
                                     
                                 }
-                                .padding(.trailing, 0.1 * geo.size.width)
+                                .frame(width: 600, height: 430)
+                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue).frame(width: 630, height: 430))
+                                .padding(.leading, 10)
                             }
                             .scaledToFit()
-                            .frame(height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue))
-                                .padding(.leading, 0.01 * geo.size.width)
-                        }
+                            .padding(.leading,UIScreen.main.bounds.width/100)
+                            .frame(maxWidth: .infinity,maxHeight: .infinity)
+                        }.padding(.horizontal,12)
+                            .frame(maxWidth: .infinity,maxHeight: .infinity)
+                        
                         HStack{
                             Text("Your Collection")
                                 .font(.title)
@@ -180,9 +188,10 @@ struct DashboardView: View {
                         
                     }
                 }
-            
+                
+            }
         }
-    }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
 }
 

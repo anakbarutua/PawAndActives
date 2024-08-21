@@ -57,7 +57,7 @@ struct ChallengeView: View {
                                     .fontWeight(.bold)
                             }.frame(width: geo.size.width * 0.107, height: geo.size.height * 0.0534)
                                 .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.DarkSkyBlue))
-                                .padding(.leading, geo.size.width * 0.53)
+                                .padding(.leading, geo.size.width * 0.551)
                         }
                         Text("Complete these onboarding challenge and you’ll earn 100 Gold once you’re done")
                             .font(.system(size: 17))

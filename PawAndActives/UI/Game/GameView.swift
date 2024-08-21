@@ -15,6 +15,8 @@ struct GameView: View {
     var workoutType: WorkoutType = .avoidTheBlocks
     var userDifficulty : Level = .medium
     
+    @State var isShowInstruction = true
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -58,7 +60,7 @@ struct GameView: View {
                                         cornerRadius: 34)
                                     .fill(Color.ABTColor.SteelBlue)
                                 )
-                               
+                            
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                         .padding([.trailing,.bottom], 40)
@@ -80,49 +82,84 @@ struct GameView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
                     
-                    VStack{
-                        HStack{
-                            Image(systemName: "figure.arms.open")
-                                .resizable()
-                                .frame(width: 70, height: 100)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                .padding(.leading, 45)
-                                
-                            Text("POSITION YOUR \(workoutType == .avoidTheBlocks ? "HEAD" : "HAND") IN THE ORANGE CIRCLE TO START WORKOUT")
-                                .font(.system(size: 23))
-                                .fontWeight(.heavy)
-                                .frame(width: 400, height: 140)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                
-                        }.background(
-                            RoundedRectangle(
-                                cornerRadius: 34)
-                            .fill(Color.ABTColor.SteelBlue)
-                        )
-                        .padding([.trailing,.bottom],20)
-                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
-                        
-                    }
                     
-                    VStack{
-                        HStack{
-                            Image(systemName: "ipad.landscape")
-                                .resizable()
-                                .frame(width: 142, height:90)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                .padding(.leading, 20)
-                            Text("SET YOUR DEVICE UPRIGHT ON A TABLE OR CHAIR")
-                                .font(.system(size: 23))
+                    if isShowInstruction {
+                        VStack{
+                            Text("How to Play")
+                                .font(.system(size: 48))
                                 .fontWeight(.heavy)
-                                .frame(width: 240, height: 120)
                                 .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, .top], 48)
+                            
+                            HStack{
+                                VStack (alignment: .center, spacing: 65){
+                                    Image(systemName: "ipad.landscape")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 140)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                    Image(systemName: "arrow.left.and.right")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 60)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                    Image(systemName: "figure.arms.open")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 75, height: 100)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                }
+                                .padding([.top,.leading], 20)
+                                
+                                VStack(alignment: .leading,spacing: 70){
+                                    Text("SET YOUR DEVICE ON A TABLE OR CHAIR")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                    Text("SET DISTANCE BETWEEN YOURSELF AND THE iPAD")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                    + Text(" ~ 1 METER")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.MikadoYellow)
+                                    Text("POSITION YOUR HAND IN THE")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                    + Text(" ORANGE CIRCLE")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.MikadoYellow)
+                                    + Text(" TO START WORKOUT")
+                                        .font(.system(size: 31))
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                                }.padding(.top,20)
+                                    .padding(.leading,25)
+                                
+                            }
+                            .padding(.horizontal, 130)
+                            .padding(.top, 32)
+                            
+                            ButtonView(label: "Continue"){
+                                isShowInstruction = false
+                            }
+                            .padding(.top, 50)
+                            .padding(.leading,150)
+                            .frame(height: 200)
                         }.background(
                             RoundedRectangle(
-                                cornerRadius: 34)
+                                cornerRadius: 34
+                            )
                             .fill(Color.ABTColor.SteelBlue)
                         )
-                        .padding([.top,.leading],20)
-                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
+                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
+                        .padding(.horizontal, 128)
+                        .padding(.vertical, 80)
+                        .background(Color.black.opacity(0.75))
                     }
                     
                 case .started:
@@ -188,7 +225,7 @@ struct GameView: View {
                             }
                             .padding(.trailing, 12)
                             
-
+                            
                         }
                         .position(x: (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height / 2)
                         
@@ -207,7 +244,7 @@ struct GameView: View {
                     .background(Color.black.opacity(0.75))
                 }
                 
-                if viewModel.userState != .gameOver {
+                if viewModel.userState != .gameOver && !isShowInstruction{
                     VStack{
                         Button(action: {
                             if viewModel.userState == .waitingToStart {
@@ -222,7 +259,7 @@ struct GameView: View {
                         })
                         
                     }.padding([.top,.trailing],20)
-                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topTrailing)
+                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topTrailing)
                 }
                 
                 if viewModel.isPause {
@@ -323,7 +360,7 @@ struct GameView: View {
                         .fontWeight(.bold)
                         .foregroundStyle(Color.ABTColor.Black)
                         .frame(maxWidth: 3 * UIScreen.main.bounds.width / 4, maxHeight: 52)
-                        
+                    
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color.ABTColor.MikadoYellow)
