@@ -27,7 +27,7 @@ struct DrawJokeOverlay: View {
                             LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
                             Image("card-bg")
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                         }
                     )
                     .cornerRadius(14)

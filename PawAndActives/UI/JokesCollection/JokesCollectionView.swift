@@ -29,10 +29,11 @@ struct JokesCollectionView: View {
 //    ].map { Joke(joke: JokeDto(Joke: $0), isFavorite: false) }
     
     var columns: [GridItem] = [
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
     ]
     
     var body: some View {
@@ -74,9 +75,16 @@ struct JokesCollectionView: View {
                                         .font(.title)
                                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                         .padding()
-                                        .frame(width: 270, height: 300)
-                                        .background(Color.orange)
-                                        .foregroundColor(Color.black)
+                                        .frame(height: 300)
+                                        .background(
+                                            ZStack {
+                                                LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
+                                                Image("card-bg")
+                                                    .resizable()
+                                                    .scaledToFill()
+                                            }
+                                        )
+                                        .foregroundColor(Color.white)
                                         .cornerRadius(25)
                                 }
                             }
