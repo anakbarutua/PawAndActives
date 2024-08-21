@@ -24,7 +24,7 @@ struct DrawJokeOverlay: View {
                     .frame(width: 517, height: 515)
                     .background(
                         ZStack {
-                            LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
+                            LinearGradient(gradient: Gradient(colors: [Color.ABTColor.BlueJeans, Color.ABTColor.SteelBlue]), startPoint: .top, endPoint: .bottom)
                             Image("card-bg")
                                 .resizable()
                                 .scaledToFill()
