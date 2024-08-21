@@ -10,6 +10,6 @@ import Foundation
 protocol JokesGatchaServiceProtocol {
     
     func loadJson() throws -> [JokeDto]
-    func getRandomOne() throws -> String;
+    func getRandomOne() throws -> JokeDto;
     
 }

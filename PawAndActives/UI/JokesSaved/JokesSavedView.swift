@@ -14,10 +14,11 @@ struct JokesSavedView: View {
     let data = JokesCollectionManager.shared.fetchJokes().filter { return $0.isFavorite }
     
     var columns: [GridItem] = [
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
-        GridItem(.fixed(270)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
     ]
     
     var body: some View {
@@ -37,8 +38,10 @@ struct JokesSavedView: View {
                         Text("You don’t have any cards")
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                            .foregroundStyle(.gray)
                         Text("Finish workout or challenges to get golds to draw a card!")
                             .font(.largeTitle)
+                            .foregroundStyle(.gray)
                         Spacer()
                     }
                 } else {
@@ -48,14 +51,7 @@ struct JokesSavedView: View {
                                 Button {
                                     selectedJoke = joke
                                 } label: {
-                                    Text("\(joke.joke.Joke)")
-                                        .font(.title)
-                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                        .padding()
-                                        .frame(width: 270, height: 300)
-                                        .background(Color.orange)
-                                        .foregroundColor(Color.black)
-                                        .cornerRadius(25)
+                                    JokeCard(category: joke.joke.Category, joke: joke.joke.Joke)
                                 }
                             }
                         }

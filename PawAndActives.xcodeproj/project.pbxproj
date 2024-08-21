@@ -75,6 +75,10 @@
 		BA8E83932C728E9800DEDFBD /* JokesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */; };
 		BA8E83952C72974D00DEDFBD /* JokeDetailOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */; };
 		BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */; };
+		BA8E839A2C748B4600DEDFBD /* machine_loop.riv in Resources */ = {isa = PBXBuildFile; fileRef = BA8E83992C748B4600DEDFBD /* machine_loop.riv */; };
+		BA8E839C2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E839B2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift */; };
+		BA8E839E2C75CACC00DEDFBD /* jokes-with-category.json in Resources */ = {isa = PBXBuildFile; fileRef = BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */; };
+		BA8E83A02C75EC4200DEDFBD /* JokeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E839F2C75EC4200DEDFBD /* JokeCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +151,10 @@
 		BA8E83922C728E9800DEDFBD /* JokesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCollectionView.swift; sourceTree = "<group>"; };
 		BA8E83942C72974D00DEDFBD /* JokeDetailOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDetailOverlay.swift; sourceTree = "<group>"; };
 		BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSavedView.swift; sourceTree = "<group>"; };
+		BA8E83992C748B4600DEDFBD /* machine_loop.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = machine_loop.riv; sourceTree = "<group>"; };
+		BA8E839B2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteJokeButtonStyle.swift; sourceTree = "<group>"; };
+		BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "jokes-with-category.json"; sourceTree = "<group>"; };
+		BA8E839F2C75EC4200DEDFBD /* JokeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +409,7 @@
 				622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */,
 				622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */,
 				BA2A405B2C6C93D7003365C5 /* jokes.json */,
+				BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */,
 			);
 			path = JokesGatcha;
 			sourceTree = "<group>";
@@ -426,6 +435,7 @@
 		BA7A84B12C6DE4CC007628A3 /* JokesGatcha */ = {
 			isa = PBXGroup;
 			children = (
+				BA8E83992C748B4600DEDFBD /* machine_loop.riv */,
 				BA806E312C6F5863007D1A8E /* machine_white.riv */,
 				BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */,
 				BA7A84BD2C6E5C44007628A3 /* DrawJokeOverlay.swift */,
@@ -445,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				BA7A84BB2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift */,
+				BA8E839B2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift */,
 			);
 			path = ButtonStyle;
 			sourceTree = "<group>";
@@ -455,6 +466,7 @@
 				BA64DFBD2C7275D20034724E /* BarProgressStyle.swift */,
 				BA64DFBE2C7275D20034724E /* ButtonView.swift */,
 				BA7A84C02C6E5DCC007628A3 /* CoinLogo.swift */,
+				BA8E839F2C75EC4200DEDFBD /* JokeCard.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -543,7 +555,9 @@
 				BA64DFB92C7270310034724E /* machine_white.riv in Resources */,
 				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				628947CB2C74870A00E99D64 /* success.mp3 in Resources */,
+				BA8E839E2C75CACC00DEDFBD /* jokes-with-category.json in Resources */,
 				628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */,
+				BA8E839A2C748B4600DEDFBD /* machine_loop.riv in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
 			);
@@ -584,6 +598,7 @@
 				622BFCF42C6A8FDA001BF7C3 /* GameRepositoryService.swift in Sources */,
 				BA7A84B92C6E050A007628A3 /* PreviewBorderedModifier.swift in Sources */,
 				622BFCFA2C6A9014001BF7C3 /* WorkoutRepositoryManager.swift in Sources */,
+				BA8E83A02C75EC4200DEDFBD /* JokeCard.swift in Sources */,
 				620F96342C6BFD7600821C6F /* CGPoint.swift in Sources */,
 				622BFCEA2C6A8CBC001BF7C3 /* WorkoutType.swift in Sources */,
 				620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */,
@@ -600,6 +615,7 @@
 				622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */,
 				622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */,
 				622BFCEE2C6A8D3F001BF7C3 /* ScoreDetail.swift in Sources */,
+				BA8E839C2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift in Sources */,
 				BA7A84BC2C6E5B0A007628A3 /* CallToActionPrimaryButtonStyle.swift in Sources */,
 				0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,

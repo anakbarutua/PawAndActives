@@ -10,12 +10,27 @@ import RiveRuntime
 
 struct JokesGatchaView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @State var drawedJoke: String?;
+    @State var drawedJoke: Joke?
     
     var body: some View {
         ZStack {
             VStack {
-                RiveViewModel(fileName: "machine_white").view()
+                HStack {
+                    Text("Jokes Collected")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
+//                    Button {
+//                        navigationManager.navigate(to: .jokesSavedView)
+//                    } label: {
+//                        Image(systemName: "bookmark")
+//                            .font(.largeTitle)
+//                            .foregroundStyle(.black)
+//                    }
+                }
+                .padding(.horizontal)
+                .padding(.horizontal)
+                RiveViewModel(fileName: "machine_loop").view()
                     .frame(maxHeight: 500)
                     .padding(.bottom)
                 Button(action: handleDrawJokeButtonPressed, label: {
@@ -30,18 +45,18 @@ struct JokesGatchaView: View {
                     .frame(maxWidth: 500)
                 })
                .buttonStyle(CallToActionPrimaryButtonStyle())
+               .frame(maxWidth: 517)
             }
             DrawJokeOverlay(drawedJoke: $drawedJoke)
         }
-        .navigationTitle("Jokes Bank")
     }
     
     func handleDrawJokeButtonPressed() {
         // TODO: Handle JokeError
         let joke = try! JokesGatchaManager.shared.getRandomOne()
         
-        drawedJoke = joke
-        JokesCollectionManager.shared.appendJoke(joke: Joke(joke: JokeDto(Joke: joke), isFavorite: false))
+        drawedJoke = Joke(joke: joke, isFavorite: false)
+        JokesCollectionManager.shared.appendJoke(joke: drawedJoke!)
     }
 }
 

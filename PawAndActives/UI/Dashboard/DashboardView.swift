@@ -10,6 +10,17 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
+    
+    let data = Array(JokesCollectionManager.shared.fetchJokes().prefix(5))
+    
+    var columns: [GridItem] = [
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+        GridItem(.fixed(225)),
+    ]
+    
     var body: some View {
         GeometryReader { geo in
         ScrollView {
@@ -151,7 +162,7 @@ struct DashboardView: View {
                                 .padding(.leading, 0.01 * geo.size.width)
                         }
                         HStack{
-                            Text("Your Collection")
+                            Text("Jokes Collected")
                                 .font(.title)
                                 .foregroundColor(Color.ABTColor.CharlestonGreen)
                                 .fontWeight(.bold)
@@ -168,16 +179,29 @@ struct DashboardView: View {
                             })
                         }
                         .padding(.top, 0.02 * geo.size.height)
-                        VStack{
-                            Text("You don’t have any cards")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.gray)
-                            Text("Finish workout or challenges to get golds to draw a card!")
-                                .font(.title)
-                                .foregroundStyle(.gray)
-                        }.padding(.top, 0.06 * geo.size.height)
-                        
+                        if (data.isEmpty) {
+                            VStack{
+                                Text("You don’t have any cards")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.gray)
+                                Text("Finish workout or challenges to get golds to draw a card!")
+                                    .font(.title)
+                                    .foregroundStyle(.gray)
+                            }.padding(.top, 0.06 * geo.size.height)
+                        } else {
+                            ScrollView {
+                                LazyVGrid(columns: self.columns) {
+                                    ForEach(data, id: \.self) { joke in
+                                        Button {
+                                        } label: {
+                                            JokeCard(category: joke.joke.Category, joke: joke.joke.Joke)
+                                        }
+                                    }
+                                }
+                                .padding()
+                            }
+                        }
                     }
                 }
             
