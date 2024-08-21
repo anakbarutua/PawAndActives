@@ -20,7 +20,7 @@ class JokesGatchaManager: JokesGatchaServiceProtocol {
     }
 
     internal func loadJson() throws -> [JokeDto] {
-        if let url = Bundle.main.url(forResource: "jokes", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "jokes-with-category", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
@@ -34,17 +34,17 @@ class JokesGatchaManager: JokesGatchaServiceProtocol {
         throw JokeError.fileNotFound
     }
     
-    func fetchUnownedJokes() throws -> [String] {
-        let jokes: [String] = try loadJson().map { $0.Joke };
+    func fetchUnownedJokes() throws -> [JokeDto] {
+        let jokes: [JokeDto] = try loadJson();
         let ownedJokes = jokesCollectionManager.fetchJokes()
         
         return jokes.filter {
             joke in
-            return !ownedJokes.map{ $0.joke.Joke }.contains(joke)
+            return !ownedJokes.map{ $0.joke.Joke }.contains(joke.Joke)
         }
     }
     
-    func getRandomOne() throws -> String {
+    func getRandomOne() throws -> JokeDto {
         let joke = try fetchUnownedJokes().randomElement()
         
         if(joke == nil){

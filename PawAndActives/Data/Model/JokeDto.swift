@@ -9,4 +9,5 @@ import Foundation
 
 struct JokeDto : Codable, Hashable {
     var Joke: String = ""
+    var Category: String = ""
 }

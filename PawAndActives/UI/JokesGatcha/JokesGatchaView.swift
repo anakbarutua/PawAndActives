@@ -55,7 +55,7 @@ struct JokesGatchaView: View {
         // TODO: Handle JokeError
         let joke = try! JokesGatchaManager.shared.getRandomOne()
         
-        drawedJoke = Joke(joke: JokeDto(Joke: joke), isFavorite: false)
+        drawedJoke = Joke(joke: joke, isFavorite: false)
         JokesCollectionManager.shared.appendJoke(joke: drawedJoke!)
     }
 }
