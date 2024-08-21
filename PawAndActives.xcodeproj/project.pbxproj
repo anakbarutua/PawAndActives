@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
 		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
+		0DB9A2232C75F11900EF743C /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 0DB9A2222C75F11900EF743C /* RiveRuntime */; };
 		620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96122C6A9CA600821C6F /* DashboardView.swift */; };
 		620F96152C6A9CB500821C6F /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96142C6A9CB500821C6F /* ChallengeView.swift */; };
 		620F96172C6A9CCA00821C6F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96162C6A9CCA00821C6F /* DashboardViewModel.swift */; };
@@ -56,7 +57,6 @@
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
-		628947C82C74838900E99D64 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 628947C72C74838900E99D64 /* RiveRuntime */; };
 		628947CB2C74870A00E99D64 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947C92C74870A00E99D64 /* success.mp3 */; };
 		628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947CA2C74870A00E99D64 /* bgm.mp3 */; };
 		628C9B7E2C73B6CC00574504 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628C9B7D2C73B6CB00574504 /* SoundService.swift */; };
@@ -162,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				628947C82C74838900E99D64 /* RiveRuntime in Frameworks */,
+				0DB9A2232C75F11900EF743C /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +305,7 @@
 		622BFCD12C6A8725001BF7C3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				BA8E83912C728E8800DEDFBD /* JokesCollection */,
 				628C9B7C2C73B62C00574504 /* Sound */,
 				0DB9A2162C6D1A5F00EF743C /* Notification */,
 				622BFCD52C6A884C001BF7C3 /* Repository */,
@@ -361,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				BA8E83962C729DDA00DEDFBD /* JokesSaved */,
-				BA8E83912C728E8800DEDFBD /* JokesCollection */,
 				BA7A84BF2C6E5DAD007628A3 /* Reusable */,
 				BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */,
 				BA7A84B72C6E04F2007628A3 /* Modifier */,
@@ -505,7 +505,7 @@
 			);
 			name = PawAndActives;
 			packageProductDependencies = (
-				628947C72C74838900E99D64 /* RiveRuntime */,
+				0DB9A2222C75F11900EF743C /* RiveRuntime */,
 			);
 			productName = PawAndActives;
 			productReference = 622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */;
@@ -766,7 +766,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = F7UK99A97Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
@@ -802,7 +802,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = F7UK99A97Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
@@ -865,7 +865,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		628947C72C74838900E99D64 /* RiveRuntime */ = {
+		0DB9A2222C75F11900EF743C /* RiveRuntime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */;
 			productName = RiveRuntime;

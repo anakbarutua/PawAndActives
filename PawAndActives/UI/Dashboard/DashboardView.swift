@@ -62,7 +62,7 @@ struct DashboardView: View {
                                     .font(.system(size: 32))
                                     .foregroundColor(Color.ABTColor.Linen)
                                     }.scaledToFit()
-                                    .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
+                                    .frame(width: 0.0865 * geo.size.width, height: 0.054 * geo.size.height)
                                     .padding(.trailing, 0.03 * geo.size.width)
                                     .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
@@ -74,8 +74,7 @@ struct DashboardView: View {
                                 VStack{
                                     Image.ABTImage.GTCIcon
                                         .resizable()
-                                        .frame(width: 0.2 * geo.size.width ,height: 0.25 * geo.size.height)
-                                        .padding(.bottom, 0.01 * geo.size.height)
+                                        .frame(width: 0.21 * geo.size.width ,height: 0.275 * geo.size.height)
                                     Text("Grab The Circle")
                                         .font(.title)
                                         .fontWeight(.bold)
@@ -94,19 +93,16 @@ struct DashboardView: View {
                                     ZStack{
                                         Image.ABTImage.PersonIcon
                                             .resizable()
-                                            .frame(width: 0.13 * geo.size.width ,height: 0.285 * geo.size.height)
-                                            .padding(.leading, 0.065 * geo.size.width)
-                                            .padding(.top, 0.02 * geo.size.height)
+                                            .padding(.top, 0.01 * geo.size.height)
+                                            .frame(width: 0.13 * geo.size.width ,height: 0.27 * geo.size.height)
+                                            .padding(.leading, 0.08 * geo.size.width)
+                                            .padding(.top, 0.04 * geo.size.height)
                                         VStack(spacing: 0){
-                                            Image.ABTImage.KotakTopIcon
+                                            Image.ABTImage.komponent
                                                 .resizable()
-                                                .frame(width: 0.099 * geo.size.width, height: 0.154 * geo.size.height)
-                                                .padding(.trailing, 0.1 * geo.size.width)
-                                            Image.ABTImage.KotakIcon
-                                                .resizable()
-                                                .frame(width: 0.2 * geo.size.width, height: 0.15 * geo.size.height)
+                                                .frame(width: 0.2 * geo.size.width, height: 0.31 * geo.size.height)
                                         }
-                                    }.padding(.bottom, 0.001 * geo.size.height)
+                                    }
                                     Text("Avoid The Blocks")
                                         .font(.title)
                                         .fontWeight(.bold)

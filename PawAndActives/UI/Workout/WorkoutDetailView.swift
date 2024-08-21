@@ -38,7 +38,7 @@ struct WorkoutDetailView: View {
                                     .font(.system(size: 32))
                                     .foregroundColor(Color.ABTColor.Linen)
                                     }.scaledToFit()
-                                    .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
+                                    .frame(width: 0.0865 * geo.size.width, height: 0.056 * geo.size.height)
                                     .padding(.trailing, 0.03 * geo.size.width)
                                     .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                     }.padding(.leading, geo.size.width * 0.02)
@@ -88,7 +88,7 @@ struct WorkoutDetailView: View {
                             }
                         )
                     }
-                    .padding(.leading, 0.1 * geo.size.width)
+                    .padding(.horizontal, 0.1 * geo.size.width)
 
                 }
             }

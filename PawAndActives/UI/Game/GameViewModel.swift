@@ -396,13 +396,13 @@ class GameViewModel: ObservableObject {
         let scoreNumber = (Double(score) / Double(maxObstacle)) * 100
         let finalScore = Int((scoreNumber * 10).rounded(.toNearestOrAwayFromZero))
         
-        if scoreNumber == 1.0 {
+        if scoreNumber == 100.0 {
             return (percentage: finalScore, letter: .ss)
-        } else if scoreNumber > 0.8 {
+        } else if scoreNumber > 80.0 {
             return (percentage: finalScore, letter: .s)
-        } else if scoreNumber >= 0.65 {
+        } else if scoreNumber >= 65.0 {
             return (percentage: finalScore, letter: .a)
-        } else if scoreNumber >= 0.25 {
+        } else if scoreNumber >= 25.0 {
             return (percentage: finalScore, letter: .b)
         } else {
             return (percentage: finalScore, letter: .c)

@@ -15,6 +15,8 @@ struct GameView: View {
     var workoutType: WorkoutType = .avoidTheBlocks
     var userDifficulty : Level = .medium
     
+    @State var isShowInstruction = true
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -45,25 +47,24 @@ struct GameView: View {
                             .font(.system(size: 128))
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
-                        
-                        VStack{
-                            Text("Move your hands towards the circles in sequence")
-                                .fontWeight(.heavy)
-                                .font(.system(size: 24))
-                                .frame(width: 290)
-                                .padding(12)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                .background(
-                                    RoundedRectangle(
-                                        cornerRadius: 34)
-                                    .fill(Color.ABTColor.SteelBlue)
-                                )
-                               
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                        .padding([.trailing,.bottom], 40)
-                        
                     }
+                    
+                    VStack{
+                        Text("Position your \((viewModel.workoutType == .grabTheCircles) ? "hands" : "head") in the orange circle to start workout")
+                            .fontWeight(.heavy)
+                            .font(.system(size: 24))
+                            .frame(width: 290)
+                            .padding(12)
+                            .foregroundColor(Color.ABTColor.AntiFlashWhite)
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 34)
+                                .fill(Color.ABTColor.SteelBlue)
+                            )
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding([.trailing,.bottom], 40)
+                    
                     switch workoutType {
                     case .grabTheCircles:
                         CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
@@ -80,49 +81,110 @@ struct GameView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
                     
-                    VStack{
-                        HStack{
-                            Image(systemName: "figure.arms.open")
-                                .resizable()
-                                .frame(width: 70, height: 100)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                .padding(.leading, 45)
-                                
-                            Text("POSITION YOUR \(workoutType == .avoidTheBlocks ? "HEAD" : "HAND") IN THE ORANGE CIRCLE TO START WORKOUT")
-                                .font(.system(size: 23))
-                                .fontWeight(.heavy)
-                                .frame(width: 400, height: 140)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                
-                        }.background(
-                            RoundedRectangle(
-                                cornerRadius: 34)
-                            .fill(Color.ABTColor.SteelBlue)
-                        )
-                        .padding([.trailing,.bottom],20)
-                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
-                        
-                    }
                     
-                    VStack{
-                        HStack{
-                            Image(systemName: "ipad.landscape")
-                                .resizable()
-                                .frame(width: 142, height:90)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                                .padding(.leading, 20)
-                            Text("SET YOUR DEVICE UPRIGHT ON A TABLE OR CHAIR")
-                                .font(.system(size: 23))
-                                .fontWeight(.heavy)
-                                .frame(width: 240, height: 120)
-                                .foregroundColor(Color.ABTColor.AntiFlashWhite)
-                        }.background(
-                            RoundedRectangle(
-                                cornerRadius: 34)
-                            .fill(Color.ABTColor.SteelBlue)
-                        )
-                        .padding([.top,.leading],20)
-                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
+                    if isShowInstruction {
+                        
+                        VStack {
+                            VStack(spacing: 40) {
+                                // Title
+                                Text("How to Play")
+                                    .font(.system(size: 48))
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding([.leading, .top], 40)
+                                
+                                // Instructions
+                                VStack(alignment: .leading, spacing: 40) {
+                                    HStack(spacing: 50) {
+                                        Image(systemName: "ipad.landscape")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 40)
+                                            .foregroundColor(.white)
+                                        
+                                        Text("SET YOUR DEVICE ON A TABLE OR CHAIR")
+                                            .font(.system(size: 32))
+                                            .fontWeight(.heavy)
+                                            .foregroundColor(Color.ABTColor.White)
+                                            .multilineTextAlignment(.leading)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    
+                                    HStack(spacing: 50) {
+                                        Image(systemName: "arrow.left.and.right")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 40)
+                                            .foregroundColor(.white)
+                                        
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("SET DISTANCE BETWEEN YOURSELF AND THE IPAD ")
+                                                .font(.system(size: 32))
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color.ABTColor.White)
+                                            +
+                                            Text("~1 METER")
+                                                .font(.system(size: 32))
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color.ABTColor.MikadoYellow)
+                                        }
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    
+                                    HStack(spacing: 50) {
+                                        Image(systemName: "figure.arms.open")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 60)
+                                            .foregroundColor(.white)
+                                        
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("POSITION YOUR \((viewModel.workoutType == .grabTheCircles) ? "HANDS" : "HEAD") IN THE ")
+                                                .font(.system(size: 32))
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color.ABTColor.White)
+                                            +
+                                            Text("ORANGE CIRCLE ")
+                                                .font(.system(size: 32))
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color.ABTColor.MikadoYellow)
+                                            +
+                                            Text("TO START WORKOUT")
+                                                .font(.system(size: 32))
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color.ABTColor.White)
+                                        }
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                }
+                                .padding(.horizontal, 40)
+                                .padding(.vertical, 40)
+                                
+                                // Continue Button
+                                Button(action: {
+                                    isShowInstruction = false
+                                }) {
+                                    Text("Continue")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.black)
+                                        .frame(maxWidth: .infinity, maxHeight: 52)
+                                        .background(Color.ABTColor.MikadoYellow)
+                                        .cornerRadius(10)
+                                }
+                                .padding(.horizontal, 50)
+                                .padding(.bottom, 40)
+                            }
+                            .background(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .fill(Color.ABTColor.SteelBlue)
+                            )
+                            .padding(.horizontal, 60)
+                            .padding(.vertical, 40)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.75))
                     }
                     
                 case .started:
