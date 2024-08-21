@@ -77,6 +77,7 @@
 		BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */; };
 		BA8E839A2C748B4600DEDFBD /* machine_loop.riv in Resources */ = {isa = PBXBuildFile; fileRef = BA8E83992C748B4600DEDFBD /* machine_loop.riv */; };
 		BA8E839C2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8E839B2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift */; };
+		BA8E839E2C75CACC00DEDFBD /* jokes-with-category.json in Resources */ = {isa = PBXBuildFile; fileRef = BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,7 @@
 		BA8E83972C729DEB00DEDFBD /* JokesSavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSavedView.swift; sourceTree = "<group>"; };
 		BA8E83992C748B4600DEDFBD /* machine_loop.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = machine_loop.riv; sourceTree = "<group>"; };
 		BA8E839B2C755DE600DEDFBD /* FavoriteJokeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteJokeButtonStyle.swift; sourceTree = "<group>"; };
+		BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "jokes-with-category.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 				622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */,
 				622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */,
 				BA2A405B2C6C93D7003365C5 /* jokes.json */,
+				BA8E839D2C75CACC00DEDFBD /* jokes-with-category.json */,
 			);
 			path = JokesGatcha;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				BA64DFB92C7270310034724E /* machine_white.riv in Resources */,
 				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				628947CB2C74870A00E99D64 /* success.mp3 in Resources */,
+				BA8E839E2C75CACC00DEDFBD /* jokes-with-category.json in Resources */,
 				628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */,
 				BA8E839A2C748B4600DEDFBD /* machine_loop.riv in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
