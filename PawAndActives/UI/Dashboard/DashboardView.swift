@@ -195,21 +195,47 @@ struct DashboardView: View {
                                     ForEach(data, id: \.self) { joke in
                                         Button {
                                         } label: {
-                                            Text("\(joke.joke.Joke)")
-                                                .font(.title)
-                                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                                .padding()
-                                                .frame(width: 225, height: 300)
-                                                .background(
-                                                    ZStack {
-                                                        LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
-                                                        Image("card-bg")
-                                                            .resizable()
-                                                            .scaledToFill()
-                                                    }
-                                                )
-                                                .foregroundColor(Color.white)
-                                                .cornerRadius(25)
+                                            ZStack {
+                                                Rectangle()
+                                                    .foregroundColor(.clear)
+                                                    .frame(width: 225, height: 300)
+                                                    .background(
+                                                        ZStack {
+                                                            LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
+                                                            Image("card-bg")
+                                                                .resizable()
+                                                                .scaledToFill()
+                                                        }
+                                                    )
+                                                    .cornerRadius(25)
+                                                VStack(alignment: .leading) {
+                                                    Text("\(joke.joke.Category)")
+                                                        .font(.system( size: 30))
+                                                        .fontWeight(.heavy)
+                                                        .tracking(0.38)
+                                                        .lineSpacing(34)
+                                                        .lineLimit(1)
+                                                        .foregroundColor(Color.ABTColor.MikadoYellow)
+                                                        .padding(.top)
+                                                        .padding(.horizontal)
+                                                    Text("\(joke.joke.Joke)")
+                                                        .font(.title)
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                        .padding()
+//                                                        .background(
+//                                                            ZStack {
+//                                                                LinearGradient(gradient: Gradient(colors: [Color(red: 0.36, green: 0.73, blue: 0.87), Color(red: 0.28, green: 0.58, blue: 0.69)]), startPoint: .top, endPoint: .bottom)
+//                                                                Image("card-bg")
+//                                                                    .resizable()
+//                                                                    .scaledToFill()
+//                                                            }
+//                                                        )
+                                                        .foregroundColor(Color.white)
+                                                        .cornerRadius(25)
+                                                    Spacer()
+                                                }
+                                            }
+                                            .frame(width: 225, height: 300)
                                         }
                                     }
                                 }
