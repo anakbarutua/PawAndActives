@@ -23,6 +23,7 @@ struct PawAndActivesApp: App {
                     }
             }
             .environmentObject(navigationManager)
+            .modelContainer(for: [Joke.self, Session.self, WorkoutDifficulties.self])
         }
     }
 }

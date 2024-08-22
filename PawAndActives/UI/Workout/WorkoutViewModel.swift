@@ -17,43 +17,26 @@ class WorkoutViewModel: ObservableObject{
     @Published var showPermissionAlert = false
     @Published var alertTitle = ""
     @Published var alertMessage = ""
-    @Published var player1: AVPlayer
-    @Published var player2: AVPlayer
-
-        private var cancellables = Set<AnyCancellable>()
-
-        init(videoURL1: URL, videoURL2: URL) {
-            self.player1 = AVPlayer(url: videoURL1)
-            self.player2 = AVPlayer(url: videoURL2)
-
-            setupLooping(for: player1)
-            setupLooping(for: player2)
-        }
-
-        private func setupLooping(for player: AVPlayer) {
-            NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
-                .sink { _ in
-                    player.seek(to: .zero)
-                    player.play()
-                }
-                .store(in: &cancellables)
-        }
-
-        func playVideo1() {
-            player1.play()
-        }
-
-        func pauseVideo1() {
-            player1.pause()
-        }
-
-        func playVideo2() {
-            player2.play()
-        }
-
-        func pauseVideo2() {
-            player2.pause()
-        }
+    
+    @Published var workoutType: WorkoutType = .grabTheCircles
+    
+    @Published var highScore: ScoreDetail?
+    
+    @Published var currentDifficulty: Level = Level.medium
+    
+    @Published var isFirstGame: Bool = true
+    
+//    private let workoutRepositoryService: WorkoutRepositoryManager
+//    private let gameRepositoryService: GameRepositoryManager
+    
+    private let repoManager: JokesCollectionManager
+    
+    
+    init(repoManager: JokesCollectionManager) {
+//        self.workoutRepositoryService = workoutRepositoryService
+//        self.gameRepositoryService = gameRepositoryService
+        self.repoManager = repoManager
+    }
     
     func requestCameraPermission() {
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
@@ -100,6 +83,36 @@ class WorkoutViewModel: ObservableObject{
         
         if UIApplication.shared.canOpenURL(settingsUrl){
             UIApplication.shared.open(settingsUrl)
+        }
+    }
+    
+    func fetchHighScore() {
+        if let highScoreSession = repoManager.fetchHighScore(workout: workoutType) {
+            self.highScore = highScoreSession.score
+        }
+    }
+    
+    func fetchCurrentDifficulty() {
+        if let currentDifficulty = repoManager.fetchWorkoutDifficulty(workout: workoutType).first {
+            self.currentDifficulty = Level(rawValue: currentDifficulty.currentDifficulty)!
+        }
+    }
+    
+    func addLevelDifficulties() {
+        if isFirstGame {
+            repoManager.addDifficulty(
+                WorkoutDifficulties(
+                    workoutType: .avoidTheBlocks, currentDifficulty: .medium
+                )
+            )
+            
+            repoManager.addDifficulty(
+                WorkoutDifficulties(
+                    workoutType: .grabTheCircles, currentDifficulty: .medium
+                )
+            )
+            
+            isFirstGame = false
         }
     }
 }

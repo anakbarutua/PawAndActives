@@ -12,6 +12,9 @@ struct JokesGatchaView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     @State var drawedJoke: Joke?
     
+    @AppStorage("totalCoin")
+    var totalCoin: Int = 0
+    
     var body: some View {
         ZStack {
             VStack {
@@ -44,7 +47,8 @@ struct JokesGatchaView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: 500)
                 })
-               .buttonStyle(CallToActionPrimaryButtonStyle())
+               .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin <= 50))
+               .disabled(totalCoin <= 50)
                .frame(maxWidth: 517)
             }
             DrawJokeOverlay(drawedJoke: $drawedJoke)
@@ -57,6 +61,7 @@ struct JokesGatchaView: View {
         
         drawedJoke = Joke(joke: joke, isFavorite: false)
         JokesCollectionManager.shared.appendJoke(joke: drawedJoke!)
+        totalCoin -= 50
     }
 }
 

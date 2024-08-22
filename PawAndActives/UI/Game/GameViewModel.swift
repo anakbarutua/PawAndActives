@@ -19,6 +19,11 @@ class GameViewModel: ObservableObject {
     var cameraManager: CameraManager
     private let soundService: SoundService
     
+    //    private let gameRepositoryService: GameRepositoryManager
+    //    private let workoutRepositoryService: WorkoutRepositoryManager
+    
+    private let repoManager: JokesCollectionManager
+    
     @Published var isSessionRunning = false
     @Published var remainingTime: TimeInterval = 60.0
     @Published var circles: [Circles] = []
@@ -38,7 +43,9 @@ class GameViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var timerCancellable: AnyCancellable?
     @Published var startCountdownCancellable: AnyCancellable?
-        
+    
+    @Published var userScore = ScoreDetail()
+    
     var objectAppearInterval: TimeInterval = 0.75
     var circleLifetime: TimeInterval = 1.0
     
@@ -46,16 +53,27 @@ class GameViewModel: ObservableObject {
     var blockColumn: CGFloat = 3
     var totalColumn = 4
     
+    private var finalScore: Int = 0
+    
     var userDifficulty : Level = .easy
     var workoutType: WorkoutType = .grabTheCircles
+    
+    @Published var addedCoin = 0
     
     @Published var maxObstacle = 0
     
     @Published var isPause = false
     
-    init() {
+    @Published var highScore: ScoreDetail?
+    
+    @Published var isNewHighScore: Bool = false
+    
+    init(repoManager: JokesCollectionManager) {
         cameraManager = CameraManager()
         soundService = SoundManager()
+        //        self.gameRepositoryService = gameRepositoryService
+        //        self.workoutRepositoryService = workoutRepositoryService
+        self.repoManager = repoManager
         setupBindings()
         maxObstacle = 0
     }
@@ -109,7 +127,7 @@ class GameViewModel: ObservableObject {
                 self.handPoints = []
             }
         }
-   }
+    }
     
     func startCamera() {
         cameraManager.startSession(workoutType: workoutType)
@@ -211,7 +229,7 @@ class GameViewModel: ObservableObject {
         self.timerCountDown()
         self.playSound(named: "bgm")
         self.setVolume(named: "bgm", volume: 0.1)
-        if remainingTime != 0 {
+        if remainingTime >= 3 {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
             } else {
@@ -265,7 +283,7 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started, !isPause else { return }
+                guard let self = self, self.userState == .started, !isPause, remainingTime > 2 else { return }
                 self.generateCircle()
             }
             .store(in: &cancellables)
@@ -277,7 +295,7 @@ class GameViewModel: ObservableObject {
         timerCancellable = Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started, !isPause else { return }
+                guard let self = self, self.userState == .started, !isPause, remainingTime > 2 else { return }
                 self.randomizeNonRedSection()
             }
     }
@@ -366,10 +384,15 @@ class GameViewModel: ObservableObject {
         }
         
         // Stop the camera and end the game
+        scoring()
+        checkNewHighScore()
         self.stopCamera()
-        self.userState = .gameOver
         self.circles.removeAll()
         timerCancellable?.cancel()
+        stopSound(named: "bgm")
+        addSession()
+        updateWorkoutDifficulty()
+        self.userState = .gameOver
     }
     
     func pauseGame() {
@@ -380,7 +403,7 @@ class GameViewModel: ObservableObject {
         isPause = true
         pauseSound(named: "bgm")
     }
-
+    
     func resumeGame() {
         guard isPause else { return }
         isPause = false
@@ -392,40 +415,142 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func scoring() -> (percentage: Int, letter: Score) {
-        let scoreNumber = (Double(score) / Double(maxObstacle)) * 100
+    func scoring() {
+        let scoreNumber = (Double(maxObstacle) != 0) ? (Double(score) / Double(maxObstacle)) * 100 : 0
         let finalScore = Int((scoreNumber * 10).rounded(.toNearestOrAwayFromZero))
         
+        self.finalScore = finalScore
+        userScore.numberScore = finalScore
         if scoreNumber == 100.0 {
-            return (percentage: finalScore, letter: .ss)
-        } else if scoreNumber > 80.0 {
-            return (percentage: finalScore, letter: .s)
+            userScore.letterScore = .ss
+            
+            switch userDifficulty {
+            case .easy:
+                self.addedCoin = 10
+            case .medium:
+                self.addedCoin = 25
+            case .hard:
+                self.addedCoin = 50
+            }
+        } else if scoreNumber >= 80.0 {
+            userScore.letterScore = .s
+            
+            switch userDifficulty {
+            case .easy:
+                self.addedCoin = 8
+            case .medium:
+                self.addedCoin = 20
+            case .hard:
+                self.addedCoin = 40
+            }
         } else if scoreNumber >= 65.0 {
-            return (percentage: finalScore, letter: .a)
-        } else if scoreNumber >= 25.0 {
-            return (percentage: finalScore, letter: .b)
+            userScore.letterScore = .a
+            
+            switch userDifficulty {
+            case .easy:
+                self.addedCoin = 6
+            case .medium:
+                self.addedCoin = 15
+            case .hard:
+                self.addedCoin = 30
+            }
+        } else if scoreNumber >= 40.00 {
+            userScore.letterScore = .b
+            
+            switch userDifficulty {
+            case .easy:
+                self.addedCoin = 4
+            case .medium:
+                self.addedCoin = 10
+            case .hard:
+                self.addedCoin = 20
+            }
         } else {
-            return (percentage: finalScore, letter: .c)
+            userScore.letterScore = .c
+            
+            switch userDifficulty {
+            case .easy:
+                self.addedCoin = 2
+            case .medium:
+                self.addedCoin = 5
+            case .hard:
+                self.addedCoin = 10
+            }
         }
     }
     
     func playSound(named soundName: String) {
         soundService.playSound(named: soundName)
     }
-
+    
     func stopSound(named soundName: String) {
         soundService.stopSound(named: soundName)
     }
-
+    
     func pauseSound(named soundName: String) {
         soundService.pauseSound(named: soundName)
     }
-
+    
     func resumeSound(named soundName: String) {
         soundService.resumeSound(named: soundName)
     }
     
     func setVolume(named soundName: String, volume: Float) {
         soundService.setVolume(named: soundName, volume: volume)
+    }
+    
+    func addSession() {
+        let session = Session(date: .now, workout: workoutType, score: ScoreDetail(numberScore: userScore.numberScore, letterScore: userScore.letterScore))
+        repoManager.addSession(session)
+    }
+    
+    func updateWorkoutDifficulty() {
+        if let currentDifficulty = repoManager.fetchWorkoutDifficulty(workout: workoutType).first {
+            var newDifficulty: String = currentDifficulty.currentDifficulty
+            
+            if currentDifficulty.currentDifficulty == Level.easy.rawValue {
+                if userScore.letterScore == .s {
+                    newDifficulty = Level.medium.rawValue
+                } else {
+                    newDifficulty = Level.easy.rawValue
+                }
+            } else if currentDifficulty.currentDifficulty == Level.medium.rawValue {
+                if userScore.letterScore == .s {
+                    newDifficulty = Level.hard.rawValue
+                } else if userScore.letterScore == .c {
+                    newDifficulty = Level.easy.rawValue
+                } else {
+                    newDifficulty = Level.medium.rawValue
+                }
+            } else {
+                if userScore.letterScore == .s {
+                    newDifficulty = Level.hard.rawValue
+                } else if userScore.letterScore == .c {
+                    newDifficulty = Level.medium.rawValue
+                } else {
+                    newDifficulty = Level.hard.rawValue
+                }
+            }
+            
+            currentDifficulty.currentDifficulty = newDifficulty
+            
+            repoManager.updateDifficulty(currentDifficulty)
+        }
+    }
+    
+    func fetchHighScore() {
+        if let highScoreSession = repoManager.fetchHighScore(workout: workoutType) {
+            self.highScore = highScoreSession.score
+        }
+    }
+    
+    func checkNewHighScore() {
+        fetchHighScore()
+        guard let score = highScore else { return  }
+        if score.numberScore < self.finalScore {
+            DispatchQueue.main.async {
+                self.isNewHighScore = true
+            }
+        }
     }
 }

@@ -82,8 +82,7 @@ struct DrawJokeOverlay: View {
                         .fontWeight(.bold)
                         .frame(maxWidth: 500)
                 })
-               .buttonStyle(CallToActionPrimaryButtonStyle())
-               .frame(maxWidth: 517)
+                .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

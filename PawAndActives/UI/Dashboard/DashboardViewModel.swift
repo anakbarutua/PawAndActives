@@ -13,6 +13,11 @@ class DashboardViewModel: ObservableObject{
     @Published var isAlert = false
     @Published var check = false
     
+    private let repoManager: JokesCollectionManager
+    
+    init(repoManager: JokesCollectionManager) {
+        self.repoManager = repoManager
+    }
     
     func requestNotificationPermission() {
         NotificationManager.shared.requestNotificationPermission { granted in
@@ -50,5 +55,15 @@ class DashboardViewModel: ObservableObject{
         }
     }
     
+    func isAnyChallengeData(workoutType: WorkoutType) -> Bool {
+        let todaySessions: [Session] = repoManager.fetchSessionByDate(by: .now, workout: workoutType)
+        
+        let isAny = todaySessions.contains(where: { $0.workout == workoutType.rawValue })
+        return isAny
+    }
     
+    func getLatestSession() -> Session? {
+        let lastSession: [Session] = repoManager.fetchAllSession()
+        return lastSession.last
+    }
 }

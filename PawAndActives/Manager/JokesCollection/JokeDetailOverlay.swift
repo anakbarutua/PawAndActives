@@ -38,7 +38,7 @@ struct JokeDetailOverlay: View {
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity)
                     })
-                   .buttonStyle(CallToActionPrimaryButtonStyle())
+                   .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
                     Button(action: {
                         if (selectedJoke == nil){
                             return
@@ -50,7 +50,7 @@ struct JokeDetailOverlay: View {
                             .font(.title)
                             .foregroundStyle(.black)
                     })
-                   .buttonStyle(CallToActionPrimaryButtonStyle())
+                   .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
                 }
                 .frame(maxWidth: 517)
             }

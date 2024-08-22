@@ -25,7 +25,7 @@ struct JokesSavedView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Saved")
+                    Text("Bookmark")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
