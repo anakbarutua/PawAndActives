@@ -30,10 +30,9 @@
 		622BFCBE2C6A72BC001BF7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */; };
 		622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */; };
 		622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFCC42C6A72BD001BF7C3 /* Preview Assets.xcassets */; };
-		622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCDB2C6A8A4A001BF7C3 /* Challenge.swift */; };
 		622BFCDE2C6A8BF6001BF7C3 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCDD2C6A8BF6001BF7C3 /* Joke.swift */; };
 		622BFCE02C6A8C31001BF7C3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCDF2C6A8C31001BF7C3 /* Session.swift */; };
-		622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulty.swift */; };
+		622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulties.swift */; };
 		622BFCE42C6A8C81001BF7C3 /* JokeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCE32C6A8C81001BF7C3 /* JokeError.swift */; };
 		622BFCE62C6A8C98001BF7C3 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCE52C6A8C98001BF7C3 /* Score.swift */; };
 		622BFCE82C6A8CA9001BF7C3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFCE72C6A8CA9001BF7C3 /* Level.swift */; };
@@ -107,10 +106,9 @@
 		622BFCBD2C6A72BC001BF7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		622BFCC12C6A72BD001BF7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		622BFCC42C6A72BD001BF7C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		622BFCDB2C6A8A4A001BF7C3 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		622BFCDD2C6A8BF6001BF7C3 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		622BFCDF2C6A8C31001BF7C3 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDifficulty.swift; sourceTree = "<group>"; };
+		622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDifficulties.swift; sourceTree = "<group>"; };
 		622BFCE32C6A8C81001BF7C3 /* JokeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeError.swift; sourceTree = "<group>"; };
 		622BFCE52C6A8C98001BF7C3 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		622BFCE72C6A8CA9001BF7C3 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -261,10 +259,9 @@
 		622BFCCD2C6A8646001BF7C3 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				622BFCDB2C6A8A4A001BF7C3 /* Challenge.swift */,
 				622BFCDD2C6A8BF6001BF7C3 /* Joke.swift */,
 				622BFCDF2C6A8C31001BF7C3 /* Session.swift */,
-				622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulty.swift */,
+				622BFCE12C6A8C69001BF7C3 /* WorkoutDifficulties.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -571,7 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				620F96242C6AA44C00821C6F /* NavigationManager.swift in Sources */,
-				622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulty.swift in Sources */,
+				622BFCE22C6A8C69001BF7C3 /* WorkoutDifficulties.swift in Sources */,
 				BA8E83982C729DEB00DEDFBD /* JokesSavedView.swift in Sources */,
 				620F961F2C6A9D5600821C6F /* WorkoutDetailView.swift in Sources */,
 				BA7A84C12C6E5DCC007628A3 /* CoinLogo.swift in Sources */,
@@ -620,7 +617,6 @@
 				0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */,
 				622BFCF62C6A8FF8001BF7C3 /* GameRepositoryManager.swift in Sources */,
 				620F961D2C6A9D3000821C6F /* GameViewModel.swift in Sources */,
-				622BFCDC2C6A8A4A001BF7C3 /* Challenge.swift in Sources */,
 				BA64DFBF2C7275D20034724E /* BarProgressStyle.swift in Sources */,
 				62D93B982C71475C00AA6A38 /* TrackingPoint.swift in Sources */,
 				622BFCE42C6A8C81001BF7C3 /* JokeError.swift in Sources */,

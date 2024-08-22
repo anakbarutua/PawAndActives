@@ -9,14 +9,14 @@ import Foundation
 import SwiftData
 
 @Model
-class WorkoutDifficulty {
+class WorkoutDifficulties {
     @Attribute(.unique) var identifier: UUID = UUID()
     
     var workoutType: String = WorkoutType.avoidTheBlocks.rawValue
-    var currentDifficulty: String = Level.easy.rawValue
+    var currentDifficulty: String = Level.medium.rawValue
     
-    init(workoutType: String, currentDifficulty: String) {
-        self.workoutType = workoutType
-        self.currentDifficulty = currentDifficulty
+    init(workoutType: WorkoutType, currentDifficulty: Level) {
+        self.workoutType = workoutType.rawValue
+        self.currentDifficulty = currentDifficulty.rawValue
     }
 }

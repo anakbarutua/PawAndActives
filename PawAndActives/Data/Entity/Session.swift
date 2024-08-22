@@ -11,13 +11,14 @@ import SwiftData
 @Model
 class Session {
     @Attribute(.unique) var identifier: UUID = UUID()
-    var workout: Workout = Workout()
-    var score: ScoreDetail = ScoreDetail()
-    var challenge: Challenge? = nil
     
-    init(workout: Workout, score: ScoreDetail, challenge: Challenge?) {
-        self.workout = workout
+    var date: Date = Date()
+    var workout: String = WorkoutType.avoidTheBlocks.rawValue
+    var score: ScoreDetail = ScoreDetail()
+    
+    init(date: Date, workout: WorkoutType, score: ScoreDetail) {
+        self.date = date
+        self.workout = workout.rawValue
         self.score = score
-        self.challenge = challenge
     }
 }
