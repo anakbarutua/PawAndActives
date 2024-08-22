@@ -466,36 +466,6 @@
             endingLineNumber = "60"
             landmarkName = "fetchHighScore(workout:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D207332D-BA7C-46E3-8B19-FFE0ED17C14A - de547f23852c707c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PawAndActives.GameRepositoryManager.fetchHighScore(workout: PawAndActives.WorkoutType) -&gt; Swift.Optional&lt;PawAndActives.Session&gt;"
-                  moduleName = "PawAndActives"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anjarharimurti/Documents/PawAndActives/PawAndActives/Manager/Repository/GameRepositoryManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-               <Location
-                  uuid = "D207332D-BA7C-46E3-8B19-FFE0ED17C14A - 6d5f126ae4cdcf5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (PawAndActives.Session, PawAndActives.Session) -&gt; Swift.Bool in PawAndActives.GameRepositoryManager.fetchHighScore(workout: PawAndActives.WorkoutType) -&gt; Swift.Optional&lt;PawAndActives.Session&gt;"
-                  moduleName = "PawAndActives"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anjarharimurti/Documents/PawAndActives/PawAndActives/Manager/Repository/GameRepositoryManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

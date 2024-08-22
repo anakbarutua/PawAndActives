@@ -47,7 +47,7 @@ struct JokesGatchaView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: 500)
                 })
-               .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin <= 50))
+               .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin < 50))
                .disabled(totalCoin <= 50)
                .frame(maxWidth: 517)
             }
