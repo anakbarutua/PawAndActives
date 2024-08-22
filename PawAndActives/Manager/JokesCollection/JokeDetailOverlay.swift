@@ -7,52 +7,78 @@
 
 import SwiftUI
 
-struct JokeDetailOverlay: View {
+struct JokeDetailOverlay
+: View {
     @Binding var selectedJoke: Joke?
     
     var body: some View {
         ZStack() {
             VStack(spacing: 40) {
-                ZStack() {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 517, height: 515)
-                        .background(Color(red: 0.99, green: 0.87, blue: 0.53))
-                        .cornerRadius(14)
-                    ScrollView {
-                        Text("\(selectedJoke?.joke.Joke ?? "")")
-                            .font(Font.custom("SF Pro", size: 54).weight(.bold))
-                            .foregroundColor(.black)
-                            .padding()
+                ZStack(alignment: .top) {
+                  Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 517, height: 515)
+                    .background(
+                        ZStack {
+                            LinearGradient(gradient: Gradient(colors: [Color.ABTColor.BlueJeans, Color.ABTColor.SteelBlue]), startPoint: .top, endPoint: .bottom)
+                            Image("card-bg")
+                                .resizable()
+                                .scaledToFill()
+                        }
+                    )
+                    .cornerRadius(14)
+                    VStack {
+                        HStack {
+                            Text("Joke")
+                                .font(.system(size: 28))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            Spacer()
+                            Button(action: {
+                                if (selectedJoke == nil){
+                                    return
+                                }
+                                JokesCollectionManager.shared.toggleJokeIsFavorite(joke: selectedJoke!)
+                            }, label: {
+                                Image(systemName: (selectedJoke?.isFavorite ?? false) ? "bookmark.fill" : "bookmark")
+                                    .font(.title)
+                            })
+                            .buttonStyle(FavoriteJokeButtonStyle())
+                        }
+                        .padding()
+                        GeometryReader { geometry in
+                            ScrollView {
+                                Text("\(selectedJoke?.joke.Joke ?? "")")
+                                    .font(.system(size: 50))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .padding(.vertical)
+                                    .scrollTargetLayout()
+//                                    // Make the scroll view full-width
+//                                    .frame(width: geometry.size.width)
+//
+//                                    // Set the content’s min height to the parent
+//                                    .frame(minHeight: geometry.size.height)
+                            }
+                            .scrollTargetBehavior(.viewAligned)
+                            .animation(nil)
+                        }
                     }
+                    .padding()
+                    
                 }
                 .frame(width: 517, height: 515)
                 
-                HStack {
-                    Button(action: {
-                        selectedJoke = nil
-                    }, label: {
-                        Text("Dismiss")
-                            .foregroundColor(.black)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity)
-                    })
-                   .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
-                    Button(action: {
-                        if (selectedJoke == nil){
-                            return
-                        }
-                        JokesCollectionManager.shared.toggleJokeIsFavorite(joke: selectedJoke!)
-                        
-                    }, label: {
-                        Image(systemName: (selectedJoke?.isFavorite ?? false) ? "bookmark.fill" : "bookmark")
-                            .font(.title)
-                            .foregroundStyle(.black)
-                    })
-                   .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
-                }
-                .frame(maxWidth: 517)
+                Button(action: {
+                    selectedJoke = nil
+                }, label: {
+                    Text("Dismiss")
+                        .foregroundColor(.black)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: 500)
+                })
+                .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: false))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
