@@ -23,17 +23,10 @@ struct JokesGatchaView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
-//                    Button {
-//                        navigationManager.navigate(to: .jokesSavedView)
-//                    } label: {
-//                        Image(systemName: "bookmark")
-//                            .font(.largeTitle)
-//                            .foregroundStyle(.black)
-//                    }
                 }
                 .padding(.horizontal)
                 .padding(.horizontal)
-                RiveViewModel(fileName: "machine_loop").view()
+                RiveViewModel(fileName: "white_rive_new").view()
                     .frame(maxHeight: 500)
                     .padding(.bottom)
                 Button(action: handleDrawJokeButtonPressed, label: {
