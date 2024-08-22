@@ -50,7 +50,7 @@ struct GameView: View {
                     }
                     
                     VStack{
-                        Text("Position your \((viewModel.workoutType == .grabTheCircles) ? "hands" : "head") in the orange circle to start workout")
+                        Text("HOLD YOUR \((viewModel.workoutType == .grabTheCircles) ? "HANDS" : "HEAD") IN THE CIRCLE")
                             .fontWeight(.heavy)
                             .font(.system(size: 24))
                             .frame(width: 290)
