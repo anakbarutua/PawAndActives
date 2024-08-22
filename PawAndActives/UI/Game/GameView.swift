@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct GameView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
-    @StateObject private var viewModel = GameViewModel()
+    @StateObject private var viewModel = GameViewModel(repoManager: .shared)
     
     var workoutType: WorkoutType = .avoidTheBlocks
-    var userDifficulty : Level = .medium
+    var userDifficulty : Level = Level.medium
+    
+    @AppStorage("totalCoin")
+    var totalCoin: Int = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -158,37 +162,47 @@ struct GameView: View {
                     
                     
                 case .gameOver:
-                    let userScore = viewModel.scoring()
-                    
                     ZStack {
-                        HStack(alignment: .top) {
-                            VStack(alignment: .trailing, spacing: 40) {
-                                Text("SCORE")
-                                    .font(.system(size: 80))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                        VStack {
+                            HStack(alignment: .top) {
+                                VStack(alignment: .trailing, spacing: 40) {
+                                    Text("SCORE")
+                                        .font(.system(size: 80))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Rank")
+                                        .font(.system(size: 80))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.trailing, 86)
                                 
-                                Text("Rank")
-                                    .font(.system(size: 80))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.trailing, 86)
-                            
-                            VStack(alignment: .leading, spacing: 40) {
-                                Text("\(userScore.percentage)")
-                                    .font(.system(size: 80))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                                VStack(alignment: .leading, spacing: 40) {
+                                    Text("\(viewModel.userScore.numberScore)")
+                                        .font(.system(size: 80))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("\(viewModel.userScore.letterScore.rawValue)")
+                                        .font(.system(size: 96))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.trailing, 12)
                                 
-                                Text("\(userScore.letter.rawValue)")
-                                    .font(.system(size: 96))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.trailing, 12)
-                            
 
+                            }
+                            
+                            HStack {
+                                Text("You got \(viewModel.addedCoin)")
+                                    .font(.system(size: 52))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color.ABTColor.MikadoYellow)
+                                
+                                CoinLogo()
+                            }
+                            
                         }
                         .position(x: (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height / 2)
                         
@@ -200,7 +214,7 @@ struct GameView: View {
                                 .multilineTextAlignment(.center)
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .offset(x: -115, y: -75)
+                        .offset(x: -115, y: -110)
                         
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -308,6 +322,9 @@ struct GameView: View {
                 }
             }
             
+        }
+        .onChange(of: viewModel.addedCoin) { _, newValue in
+            self.totalCoin += newValue
         }
         .onDisappear {
             viewModel.endGame()

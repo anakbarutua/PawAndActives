@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SwiftData
+
+protocol WorkoutRepositoryService {
+    func fetchWorkoutDifficulty(workout workoutType: WorkoutType) -> [WorkoutDifficulties]
+    func addDifficulty(_ workoutDifficulty: WorkoutDifficulties)
+    func updateDifficulty(_ workoutDifficulty: WorkoutDifficulties)
+}

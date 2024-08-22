@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WorkoutDetailView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var workoutViewModel = WorkoutViewModel()
-    @State private var difficulty: Level = .easy
+    @StateObject private var workoutViewModel = WorkoutViewModel(repoManager: .shared)
     
     var workoutType: WorkoutType = .grabTheCircles
     
     @State var workoutData: Workout = Workout()
+    
+    @State var currentDifficulty: Level = Level.medium
+    
+    @State var highScore: ScoreDetail = ScoreDetail()
+    
+    @AppStorage("totalCoin")
+    var totalCoin: Int = 0
+    
+    @AppStorage("isFirstGame")
+    var isFirstGame: Bool = true
     
     var body: some View {
         GeometryReader{ geo in
@@ -27,20 +37,17 @@ struct WorkoutDetailView: View {
                         .foregroundColor(Color.ABTColor.CharlestonGreen)
                         .padding(.trailing, geo.size.width * 0.58)
                     HStack{
-                            HStack{
-                                    Text("G")
-                                    .font(.title)
-                                    .foregroundColor(Color.ABTColor.SteelBlue)
-                                    .scaledToFit()
-                                    .frame(width: 0.06 * geo.size.width)
-                                    .background(Circle().fill(Color.ABTColor.MikadoYellow))
-                                    Text("0")
-                                    .font(.system(size: 32))
-                                    .foregroundColor(Color.ABTColor.Linen)
-                                    }.scaledToFit()
-                                    .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
-                                    .padding(.trailing, 0.03 * geo.size.width)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                        HStack{
+                            CoinLogo()
+                            Text("\(totalCoin)")
+                                .font(.system(size: 24))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.ABTColor.Linen)
+                        }.scaledToFit()
+                            .padding(.horizontal, 18)
+                            .padding(.vertical, 8)
+                            .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                        
                     }.padding(.leading, geo.size.width * 0.02)
                     Spacer()
                     
@@ -53,9 +60,50 @@ struct WorkoutDetailView: View {
                         .padding(.horizontal, geo.size.width * 0.1)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Image("")
+                    Image(.gtcIcon)
                         .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.6)
                         .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.Linen))
+                        .overlay {
+                            VStack(alignment: .trailing) {
+                                HStack(alignment: .bottom) {
+                                    Text("Rank")
+                                        .font(.title)
+                                        .fontWeight(.semibold)
+                                        .padding(.bottom, 28)
+                                    
+                                    Text((workoutViewModel.highScore == nil) ? "-" : "\(workoutViewModel.highScore!.letterScore.rawValue)")
+                                        .font(
+                                            (workoutViewModel.highScore == nil) ? .title : .system(size: 128)
+                                        )
+                                        .fontWeight(.semibold)
+                                        .padding(.bottom, (workoutViewModel.highScore == nil) ? 28 : 0 )
+                                }
+                                .padding(.leading, 12)
+                                
+                                Text("Highscore: \((workoutViewModel.highScore == nil) ? 0 : workoutViewModel.highScore!.numberScore)")
+                                    .font(.title)
+                                    .offset(y: -24)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                            .padding(.trailing, 48)
+                            .padding(.bottom, 24)
+                            .foregroundStyle(.white)
+                            .background(
+                                LinearGradient(
+                                    gradient: Gradient(
+                                        stops: [
+                                            .init(color: Color.clear, location: 0.4),
+                                            .init(color: Color.black.opacity(0.1), location: 0.5),
+                                            .init(color: Color.black.opacity(0.4), location: 0.7),
+                                            .init(color: Color.black.opacity(0.75), location: 1.0)
+                                        ]
+                                    ),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            
+                        }
                     HStack{
                         Text("Difficulty")
                             .foregroundColor(Color.ABTColor.CharlestonGreen)
@@ -63,7 +111,7 @@ struct WorkoutDetailView: View {
                         
                         Spacer()
                         
-                        Picker("Difficulty", selection: $difficulty){
+                        Picker("Difficulty", selection: $currentDifficulty){
                             ForEach(Level.allCases, id: \.self) { level in
                                 Text(level.rawValue)
                             }
@@ -75,29 +123,50 @@ struct WorkoutDetailView: View {
                     .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.05)
                     .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.DarkSkyBlue))
                     .padding(.top, geo.size.height * 0.015)
-                        
+                    
                     ButtonView(label: "Start Workout"){
-                        navigationManager.navigate(to: .gameView(workoutType, difficulty))
+                                                navigationManager.navigate(to: .gameView(workoutType, currentDifficulty))
                     }
-                    .alert(isPresented: $workoutViewModel.showPermissionAlert){
-                        Alert(
-                            title: Text("Permission Required"),
-                            message: Text("Camera access is required for this feature. Please enable it in settings."),
-                            dismissButton: .default(Text("Open Settings")){
-                                workoutViewModel.openSetting()
-                            }
-                        )
-                    }
+                    //                    .alert(isPresented: $workoutViewModel.showPermissionAlert){
+                    //                        Alert(
+                    //                            title: Text("Permission Required"),
+                    //                            message: Text("Camera access is required for this feature. Please enable it in settings."),
+                    //                            dismissButton: .default(Text("Open Settings")){
+                    //                                workoutViewModel.openSetting()
+                    //                            }
+                    //                        )
+                    //                    }
                     .padding(.leading, 0.1 * geo.size.width)
-
+                    
                 }
             }
         }
         .onAppear {
+            workoutViewModel.workoutType = self.workoutType
             workoutData = workouts.filter { workout in
                 workout.type == workoutType
             }.first!
             
+            workoutViewModel.addLevelDifficulties()
+            
+            workoutViewModel.fetchHighScore()
+            
+//            let _ = print(workoutViewModel.fetchHighScore())
+            
+            workoutViewModel.fetchCurrentDifficulty()
+            workoutViewModel.isFirstGame = self.isFirstGame
+            
+        }
+        .onChange(of: workoutViewModel.currentDifficulty) {
+            self.currentDifficulty = workoutViewModel.currentDifficulty
+        }
+        .onChange(of: workoutViewModel.highScore) {
+            if let highScore = workoutViewModel.highScore {
+                self.highScore = highScore
+            }
+        }
+        .onChange(of: workoutViewModel.isFirstGame) {
+            isFirstGame = false
         }
     }
 }

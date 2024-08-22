@@ -14,6 +14,26 @@ class WorkoutViewModel: ObservableObject{
     @Published var alertTitle = ""
     @Published var alertMessage = ""
     
+    @Published var workoutType: WorkoutType = .grabTheCircles
+    
+    @Published var highScore: ScoreDetail?
+    
+    @Published var currentDifficulty: Level = Level.medium
+    
+    @Published var isFirstGame: Bool = true
+    
+//    private let workoutRepositoryService: WorkoutRepositoryManager
+//    private let gameRepositoryService: GameRepositoryManager
+    
+    private let repoManager: JokesCollectionManager
+    
+    
+    init(repoManager: JokesCollectionManager) {
+//        self.workoutRepositoryService = workoutRepositoryService
+//        self.gameRepositoryService = gameRepositoryService
+        self.repoManager = repoManager
+    }
+    
     func requestCameraPermission() {
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
         
@@ -60,6 +80,36 @@ class WorkoutViewModel: ObservableObject{
         
         if UIApplication.shared.canOpenURL(settingsUrl){
             UIApplication.shared.open(settingsUrl)
+        }
+    }
+    
+    func fetchHighScore() {
+        if let highScoreSession = repoManager.fetchHighScore(workout: workoutType) {
+            self.highScore = highScoreSession.score
+        }
+    }
+    
+    func fetchCurrentDifficulty() {
+        if let currentDifficulty = repoManager.fetchWorkoutDifficulty(workout: workoutType).first {
+            self.currentDifficulty = Level(rawValue: currentDifficulty.currentDifficulty)!
+        }
+    }
+    
+    func addLevelDifficulties() {
+        if isFirstGame {
+            repoManager.addDifficulty(
+                WorkoutDifficulties(
+                    workoutType: .avoidTheBlocks, currentDifficulty: .medium
+                )
+            )
+            
+            repoManager.addDifficulty(
+                WorkoutDifficulties(
+                    workoutType: .grabTheCircles, currentDifficulty: .medium
+                )
+            )
+            
+            isFirstGame = false
         }
     }
 }

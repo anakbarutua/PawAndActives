@@ -67,20 +67,6 @@ class VisionManager: VisionService {
                 return
             }
             
-            var handPoints: [VNRecognizedPoint] = []
-            
-            for observation in handObservations {
-                let allPoints = try observation.recognizedPoints(forGroupKey: .point3DGroupKeyAll)
-                
-                for point in allPoints.values {
-                    if point.confidence > 0.5 {
-                        handPoints.append(point)
-                    }
-                }
-                
-                handPoints.append(contentsOf: allPoints.values)
-            }
-            
             var leftHandPoints: [VNRecognizedPoint] = []
             var rightHandPoints: [VNRecognizedPoint] = []
             

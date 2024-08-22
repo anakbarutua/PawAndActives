@@ -21,10 +21,13 @@ struct DashboardView: View {
         GridItem(.fixed(225)),
     ]
     
+    @AppStorage("totalCoin")
+    var totalCoin: Int = 0
+    
     var body: some View {
         GeometryReader { geo in
-        ScrollView {
-            VStack {
+            ScrollView {
+                VStack {
                     VStack{
                         HStack{
                             Text("GiggleFit")
@@ -36,35 +39,31 @@ struct DashboardView: View {
                             Button(action: {
                                 navigationManager.navigate(to: .jokesGatchaView)
                             }, label: {
-                                                        
+                                
                                 HStack{
-                                                            
+                                    
                                     Image.ABTImage.Shop
                                         .resizable()
                                         .frame(width: 44, height: 35)
-                                        Text("Draw")
+                                    Text("Draw")
                                         .foregroundColor(Color.ABTColor.Linen)
                                         .font(.title)
                                         .fontWeight(.bold)
-                                                        }
+                                }
                             }).scaledToFit()
-                            .padding(8)
-                            .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                                .padding(8)
+                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
                             HStack{
-                                    Text("G")
-                                    .font(.title)
-                                    .foregroundColor(Color.ABTColor.SteelBlue)
-                                    .scaledToFit()
-                                    .frame(width: 0.06 * geo.size.width)
-                                    .background(Circle().fill(Color.ABTColor.MikadoYellow))
-                                    Text("0")
-                                    .font(.system(size: 32))
+                                CoinLogo()
+                                Text("\(totalCoin)")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
                                     .foregroundColor(Color.ABTColor.Linen)
-                                    }.scaledToFit()
-                                    .frame(width: 0.0865 * geo.size.width, height: 0.065 * geo.size.height)
-                                    .padding(.trailing, 0.03 * geo.size.width)
-                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
+                            }.scaledToFit()
+                                .padding(.horizontal, 18)
+                                .padding(.vertical, 8)
+                                .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                             
                         }
                         HStack{
@@ -82,7 +81,7 @@ struct DashboardView: View {
                                         .foregroundColor(Color.ABTColor.CharlestonGreen)
                                 }
                                 
-                                    
+                                
                             }.scaledToFit()
                                 .frame(height: 0.4 * geo.size.height)
                                 .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
@@ -113,11 +112,11 @@ struct DashboardView: View {
                                         .foregroundColor(Color.ABTColor.CharlestonGreen)
                                         .padding(.bottom, 0.01 * geo.size.height)
                                 }.padding(.bottom, 0.029 * geo.size.height)
-                                   
+                                
                             })
                             .scaledToFit()
                             .frame(width: 0.199 * geo.size.width,height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
+                            .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.DarkSkyBlue))
                             
                             HStack{
                                 VStack(alignment: .leading, spacing: 5){
@@ -126,7 +125,7 @@ struct DashboardView: View {
                                             .font(.largeTitle)
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.ABTColor.Linen)
-                                            
+                                        
                                         Spacer()
                                     }
                                     .padding(.leading, 0.01 * geo.size.width)
@@ -147,19 +146,19 @@ struct DashboardView: View {
                                             .fontWeight(.bold)
                                             .foregroundStyle(Color.ABTColor.CharlestonGreen)
                                     }
-                                        .frame(width: 0.3 * geo.size.width
-                                               , height: 0.045 * geo.size.height)
-                                        .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
-                                        .padding(.top, 0.17 * geo.size.height)
-                                        .padding(.leading, 0.01 * geo.size.width)
+                                    .frame(width: 0.3 * geo.size.width
+                                           , height: 0.045 * geo.size.height)
+                                    .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.PastelOrange))
+                                    .padding(.top, 0.17 * geo.size.height)
+                                    .padding(.leading, 0.01 * geo.size.width)
                                     
                                 }
                                 .padding(.trailing, 0.1 * geo.size.width)
                             }
                             .scaledToFit()
                             .frame(height: 0.4 * geo.size.height)
-                                .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue))
-                                .padding(.leading, 0.01 * geo.size.width)
+                            .background(RoundedRectangle(cornerRadius: 14.0).fill(Color.ABTColor.SteelBlue))
+                            .padding(.leading, 0.01 * geo.size.width)
                         }
                         HStack{
                             Text("Jokes Collected")
@@ -204,9 +203,9 @@ struct DashboardView: View {
                         }
                     }
                 }
-            
+                
+            }
         }
-    }
     }
 }
 
