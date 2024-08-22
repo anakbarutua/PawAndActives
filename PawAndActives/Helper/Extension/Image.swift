@@ -34,6 +34,10 @@ extension Image {
         public static var KotakIcon: Image{
             return Image(.kotakIcon)
         }
+        
+        public static var komponent: Image{
+            return Image(.component)
+        }
     }
 
 }

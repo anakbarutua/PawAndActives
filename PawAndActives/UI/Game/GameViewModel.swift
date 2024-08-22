@@ -19,8 +19,8 @@ class GameViewModel: ObservableObject {
     var cameraManager: CameraManager
     private let soundService: SoundService
     
-//    private let gameRepositoryService: GameRepositoryManager
-//    private let workoutRepositoryService: WorkoutRepositoryManager
+    //    private let gameRepositoryService: GameRepositoryManager
+    //    private let workoutRepositoryService: WorkoutRepositoryManager
     
     private let repoManager: JokesCollectionManager
     
@@ -53,6 +53,8 @@ class GameViewModel: ObservableObject {
     var blockColumn: CGFloat = 3
     var totalColumn = 4
     
+    private var finalScore: Int = 0
+    
     var userDifficulty : Level = .easy
     var workoutType: WorkoutType = .grabTheCircles
     
@@ -62,11 +64,15 @@ class GameViewModel: ObservableObject {
     
     @Published var isPause = false
     
+    @Published var highScore: ScoreDetail?
+    
+    @Published var isNewHighScore: Bool = false
+    
     init(repoManager: JokesCollectionManager) {
         cameraManager = CameraManager()
         soundService = SoundManager()
-//        self.gameRepositoryService = gameRepositoryService
-//        self.workoutRepositoryService = workoutRepositoryService
+        //        self.gameRepositoryService = gameRepositoryService
+        //        self.workoutRepositoryService = workoutRepositoryService
         self.repoManager = repoManager
         setupBindings()
         maxObstacle = 0
@@ -277,7 +283,7 @@ class GameViewModel: ObservableObject {
         Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started, !isPause else { return }
+                guard let self = self, self.userState == .started, !isPause, remainingTime > 2 else { return }
                 self.generateCircle()
             }
             .store(in: &cancellables)
@@ -289,7 +295,7 @@ class GameViewModel: ObservableObject {
         timerCancellable = Timer.publish(every: objectAppearInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self, self.userState == .started, !isPause else { return }
+                guard let self = self, self.userState == .started, !isPause, remainingTime > 2 else { return }
                 self.randomizeNonRedSection()
             }
     }
@@ -379,13 +385,14 @@ class GameViewModel: ObservableObject {
         
         // Stop the camera and end the game
         scoring()
+        checkNewHighScore()
         self.stopCamera()
-        self.userState = .gameOver
         self.circles.removeAll()
         timerCancellable?.cancel()
         stopSound(named: "bgm")
         addSession()
         updateWorkoutDifficulty()
+        self.userState = .gameOver
     }
     
     func pauseGame() {
@@ -412,8 +419,8 @@ class GameViewModel: ObservableObject {
         let scoreNumber = (Double(maxObstacle) != 0) ? (Double(score) / Double(maxObstacle)) * 100 : 0
         let finalScore = Int((scoreNumber * 10).rounded(.toNearestOrAwayFromZero))
         
+        self.finalScore = finalScore
         userScore.numberScore = finalScore
-        
         if scoreNumber == 100.0 {
             userScore.letterScore = .ss
             
@@ -528,6 +535,22 @@ class GameViewModel: ObservableObject {
             currentDifficulty.currentDifficulty = newDifficulty
             
             repoManager.updateDifficulty(currentDifficulty)
+        }
+    }
+    
+    func fetchHighScore() {
+        if let highScoreSession = repoManager.fetchHighScore(workout: workoutType) {
+            self.highScore = highScoreSession.score
+        }
+    }
+    
+    func checkNewHighScore() {
+        fetchHighScore()
+        guard let score = highScore else { return  }
+        if score.numberScore < self.finalScore {
+            DispatchQueue.main.async {
+                self.isNewHighScore = true
+            }
         }
     }
 }

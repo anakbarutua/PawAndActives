@@ -8,6 +8,10 @@
 import SwiftUI
 import Foundation
 import AVFoundation
+import AVKit
+import Combine
+
+
 
 class WorkoutViewModel: ObservableObject{
     @Published var showPermissionAlert = false
@@ -48,7 +52,6 @@ class WorkoutViewModel: ObservableObject{
                         self.alertTitle = "Access Denied"
                         self.alertMessage = "Camera access was denied. Please enable it in Settings."
                     }
-                    //self.showPermissionAlert = true
                 }
             }
         case .restricted:

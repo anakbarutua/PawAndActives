@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D83CA322C76D96B00E36372 /* AvoidTheBlock.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0D83CA302C76D96B00E36372 /* AvoidTheBlock.mov */; };
+		0D83CA332C76D96B00E36372 /* GrabTheCircle.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0D83CA312C76D96B00E36372 /* GrabTheCircle.mov */; };
+		0D83CA362C76DDA700E36372 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 0D83CA352C76DDA700E36372 /* RiveRuntime */; };
 		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
 		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
 		620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F96122C6A9CA600821C6F /* DashboardView.swift */; };
@@ -55,7 +58,6 @@
 		622BFD0A2C6A908D001BF7C3 /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD092C6A908D001BF7C3 /* VisionManager.swift */; };
 		622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD0E2C6A91DE001BF7C3 /* JokesGatchaService.swift */; };
 		622BFD112C6A9212001BF7C3 /* JokesGatchaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BFD102C6A9212001BF7C3 /* JokesGatchaManager.swift */; };
-		628947C82C74838900E99D64 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 628947C72C74838900E99D64 /* RiveRuntime */; };
 		628947CB2C74870A00E99D64 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947C92C74870A00E99D64 /* success.mp3 */; };
 		628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 628947CA2C74870A00E99D64 /* bgm.mp3 */; };
 		628C9B7E2C73B6CC00574504 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628C9B7D2C73B6CB00574504 /* SoundService.swift */; };
@@ -81,6 +83,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D83CA302C76D96B00E36372 /* AvoidTheBlock.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = AvoidTheBlock.mov; path = ../../../../../../Downloads/AvoidTheBlock.mov; sourceTree = "<group>"; };
+		0D83CA312C76D96B00E36372 /* GrabTheCircle.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = GrabTheCircle.mov; path = ../../../../../../Downloads/GrabTheCircle.mov; sourceTree = "<group>"; };
+		0D83CA342C76D9D400E36372 /* gacha_machine.riv */ = {isa = PBXFileReference; lastKnownFileType = file; name = gacha_machine.riv; path = ../../../../../../Downloads/gacha_machine.riv; sourceTree = "<group>"; };
 		0DB9A1DE2C6D0B1900EF743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DB9A21B2C6DFC4E00EF743C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -160,13 +165,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				628947C82C74838900E99D64 /* RiveRuntime in Frameworks */,
+				0D83CA362C76DDA700E36372 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D83CA2F2C76D90A00E36372 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0D83CA302C76D96B00E36372 /* AvoidTheBlock.mov */,
+				0D83CA312C76D96B00E36372 /* GrabTheCircle.mov */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		0DB9A2162C6D1A5F00EF743C /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +262,7 @@
 		622BFCCC2C6A863C001BF7C3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0D83CA2F2C76D90A00E36372 /* Video */,
 				628C9B812C73B70F00574504 /* Sound */,
 				622BFCCD2C6A8646001BF7C3 /* Entity */,
 				622BFCCE2C6A864D001BF7C3 /* Enum */,
@@ -302,6 +317,7 @@
 		622BFCD12C6A8725001BF7C3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				BA8E83912C728E8800DEDFBD /* JokesCollection */,
 				628C9B7C2C73B62C00574504 /* Sound */,
 				0DB9A2162C6D1A5F00EF743C /* Notification */,
 				622BFCD52C6A884C001BF7C3 /* Repository */,
@@ -358,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				BA8E83962C729DDA00DEDFBD /* JokesSaved */,
-				BA8E83912C728E8800DEDFBD /* JokesCollection */,
 				BA7A84BF2C6E5DAD007628A3 /* Reusable */,
 				BA7A84BA2C6E5AE3007628A3 /* ButtonStyle */,
 				BA7A84B72C6E04F2007628A3 /* Modifier */,
@@ -432,6 +447,7 @@
 		BA7A84B12C6DE4CC007628A3 /* JokesGatcha */ = {
 			isa = PBXGroup;
 			children = (
+				0D83CA342C76D9D400E36372 /* gacha_machine.riv */,
 				BA8E83992C748B4600DEDFBD /* machine_loop.riv */,
 				BA806E312C6F5863007D1A8E /* machine_white.riv */,
 				BA7A84B22C6DE574007628A3 /* JokesGatchaView.swift */,
@@ -502,7 +518,7 @@
 			);
 			name = PawAndActives;
 			packageProductDependencies = (
-				628947C72C74838900E99D64 /* RiveRuntime */,
+				0D83CA352C76DDA700E36372 /* RiveRuntime */,
 			);
 			productName = PawAndActives;
 			productReference = 622BFCB82C6A72BC001BF7C3 /* PawAndActives.app */;
@@ -549,11 +565,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D83CA322C76D96B00E36372 /* AvoidTheBlock.mov in Resources */,
 				BA64DFB92C7270310034724E /* machine_white.riv in Resources */,
 				BA2A405C2C6C93D7003365C5 /* jokes.json in Resources */,
 				628947CB2C74870A00E99D64 /* success.mp3 in Resources */,
 				BA8E839E2C75CACC00DEDFBD /* jokes-with-category.json in Resources */,
 				628947CC2C74870A00E99D64 /* bgm.mp3 in Resources */,
+				0D83CA332C76D96B00E36372 /* GrabTheCircle.mov in Resources */,
 				BA8E839A2C748B4600DEDFBD /* machine_loop.riv in Resources */,
 				622BFCC52C6A72BD001BF7C3 /* Preview Assets.xcassets in Resources */,
 				622BFCC22C6A72BD001BF7C3 /* Assets.xcassets in Resources */,
@@ -762,10 +780,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = F7UK99A97Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GiggleFit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -798,10 +817,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PawAndActives/Preview Content\"";
-				DEVELOPMENT_TEAM = WTU6YK528U;
+				DEVELOPMENT_TEAM = F7UK99A97Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PawAndActives/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GiggleFit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To detect and track your hand movements.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -861,7 +881,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		628947C72C74838900E99D64 /* RiveRuntime */ = {
+		0D83CA352C76DDA700E36372 /* RiveRuntime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7A84C22C6E6199007628A3 /* XCRemoteSwiftPackageReference "rive-ios" */;
 			productName = RiveRuntime;

@@ -34,12 +34,14 @@ struct ButtonView: View {
                     .font(.system(size: 20))
                     .foregroundColor(Color.ABTColor.CharlestonGreen)
                     .fontWeight(.bold)
-                    .frame(width: geo.size.width * 0.89, height: geo.size.height * 0.4)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 18)
                         .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.ABTColor.MikadoYellow))
-                        .padding(.top, geo.size.height * 0.006)
             }
         }
     }
+}
 
-    
+#Preview {
+    ButtonView(label: "Hehe", icon: "", action: {})
 }
