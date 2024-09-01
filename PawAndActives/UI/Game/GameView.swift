@@ -71,18 +71,30 @@ struct GameView: View {
                     
                     switch workoutType {
                     case .grabTheCircles:
-                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.trailing, .top], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        CircleView(
+                            width: 150,
+                            thickness: 15,
+                            color: (viewModel.isRightInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.trailing, .top], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                         
-                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.leading, .bottom], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                        CircleView(
+                            width: 150,
+                            thickness: 15,
+                            color: (viewModel.isLeftInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.leading, .bottom], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                         
                     case .avoidTheBlocks:
-                        CircleView(width: 175, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.top], UIScreen.main.bounds.height - (16 * UIScreen.main.bounds.height / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        CircleView(
+                            width: 175,
+                            thickness: 15,
+                            color: (viewModel.isHeadInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.top], UIScreen.main.bounds.height - (16 * UIScreen.main.bounds.height / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
                     
                     
@@ -200,7 +212,7 @@ struct GameView: View {
                     } else {
                         ForEach(0..<viewModel.totalColumn) { index in
                             Rectangle()
-                                .fill(viewModel.sections[index] ? Color.red.opacity(0.4) : Color.clear)
+                                .fill(viewModel.sections[index] ? Color.red.opacity(0.6) : Color.clear)
                                 .frame(width: UIScreen.main.bounds.width / viewModel.blockColumn, height: UIScreen.main.bounds.height / viewModel.blockRow)
                                 .position(positionForSection(index: index))
                         }
@@ -313,7 +325,7 @@ struct GameView: View {
                                 .padding(.bottom, 48)
                             HStack{
                                 Button {
-                                    viewModel.endGame()
+                                    viewModel.stopGame()
                                     navigationManager.goBackToRoot()
                                 } label: {
                                     Text("Exit")
@@ -381,7 +393,7 @@ struct GameView: View {
                     )
                 } else {
                     viewModel.countdownText = "Ready"
-                    viewModel.countdown = 4
+                    viewModel.countdown = 3
                     viewModel.startCountdownCancellable?.cancel()
                 }
             }
@@ -391,7 +403,7 @@ struct GameView: View {
             self.totalCoin += newValue
         }
         .onDisappear {
-            viewModel.endGame()
+            viewModel.stopGame()
         }
         .navigationBarBackButtonHidden()
         .safeAreaInset(edge: .bottom) {

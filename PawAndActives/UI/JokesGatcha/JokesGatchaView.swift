@@ -23,9 +23,21 @@ struct JokesGatchaView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
+                    
+                    HStack{
+                        CoinLogo()
+                        Text("\(totalCoin)")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.ABTColor.Linen)
+                    }.scaledToFit()
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 8)
+                        .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                 }
                 .padding(.horizontal)
                 .padding(.horizontal)
+                Spacer()
                 RiveViewModel(fileName: "white_rive_new").view()
                     .frame(maxHeight: 500)
                     .padding(.bottom)
@@ -41,8 +53,9 @@ struct JokesGatchaView: View {
                     .frame(maxWidth: 500)
                 })
                .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin < 50))
-               .disabled(totalCoin < 50)
+               .disabled(totalCoin < 50 || JokesGatchaManager.shared.isJokeAvailable() == false)
                .frame(maxWidth: 517)
+                Spacer()
             }
             DrawJokeOverlay(drawedJoke: $drawedJoke)
         }
