@@ -212,7 +212,7 @@ struct GameView: View {
                     } else {
                         ForEach(0..<viewModel.totalColumn) { index in
                             Rectangle()
-                                .fill(viewModel.sections[index] ? Color.red.opacity(0.4) : Color.clear)
+                                .fill(viewModel.sections[index] ? Color.red.opacity(0.6) : Color.clear)
                                 .frame(width: UIScreen.main.bounds.width / viewModel.blockColumn, height: UIScreen.main.bounds.height / viewModel.blockRow)
                                 .position(positionForSection(index: index))
                         }
