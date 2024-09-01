@@ -26,6 +26,7 @@ struct JokesGatchaView: View {
                 }
                 .padding(.horizontal)
                 .padding(.horizontal)
+                Spacer()
                 RiveViewModel(fileName: "white_rive_new").view()
                     .frame(maxHeight: 500)
                     .padding(.bottom)
@@ -43,6 +44,7 @@ struct JokesGatchaView: View {
                .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin < 50))
                .disabled(totalCoin < 50)
                .frame(maxWidth: 517)
+                Spacer()
             }
             DrawJokeOverlay(drawedJoke: $drawedJoke)
         }
