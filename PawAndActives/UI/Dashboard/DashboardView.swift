@@ -187,18 +187,16 @@ struct DashboardView: View {
                                         .foregroundStyle(.gray)
                                 }.padding(.top, 0.06 * geo.size.height)
                             } else {
-                                ScrollView {
-                                    LazyVGrid(columns: self.columns) {
-                                        ForEach(data, id: \.self) { joke in
-                                            Button {
-                                                selectedJoke = joke
-                                            } label: {
-                                                JokeCard(category: joke.joke.Category, joke: joke.joke.Joke)
-                                            }
+                                LazyVGrid(columns: self.columns, alignment: .leading) {
+                                    ForEach(data, id: \.self) { joke in
+                                        Button {
+                                            selectedJoke = joke
+                                        } label: {
+                                            JokeCard(category: joke.joke.Category, joke: joke.joke.Joke)
                                         }
                                     }
-                                    .padding()
                                 }
+                                .padding()
                             }
                         }
                     }
