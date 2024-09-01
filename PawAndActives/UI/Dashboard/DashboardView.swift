@@ -99,21 +99,20 @@ struct DashboardView: View {
                                         ZStack{
                                             Image.ABTImage.PersonIcon
                                                 .resizable()
-                                                .padding(.top, 0.01 * geo.size.height)
                                                 .frame(width: 0.13 * geo.size.width ,height: 0.27 * geo.size.height)
                                                 .padding(.leading, 0.08 * geo.size.width)
-                                                .padding(.top, 0.035 * geo.size.height)
+                                                .padding(.top, 0.043 * geo.size.height)
                                             VStack(spacing: 0){
                                                 Image.ABTImage.komponent
                                                     .resizable()
-                                                    .frame(width: 0.1984 * geo.size.width, height: 0.305 * geo.size.height)
+                                                    .frame(width: 0.1984 * geo.size.width, height: 0.314 * geo.size.height)
                                             }
                                         }
                                         Text("Avoid The Blocks")
                                             .font(.title)
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.ABTColor.CharlestonGreen)
-                                            .padding(.bottom, 0.01 * geo.size.height)
+                                            .padding(.bottom, 0.0 * geo.size.height)
                                     }.padding(.bottom, 0.029 * geo.size.height)
                                     
                                 })
