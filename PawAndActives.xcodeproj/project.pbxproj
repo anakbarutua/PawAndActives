@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1B26D42C84A89500C5207C /* ScreenSizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1B26D32C84A89500C5207C /* ScreenSizeManager.swift */; };
+		0D1B26D62C84A8B900C5207C /* ScreenCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1B26D52C84A8B900C5207C /* ScreenCategory.swift */; };
 		0D83CA362C76DDA700E36372 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 0D83CA352C76DDA700E36372 /* RiveRuntime */; };
 		0DB9A2182C6D1A7900EF743C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */; };
 		0DB9A21C2C6DFC4E00EF743C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A21B2C6DFC4E00EF743C /* Constant.swift */; };
@@ -82,6 +84,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1B26D32C84A89500C5207C /* ScreenSizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeManager.swift; sourceTree = "<group>"; };
+		0D1B26D52C84A8B900C5207C /* ScreenCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCategory.swift; sourceTree = "<group>"; };
 		0DB9A1DE2C6D0B1900EF743C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DB9A2172C6D1A7900EF743C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DB9A21B2C6DFC4E00EF743C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -169,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1B26D22C84A88500C5207C /* ScreenSize */ = {
+			isa = PBXGroup;
+			children = (
+				0D1B26D32C84A89500C5207C /* ScreenSizeManager.swift */,
+			);
+			path = ScreenSize;
+			sourceTree = "<group>";
+		};
 		0D83CA2F2C76D90A00E36372 /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +298,7 @@
 				622BFCE72C6A8CA9001BF7C3 /* Level.swift */,
 				622BFCE92C6A8CBC001BF7C3 /* WorkoutType.swift */,
 				620F96372C6E69D600821C6F /* UserState.swift */,
+				0D1B26D52C84A8B900C5207C /* ScreenCategory.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -314,6 +327,7 @@
 		622BFCD12C6A8725001BF7C3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0D1B26D22C84A88500C5207C /* ScreenSize */,
 				BA8E83912C728E8800DEDFBD /* JokesCollection */,
 				628C9B7C2C73B62C00574504 /* Sound */,
 				0DB9A2162C6D1A5F00EF743C /* Notification */,
@@ -592,6 +606,7 @@
 				BA7A84BE2C6E5C44007628A3 /* DrawJokeOverlay.swift in Sources */,
 				620F962A2C6B411C00821C6F /* UIHelper.swift in Sources */,
 				622BFCE02C6A8C31001BF7C3 /* Session.swift in Sources */,
+				0D1B26D62C84A8B900C5207C /* ScreenCategory.swift in Sources */,
 				622BFCE62C6A8C98001BF7C3 /* Score.swift in Sources */,
 				622BFCF02C6A8D55001BF7C3 /* Workout.swift in Sources */,
 				622BFCF82C6A9009001BF7C3 /* WorkoutRepositoryService.swift in Sources */,
@@ -635,6 +650,7 @@
 				620F96382C6E69D600821C6F /* UserState.swift in Sources */,
 				620F96212C6A9D6900821C6F /* WorkoutViewModel.swift in Sources */,
 				622BFCDE2C6A8BF6001BF7C3 /* Joke.swift in Sources */,
+				0D1B26D42C84A89500C5207C /* ScreenSizeManager.swift in Sources */,
 				620F96132C6A9CA600821C6F /* DashboardView.swift in Sources */,
 				622BFCBC2C6A72BC001BF7C3 /* PawAndActivesApp.swift in Sources */,
 				622BFD0F2C6A91DE001BF7C3 /* JokesGatchaService.swift in Sources */,
