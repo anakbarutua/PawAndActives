@@ -23,6 +23,17 @@ struct JokesGatchaView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
+                    
+                    HStack{
+                        CoinLogo()
+                        Text("\(totalCoin)")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.ABTColor.Linen)
+                    }.scaledToFit()
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 8)
+                        .background(RoundedRectangle(cornerRadius: 25.0).fill(Color.ABTColor.SteelBlue))
                 }
                 .padding(.horizontal)
                 .padding(.horizontal)
