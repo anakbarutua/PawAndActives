@@ -10,10 +10,20 @@ import SwiftData
 
 @main
 struct PawAndActivesApp: App {
+    
+    @StateObject private var navigationManager = NavigationManager()
+    private var router = Router()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $navigationManager.path) {
+                router.view(for: .dashboardView)
+                    .navigationDestination(for: Destination.self) { destination in
+                        router.view(for: destination)
+                    }
+            }
+            .environmentObject(navigationManager)
+            .modelContainer(for: [Joke.self, Session.self, WorkoutDifficulties.self])
         }
     }
 }
