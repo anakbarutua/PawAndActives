@@ -102,11 +102,11 @@ struct DashboardView: View {
                                                 .padding(.top, 0.01 * geo.size.height)
                                                 .frame(width: 0.13 * geo.size.width ,height: 0.27 * geo.size.height)
                                                 .padding(.leading, 0.08 * geo.size.width)
-                                                .padding(.top, 0.04 * geo.size.height)
+                                                .padding(.top, 0.035 * geo.size.height)
                                             VStack(spacing: 0){
                                                 Image.ABTImage.komponent
                                                     .resizable()
-                                                    .frame(width: 0.2 * geo.size.width, height: 0.31 * geo.size.height)
+                                                    .frame(width: 0.1984 * geo.size.width, height: 0.305 * geo.size.height)
                                             }
                                         }
                                         Text("Avoid The Blocks")
@@ -279,7 +279,7 @@ struct DashboardView: View {
                                             VStack(spacing: 0){
                                                 Image.ABTImage.komponent
                                                     .resizable()
-                                                    .frame(width: 0.23 * geo.size.width, height: 0.31 * geo.size.height)
+                                                    .frame(width: 0.229 * geo.size.width, height: 0.308 * geo.size.height)
                                             }
                                         }
                                         Text("Avoid The Blocks")
@@ -601,7 +601,7 @@ struct DashboardView: View {
                                             .resizable()
                                             .frame(width: 0.21 * geo.size.width ,height: 0.275 * geo.size.height)
                                         Text("Grab The Circle")
-                                            .font(.title)
+                                            .font(.system(size: 26))
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.ABTColor.CharlestonGreen)
                                     }
@@ -629,7 +629,7 @@ struct DashboardView: View {
                                             }
                                         }
                                         Text("Avoid The Blocks")
-                                            .font(.title)
+                                            .font(.system(size: 26))
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.ABTColor.CharlestonGreen)
                                             .padding(.bottom, 0.01 * geo.size.height)
