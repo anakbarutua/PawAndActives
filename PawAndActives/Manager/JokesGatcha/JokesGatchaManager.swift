@@ -36,6 +36,11 @@ class JokesGatchaManager: JokesGatchaServiceProtocol {
     
     func fetchUnownedJokes() throws -> [JokeDto] {
         let jokes: [JokeDto] = try loadJson();
+        
+        if ( jokes.count <= 0 ) {
+            throw JokeError.fileEmpty
+        }
+        
         let ownedJokes = jokesCollectionManager.fetchJokes()
         
         return jokes.filter {
@@ -47,11 +52,16 @@ class JokesGatchaManager: JokesGatchaServiceProtocol {
     func getRandomOne() throws -> JokeDto {
         let joke = try fetchUnownedJokes().randomElement()
         
-        if(joke == nil){
-            throw JokeError.fileEmpty
-        }
-        
         return joke!
+    }
+    
+    func isJokeAvailable() -> Bool {
+        do {
+            let joke = try fetchUnownedJokes().randomElement()
+            return joke != nil
+        } catch {
+            return false
+        }
     }
     
 }

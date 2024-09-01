@@ -58,5 +58,9 @@ extension Color {
         public static var BlueJeans: Color {
             return .blueJeans
         }
+        
+        public static var LimeGreen: Color {
+            return .limeGreen
+        }
     }
 }
