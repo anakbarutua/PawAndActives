@@ -15,13 +15,13 @@ class GameViewModel: ObservableObject {
     @Published var handPoints: [CGPoint] = []
     
     @Published var isTrackingOk = false
+    @Published var isLeftInPosition = false
+    @Published var isRightInPosition = false
+    @Published var isHeadInPosition = false
     
     var cameraManager: CameraManager
     private let soundService: SoundService
-    
-    //    private let gameRepositoryService: GameRepositoryManager
-    //    private let workoutRepositoryService: WorkoutRepositoryManager
-    
+
     private let repoManager: JokesCollectionManager
     
     @Published var isSessionRunning = false
@@ -34,7 +34,7 @@ class GameViewModel: ObservableObject {
     @Published var userState: UserState = .waitingToStart
     
     @Published var countdownText: String = "Ready"
-    @Published var countdown: Int = 4
+    @Published var countdown: Int = 3
     
     private var currentNonRedIndex: Int = 0
     
@@ -71,8 +71,6 @@ class GameViewModel: ObservableObject {
     init(repoManager: JokesCollectionManager) {
         cameraManager = CameraManager()
         soundService = SoundManager()
-        //        self.gameRepositoryService = gameRepositoryService
-        //        self.workoutRepositoryService = workoutRepositoryService
         self.repoManager = repoManager
         setupBindings()
         maxObstacle = 0
@@ -150,8 +148,8 @@ class GameViewModel: ObservableObject {
                 blockColumn = 4
                 blockRow = 4
                 
-                let isLeftInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 12, points: leftHandPoint)
-                let isRightInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 3, points: rightHandPoint)
+                self.isLeftInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 12, points: leftHandPoint)
+                self.isRightInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 3, points: rightHandPoint)
                 
                 self.isTrackingOk = isLeftInPosition && isRightInPosition
                 
@@ -160,7 +158,7 @@ class GameViewModel: ObservableObject {
                 blockColumn = 5
                 blockRow = 5
                 
-                let isHeadInPosition = checkPointInSpecificSection(row: 5, column: 5, choosenIndex: 7, points: headPoint)
+                self.isHeadInPosition = checkPointInSpecificSection(row: 5, column: 5, choosenIndex: 7, points: headPoint)
                 
                 self.isTrackingOk = isHeadInPosition
             }
@@ -228,7 +226,7 @@ class GameViewModel: ObservableObject {
     func startGame() {
         self.timerCountDown()
         self.playSound(named: "bgm")
-        self.setVolume(named: "bgm", volume: 0.1)
+        self.setVolume(named: "bgm", volume: 0.35)
         if remainingTime >= 3 {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
@@ -378,21 +376,26 @@ class GameViewModel: ObservableObject {
     }
     
     func endGame() {
+        stopGame()
+        
+        scoring()
+        checkNewHighScore()
+        stopSound(named: "bgm")
+        addSession()
+        updateWorkoutDifficulty()
+        self.userState = .gameOver
+    }
+    
+    func stopGame() {
         // Capture the last frame
         if let lastFrame = cameraManager.captureCurrentFrame() {
             self.capturedFrame = lastFrame
         }
         
         // Stop the camera and end the game
-        scoring()
-        checkNewHighScore()
         self.stopCamera()
         self.circles.removeAll()
         timerCancellable?.cancel()
-        stopSound(named: "bgm")
-        addSession()
-        updateWorkoutDifficulty()
-        self.userState = .gameOver
     }
     
     func pauseGame() {
@@ -509,13 +512,13 @@ class GameViewModel: ObservableObject {
             var newDifficulty: String = currentDifficulty.currentDifficulty
             
             if currentDifficulty.currentDifficulty == Level.easy.rawValue {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.medium.rawValue
                 } else {
                     newDifficulty = Level.easy.rawValue
                 }
             } else if currentDifficulty.currentDifficulty == Level.medium.rawValue {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.hard.rawValue
                 } else if userScore.letterScore == .c {
                     newDifficulty = Level.easy.rawValue
@@ -523,7 +526,7 @@ class GameViewModel: ObservableObject {
                     newDifficulty = Level.medium.rawValue
                 }
             } else {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.hard.rawValue
                 } else if userScore.letterScore == .c {
                     newDifficulty = Level.medium.rawValue
