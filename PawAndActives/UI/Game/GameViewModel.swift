@@ -15,13 +15,13 @@ class GameViewModel: ObservableObject {
     @Published var handPoints: [CGPoint] = []
     
     @Published var isTrackingOk = false
+    @Published var isLeftInPosition = false
+    @Published var isRightInPosition = false
+    @Published var isHeadInPosition = false
     
     var cameraManager: CameraManager
     private let soundService: SoundService
-    
-    //    private let gameRepositoryService: GameRepositoryManager
-    //    private let workoutRepositoryService: WorkoutRepositoryManager
-    
+
     private let repoManager: JokesCollectionManager
     
     @Published var isSessionRunning = false
@@ -71,8 +71,6 @@ class GameViewModel: ObservableObject {
     init(repoManager: JokesCollectionManager) {
         cameraManager = CameraManager()
         soundService = SoundManager()
-        //        self.gameRepositoryService = gameRepositoryService
-        //        self.workoutRepositoryService = workoutRepositoryService
         self.repoManager = repoManager
         setupBindings()
         maxObstacle = 0
@@ -150,8 +148,8 @@ class GameViewModel: ObservableObject {
                 blockColumn = 4
                 blockRow = 4
                 
-                let isLeftInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 12, points: leftHandPoint)
-                let isRightInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 3, points: rightHandPoint)
+                self.isLeftInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 12, points: leftHandPoint)
+                self.isRightInPosition = checkPointInSpecificSection(row: 4, column: 4, choosenIndex: 3, points: rightHandPoint)
                 
                 self.isTrackingOk = isLeftInPosition && isRightInPosition
                 
@@ -160,7 +158,7 @@ class GameViewModel: ObservableObject {
                 blockColumn = 5
                 blockRow = 5
                 
-                let isHeadInPosition = checkPointInSpecificSection(row: 5, column: 5, choosenIndex: 7, points: headPoint)
+                self.isHeadInPosition = checkPointInSpecificSection(row: 5, column: 5, choosenIndex: 7, points: headPoint)
                 
                 self.isTrackingOk = isHeadInPosition
             }

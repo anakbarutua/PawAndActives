@@ -71,18 +71,30 @@ struct GameView: View {
                     
                     switch workoutType {
                     case .grabTheCircles:
-                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.trailing, .top], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        CircleView(
+                            width: 150,
+                            thickness: 15,
+                            color: (viewModel.isRightInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.trailing, .top], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                         
-                        CircleView(width: 150, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.leading, .bottom], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                        CircleView(
+                            width: 150,
+                            thickness: 15,
+                            color: (viewModel.isLeftInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.leading, .bottom], UIScreen.main.bounds.width - (19 * UIScreen.main.bounds.width / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                         
                     case .avoidTheBlocks:
-                        CircleView(width: 175, thickness: 15, color: Color.ABTColor.MikadoYellow)
-                            .padding([.top], UIScreen.main.bounds.height - (16 * UIScreen.main.bounds.height / 20))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        CircleView(
+                            width: 175,
+                            thickness: 15,
+                            color: (viewModel.isHeadInPosition) ? Color.ABTColor.LimeGreen : Color.ABTColor.MikadoYellow
+                        )
+                        .padding([.top], UIScreen.main.bounds.height - (16 * UIScreen.main.bounds.height / 20))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
                     
                     
