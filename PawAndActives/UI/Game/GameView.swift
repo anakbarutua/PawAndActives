@@ -325,7 +325,7 @@ struct GameView: View {
                                 .padding(.bottom, 48)
                             HStack{
                                 Button {
-                                    viewModel.endGame()
+                                    viewModel.stopGame()
                                     navigationManager.goBackToRoot()
                                 } label: {
                                     Text("Exit")
@@ -393,7 +393,7 @@ struct GameView: View {
                     )
                 } else {
                     viewModel.countdownText = "Ready"
-                    viewModel.countdown = 4
+                    viewModel.countdown = 3
                     viewModel.startCountdownCancellable?.cancel()
                 }
             }
@@ -403,7 +403,7 @@ struct GameView: View {
             self.totalCoin += newValue
         }
         .onDisappear {
-            viewModel.endGame()
+            viewModel.stopGame()
         }
         .navigationBarBackButtonHidden()
         .safeAreaInset(edge: .bottom) {

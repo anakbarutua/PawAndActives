@@ -34,7 +34,7 @@ class GameViewModel: ObservableObject {
     @Published var userState: UserState = .waitingToStart
     
     @Published var countdownText: String = "Ready"
-    @Published var countdown: Int = 4
+    @Published var countdown: Int = 3
     
     private var currentNonRedIndex: Int = 0
     
@@ -226,7 +226,7 @@ class GameViewModel: ObservableObject {
     func startGame() {
         self.timerCountDown()
         self.playSound(named: "bgm")
-        self.setVolume(named: "bgm", volume: 0.1)
+        self.setVolume(named: "bgm", volume: 0.35)
         if remainingTime >= 3 {
             if workoutType == .grabTheCircles {
                 startGeneratingCircle()
@@ -376,21 +376,26 @@ class GameViewModel: ObservableObject {
     }
     
     func endGame() {
+        stopGame()
+        
+        scoring()
+        checkNewHighScore()
+        stopSound(named: "bgm")
+        addSession()
+        updateWorkoutDifficulty()
+        self.userState = .gameOver
+    }
+    
+    func stopGame() {
         // Capture the last frame
         if let lastFrame = cameraManager.captureCurrentFrame() {
             self.capturedFrame = lastFrame
         }
         
         // Stop the camera and end the game
-        scoring()
-        checkNewHighScore()
         self.stopCamera()
         self.circles.removeAll()
         timerCancellable?.cancel()
-        stopSound(named: "bgm")
-        addSession()
-        updateWorkoutDifficulty()
-        self.userState = .gameOver
     }
     
     func pauseGame() {
@@ -507,13 +512,13 @@ class GameViewModel: ObservableObject {
             var newDifficulty: String = currentDifficulty.currentDifficulty
             
             if currentDifficulty.currentDifficulty == Level.easy.rawValue {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.medium.rawValue
                 } else {
                     newDifficulty = Level.easy.rawValue
                 }
             } else if currentDifficulty.currentDifficulty == Level.medium.rawValue {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.hard.rawValue
                 } else if userScore.letterScore == .c {
                     newDifficulty = Level.easy.rawValue
@@ -521,7 +526,7 @@ class GameViewModel: ObservableObject {
                     newDifficulty = Level.medium.rawValue
                 }
             } else {
-                if userScore.letterScore == .s {
+                if userScore.letterScore == .s || userScore.letterScore == .ss {
                     newDifficulty = Level.hard.rawValue
                 } else if userScore.letterScore == .c {
                     newDifficulty = Level.medium.rawValue
