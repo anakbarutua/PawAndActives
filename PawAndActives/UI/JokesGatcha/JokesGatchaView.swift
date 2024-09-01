@@ -53,7 +53,7 @@ struct JokesGatchaView: View {
                     .frame(maxWidth: 500)
                 })
                .buttonStyle(CallToActionPrimaryButtonStyle(isDisabled: totalCoin < 50))
-               .disabled(totalCoin < 50)
+               .disabled(totalCoin < 50 || JokesGatchaManager.shared.isJokeAvailable() == false)
                .frame(maxWidth: 517)
                 Spacer()
             }

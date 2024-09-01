@@ -55,4 +55,13 @@ class JokesGatchaManager: JokesGatchaServiceProtocol {
         return joke!
     }
     
+    func isJokeAvailable() -> Bool {
+        do {
+            let joke = try fetchUnownedJokes().randomElement()
+            return joke != nil
+        } catch {
+            return false
+        }
+    }
+    
 }
